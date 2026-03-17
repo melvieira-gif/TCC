@@ -60,6 +60,7 @@
                     <textarea id="comentarios" placeholder="Digite seus comentários aqui"></textarea>
                     <br><br>
                     <button id="btn_enviar" class="btn btn-primary" ><strong>Enviar feedback</strong></button>
+                    <p id="resultadoFale"> </p>
                 </fieldset>
             
         </section>
@@ -77,7 +78,7 @@
         const nome = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const comentario = document.getElementById("comentarios").value;
-        const resposta = await fetch("http://10.111.9.133:3000/contato", {     
+        const resposta = await fetch("http://localhost:3000/contato", {     
             method: "POST",
             headers: {
                 "Accept": "application/json",

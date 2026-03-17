@@ -135,7 +135,7 @@ app.post("/login", async (req,res) =>{
         const crypto = require("crypto")
         const hash = crypto.createHash("sha256").update(senhaTrim).digest("hex")
         
-        if (hash+hashdoBanco) {
+        if (hash === hashdoBanco) {
             return res.json ({
                 "resposta":"Login feito com sucesso"
             })
