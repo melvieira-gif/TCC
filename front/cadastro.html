@@ -27,11 +27,12 @@
         </section>
 
         <section>
-            <h1 class="title"><strong>Cadastra-se</strong></h1
-                >
-
+            <h1 class="title"><strong>Cadastra-se</strong></h1>
             <br><br>
 
+            <h1 class="title"><strong>Cadastra-se</strong></h1>
+
+            <br><br>
             <label for="nome">Nome</label>
             <br>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo">
@@ -51,7 +52,7 @@
             <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
             <br>
             <p>Já tem uma conta? <a href="login.html" target="_blank">Clique aqui</a></p>
-        </section>  
+        </section> 
     </main>
     <footer>
         <p><a href="index.html" target="_blank"><strong>StarDev</strong></a></p>
@@ -60,73 +61,166 @@
 </body>
 
 <script>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-    console.log("Enviou os dados!")
-     //Req para o backend
-    try {
-        const dados = await resposta.json();
-        const feedback = document.getElementById("feedback");
-       //Limpa o meu card que estava antes
-        feedback.innerHTML = "";
-
-       //Em caso de erro no meu backend
-        if (!resposta.ok || dados.resposta?.toLowerCase().includes("erro") || dados.resposta?.toLowerCase().includes("insira") || dados.resposta?.toLowerCase().includes("deve")) {
-            feedback.innerHTML=`
-            <section id= "alert alert-danger" role="alert">
-            ${dados.resposta}
-            </section>
-            `;
-            return;  
-       }
-       //Caso de um success
-       feedback.innerHTML = `
-       <section id="alert alert-success" role="alert">
-         ${dados.resposta}
-       </section>
-       `;
-    }catch (error) {
-        console.log(error)
-        const feedback = document.getElementById("feedback");
-        feedback.innerHTML = `
-        <section id="alert alert-danger" role="alert">
-            Erro ao se conectar ao servidor.
-        </section>
-        `;
-    }
-   
-    document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
-        // primeira etapa- pegar as informaçoes dos inputs
-        const nome = document.getElementById("nome").value
-        const email = document.getElementById("email").value
-        const senha = document.getElementById("senha").value
-        const dt_nasc = document.getElementById("dt_nasc").value
-
-        // segunda etapa- fazer a requisição para o back-end o que o thunder client não mostra oq faz
-        // fetch funciona pq vai passar o endereço da requisição
-        const resposta = await fetch (`http://localhost:3000/cadastro_login`,{
-            method:"POST",
-            headers:{
-                "Accept":"application/json",
-                "Content-Type":"application/json" // o tipo de conteudo que estou mandando é o JSON
-            },
-            body:JSON.stringify({
-                "nome":nome,
-                "email":email,
-                "senha":senha,
-                "dt_nasc":dt_nasc})
-        })
-        // terceira etapa - pegar a resposta do back-end
-        if(resposta.ok){
-            const dados = await resposta.json()
-            document.getElementById("resultado_cadastro").innerHTML = dados.resposta
-        }else{
-
+    //Criando evento ao clicar no botão de Cadastrar-se
+    document.addEventListener("DOMContentLoaded", () => {
+    // ── Seletores ──────────────────────────────
+    const inputNome     = document.getElementById("nome");
+    const inputEmail    = document.getElementById("email");
+    const inputTelefone = document.getElementById("telefone");
+    const inputSenha    = document.getElementById("senha");
+    const btnSalvar     = document.getElementById("btn_salvar_cadastro");
+    // ── Máscara de Telefone ────────────────────
+    inputTelefone.addEventListener("input", (e) => {
+        let valor = e.target.value.replace(/\D/g, "");
+        if (valor.length > 11) valor = valor.slice(0, 11);
+        if (valor.length <= 10) {
+            valor = valor
+                .replace(/^(\d{2})(\d)/, "($1) $2")
+                .replace(/(\d{4})(\d)/, "$1-$2");
+        } else {
+            valor = valor
+                .replace(/^(\d{2})(\d)/, "($1) $2")
+                .replace(/(\d{5})(\d)/, "$1-$2");
         }
-    })
-  });
-</script>
+        e.target.value = valor;
+    });
+    // ── Validações ─────────────────────────────
+    function validarNome(nome) {
+        return nome.trim().length >= 3;
+    }
+    function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email.trim());
+    }
+    function validarTelefone(telefone) {
+        const apenasDigitos = telefone.replace(/\D/g, "");
+        return apenasDigitos.length === 10 || apenasDigitos.length === 11;
+    }
+    function validarSenha(senha) {
+        // Mínimo 8 caracteres, pelo menos 1 letra e 1 número
+        const regex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+        return regex.test(senha);
+    }
+    // ── Feedback visual nos campos ─────────────
+    function setFeedback(input, valido, mensagem) {
+        const feedbackAnterior = input.parentElement.querySelector(".feedback");
+        if (feedbackAnterior) feedbackAnterior.remove();
+        input.classList.remove("input-valido", "input-invalido");
+        input.classList.add(valido ? "input-valido" : "input-invalido");
+        if (!valido && mensagem) {
+            const span = document.createElement("span");
+            span.className = "feedback feedback-erro";
+            span.textContent = mensagem;
+            input.insertAdjacentElement("afterend", span);
+        }
+    }
+    function limparFeedback(input) {
+        const feedback = input.parentElement.querySelector(".feedback");
+        if (feedback) feedback.remove();
+        input.classList.remove("input-valido", "input-invalido");
+    }
+    // ── Validação em tempo real (blur) ──────────
+    inputNome.addEventListener("blur", () => {
+        if (inputNome.value.trim() === "") return limparFeedback(inputNome);
+        setFeedback(inputNome, validarNome(inputNome.value), "Nome deve ter pelo menos 3 caracteres.");
+    });
+    inputEmail.addEventListener("blur", () => {
+        if (inputEmail.value.trim() === "") return limparFeedback(inputEmail);
+        setFeedback(inputEmail, validarEmail(inputEmail.value), "Informe um e-mail válido.");
+    });
+    inputTelefone.addEventListener("blur", () => {
+        if (inputTelefone.value.trim() === "") return limparFeedback(inputTelefone);
+        setFeedback(inputTelefone, validarTelefone(inputTelefone.value), "Informe um telefone válido com DDD.");
+    });
+    inputSenha.addEventListener("blur", () => {
+        if (inputSenha.value.trim() === "") return limparFeedback(inputSenha);
+        setFeedback(inputSenha, validarSenha(inputSenha.value), "A senha deve ter no mínimo 8 caracteres, com letras e números.");
+    });
+    // ── Envio do formulário ────────────────────
+    btnSalvar.addEventListener("click", (e) => {
+        e.preventDefault();
+        const nome     = inputNome.value;
+        const email    = inputEmail.value;
+        const telefone = inputTelefone.value;
+        const senha    = inputSenha.value;
+        let valido = true;
+        if (!validarNome(nome)) {
+            setFeedback(inputNome, false, "Nome deve ter pelo menos 3 caracteres.");
+            valido = false;
+        } else {
+            setFeedback(inputNome, true);
+        }
 
+        if (!validarEmail(email)) {
+            setFeedback(inputEmail, false, "Informe um e-mail válido.");
+            valido = false;
+        } else {
+            setFeedback(inputEmail, true);
+        }
+
+        if (!validarTelefone(telefone)) {
+            setFeedback(inputTelefone, false, "Informe um telefone válido com DDD.");
+            valido = false;
+        } else {
+            setFeedback(inputTelefone, true);
+        }
+        if (!validarSenha(senha)) {
+            setFeedback(inputSenha, false, "A senha deve ter no mínimo 8 caracteres, com letras e números.");
+            valido = false;
+        } else {
+            setFeedback(inputSenha, true);
+        }
+        if (!valido) return;
+        // ── Monta objeto com os dados ──────────────
+        const dadosCadastro = {
+            nome:     nome.trim(),
+            email:    email.trim().toLowerCase(),
+            telefone: telefone.replace(/\D/g, ""), // Apenas dígitos para o back-end
+            senha:    senha, // Em produção: hash gerado no back-end
+        };
+        // ── Integração com back-end ────────────────
+        btnSalvar.disabled = true;
+        btnSalvar.textContent = "Cadastrando...";
+        fetch("/api/cadastro", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dadosCadastro),
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error("Erro na resposta do servidor.");
+                return res.json();
+            })
+            .then(() => {
+                exibirMensagem("Cadastro realizado com sucesso!", "sucesso");
+                limparFormulario();
+                setTimeout(() => window.location.href = "login.html", 2000);
+            })
+            .catch((err) => {
+                console.error("Erro ao cadastrar:", err);
+                exibirMensagem("Erro ao realizar cadastro. Tente novamente.", "erro");
+            })
+            .finally(() => {
+                btnSalvar.disabled = false;
+                btnSalvar.textContent = "Cadastrar";
+            });
+    });
+
+    // ── Utilitários ────────────────────────────
+    function exibirMensagem(texto, tipo) {
+        const anterior = document.querySelector(".mensagem-global");
+        if (anterior) anterior.remove();
+        const div = document.createElement("div");
+        div.className = `mensagem-global mensagem-${tipo}`;
+        div.textContent = texto;
+        btnSalvar.insertAdjacentElement("afterend", div);
+        setTimeout(() => div.remove(), 4000);
+    }
+    function limparFormulario() {
+        [inputNome, inputEmail, inputTelefone, inputSenha].forEach((input) => {
+            input.value = "";
+            limparFeedback(input);
+        });
+    }
+    });
+</script>
 </html>
