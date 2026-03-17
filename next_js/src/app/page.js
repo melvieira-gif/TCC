@@ -19,37 +19,40 @@ export default function Home() {
       escolherá uma de seu agrado, e será direcionado para uma próxima página, 
       que porventura será distribuído aulas independentes sobre cada “parte” da disciplina escolhida, porém haverá algumas instruções de ser conteúdo para: Iniciantes, Intermediários e Avançados.
       </p>
-      
-      <label htmlFor="name">Nome:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Digite seu nome completo"
-        className="px-3 py-2 rounded-md text-black"
-      />
+      <div className="flex flex-col gap-4 max-w-md w-full m-10">
+        <label htmlFor="name" className="font-josefin text-[#804256]">
+          Nome:
+        </label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Digite seu nome"
+          className="w-full px-2.5 py-2 border-2 border-[#804256] rounded-md bg-transparent text-[#804256] font-josefin placeholder-[#804256] italic focus:outline-none"
+        />
 
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Digite seu melhor email"
-        className="px-3 py-2 rounded-md text-black"
-      />
+        <label htmlFor="email" className="font-josefin text-[#804256]">
+          Email:
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu email"
+          className="w-full px-2.5 py-2 border-2 border-[#804256] rounded-md bg-transparent text-[#804256] font-josefin placeholder-[#804256] italic focus:outline-none"
+        />
 
-      <label htmlFor="comentarios">Comentários:</label>
-      <textarea
-        id="comentarios"
-        placeholder="Digite seus comentários aqui"
-        className="px-3 py-2 rounded-md text-black"
-      ></textarea>
+        <label htmlFor="comentarios" className="font-josefin text-[#804256]">
+          Comentários:
+        </label>
+        <textarea
+          id="comentarios"
+          placeholder="Digite seus comentários aqui"
+          className="w-full px-2.5 py-2 border-2 border-[#804256] rounded-md bg-transparent text-[#804256] font-josefin placeholder-[#804256] italic focus:outline-none"
+        />
 
-      <button className="bg-[#8c4b5a] py-2 rounded-md hover:opacity-90 transition">
-        <strong>Enviar feedback</strong>
-      </button>
-
-      <p id="resultadoFale"></p>
+        <button className="bg-[#716f35] text-[#f2e9e1] px-4 py-2 rounded-md cursor-pointer">
+          Enviar feedback
+        </button>
+      </div>
 
     </div>
     
