@@ -13,6 +13,7 @@ export default function Header(){
                     <li className="text-xl hover:underline">
                         <a href="http://localhost:3000/"> HOME </a>
                     </li>
+                    
                 </ul>
             </nav>
             
