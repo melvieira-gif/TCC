@@ -14,7 +14,7 @@ app.post("/contato", async (req,res)=>{
     try {
 
 
-        console.log("CHegou na rota !")
+        console.log("Chegou na rota !")
 
         const{nome, email, comentario} = req.body
 
