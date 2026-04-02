@@ -1,6 +1,6 @@
 * { 
   box-sizing: border-box; 
-  margin: 0px; 
+  margin: 0px;
   padding: 0px; 
   align-items: center;
 }
@@ -187,12 +187,6 @@ margin: 20px auto 0 auto;
 width: 500px;
 margin: 0 auto;
 }
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 /* CONTAINER PRINCIPAL */
 #login-container {
@@ -212,13 +206,11 @@ margin: 0 auto;
 
 #imagemgrandelogin {
   width: 300px;
-
-
 }
 
 /* DIREITA */
 .right {
-  width: 50%;
+  width: 100%;
   height: 100%;
   background-color: #d39a8f;
   display: flex;
@@ -235,14 +227,11 @@ margin: 0 auto;
   text-align: center;
 }
 
-/* TAG "> STAR DEV" */
-.tag {
-  background-color: #6b6b2e;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  align-self: center;
+/* logo do login flu */
+#logoflu_login {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 50%;
 }
 
 /* INPUTS */
@@ -275,4 +264,11 @@ margin: 0 auto;
   background-color: #6b6b2e;
   color: white;
   cursor: pointer;
+}
+
+/* footer login */
+#footer_login{
+  /* margin: 50px; */
+  /* padding: 40px; */
+  height: 60px;
 }
