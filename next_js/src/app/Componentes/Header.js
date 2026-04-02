@@ -11,7 +11,7 @@ export default function Header(){
             <nav>
                 <ul className="flex space-x-5 p-10 justify-center">
                     <li className="text-xl hover:underline">
-                        <a href="http://localhost:3000/"> HOME </a>
+                        <a href="http://10.111.9.133:3000/"> HOME </a>
                     </li>
                     
                 </ul>
