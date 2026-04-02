@@ -1,186 +1,277 @@
 * { 
-    box-sizing: border-box; 
-    margin: 0px; 
-    padding: 0px; 
-    align-items: center;
+  box-sizing: border-box; 
+  margin: 0px; 
+  padding: 0px; 
+  align-items: center;
 }
 
 body {
-  font-family: "Josefin Sans", sans-serif;
-  background: #e4bbb1;
-  color: #f2e9e1;
-  -webkit-font-smoothing: antialiased;
+font-family: "Josefin Sans", sans-serif;
+background: #e4bbb1;
+color: #f2e9e1;
+-webkit-font-smoothing: antialiased;
+margin: 0px;
+padding: 0px;
 }
 
 header {
-  width: 100%;
-  height: 100%;
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0;
-  background-color: #804256; /* barra clara */
-  position: sticky;
-  top: 0;
-  z-index: 50;
+width: 100%;
+height: 100%;
+padding: 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 0;
+background-color: #804256; /* barra clara */
+position: sticky;
+top: 0;
+z-index: 50;
 }
 
 .logo img {
-    width: 60px;
-    display: block;
-    float: left;
-    margin: 0px;
+  width: 60px;
+  display: block;
+  float: left;
+  margin: 0px;
 }
 
 nav {
-  display: flex;
-  gap: 36px;
-  align-items: center;
+display: flex;
+gap: 36px;
+align-items: center;
 }
 
 nav a {
-  text-decoration: none;
-  color: #f2e9e1;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.6px;
-  transition: color .2s, transform .15s;
+text-decoration: none;
+color: #f2e9e1;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.6px;
+transition: color .2s, transform .15s;
 }
 
 nav a:hover { 
-    color: #db9a8f; 
-    transform: translateY(-1px); 
+  color: #db9a8f; 
+  transform: translateY(-1px); 
 }
 
 .banner {
-  width: 100%;
-  height: 300px; /* altura do banner */
-  overflow: hidden;
-  margin: 0px;
-  padding: 0px;
-}
-
-figure {
-  margin: 0px;
+width: 100%;
+height: 100%; /* altura do banner */
+overflow: hidden;
+margin: 0px;
+padding: 0px;
 }
 
 .banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* mantém proporção e corta excesso */
-  display: block;
+width: 100%;
+height: 100%;
+object-fit: cover; /* mantém proporção e corta excesso */
+display: block;
+}
+
+figure {
+margin: 0px;
 }
 
 #home {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #f2e9e1;
-  margin-bottom: 28px;
-  margin: 50px;
-  line-height: 1.6;
+text-align: center;
+font-size: 1.5rem;
+color: #f2e9e1;
+margin-bottom: 28px;
+margin: 50px;
+line-height: 1.6;
 }
 
 fieldset {
-    border: 2px solid #804256;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 10px;
+  border: 2px solid #804256;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 10px;
 }
 
 legend {
-    color: #804256;
-    padding: 0 0.5rem;
+  color: #804256;
+  padding: 0 0.5rem;
 }
 
 textarea {
-    outline: none;
-    border-radius: 5px;
-    border: 2px solid #804256;
-    background-color: transparent;
-    color: #804256;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #804256;
+  background-color: transparent;
+  color: #804256;
 }
 
 
 input[type="text"], input[type="email"]{
-    width: 100%;
-    padding: 0.6rem;
-    border: 2px solid #804256;
-    outline: none;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #804256;
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px solid #804256;
+  outline: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #804256;
 
 }
 
 input::placeholder {
-    color: #804256;
-    font-family: "Josefin Sans", sans-serif;
-    font-style: oblique;
+  color: #804256;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: oblique;
 
 }
 
 textarea::placeholder {
-  color: #804256;
-  font-style: oblique;
-  font-family: "Josefin Sans", sans-serif;
-  padding: 0.6rem;
+color: #804256;
+font-style: oblique;
+font-family: "Josefin Sans", sans-serif;
+padding: 0.6rem;
 }
 
 button {
-    background-color: #716f35;
-    border: none;
-    padding: 0.8rem;
-    color: #f2e9e1;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #716f35;
+  border: none;
+  padding: 0.8rem;
+  color: #f2e9e1;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 footer {
-    background-color: #804256;
-    padding: 2rem;
-    text-align: center;
+  background-color: #804256;
+  padding: 2rem;
+  text-align: center;
 }
 
 .paragrafo-footer {
-    color: #f2e9e1
+  color: #f2e9e1
 }
 
 footer a {
-    text-decoration: none;
-    color: #db9a8f;
+  text-decoration: none;
+  color: #db9a8f;
 }
 
 #name, #email {
-  width: 500px;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
+width: 500px;
+text-align: center;
+display: block;
+margin: 0 auto;
 }
 
 #feedback {
-  width: 500px;
-  margin: 0 auto 20px auto; /* centraliza o bloco */
+width: 500px;
+margin: 0 auto 20px auto; /* centraliza o bloco */
 }
 
 #feedback label {
-  display: block;
-  text-align: left; /* força alinhamento à esquerda */
-  margin-bottom: 5px;
+display: block;
+text-align: left; /* força alinhamento à esquerda */
+margin-bottom: 5px;
 }
 
 #feedback input,
 #feedback textarea {
-  width: 100%;
-  padding: 0.6rem;
+width: 100%;
+padding: 0.6rem;
 }
 
 #feedback button {
-  display: block;
-  margin: 20px auto 0 auto;
+display: block;
+margin: 20px auto 0 auto;
 }
 
 #feedback fieldset {
-  width: 500px;
-  margin: 0 auto;
+width: 500px;
+margin: 0 auto;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CONTAINER PRINCIPAL */
+#login-container {
+  display: flex;
+  height: calc(100vh - 100px);
+}
+
+/* ESQUERDA */
+.left {
+  width: 50%;
+  height: 100%;
+  background-color: #804256;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#imagemgrandelogin {
+  width: 300px;
+
+
+}
+
+/* DIREITA */
+.right {
+  width: 50%;
+  height: 100%;
+  background-color: #d39a8f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CAIXA LOGIN */
+.login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 280px;
+  text-align: center;
+}
+
+/* TAG "> STAR DEV" */
+.tag {
+  background-color: #6b6b2e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  align-self: center;
+}
+
+/* INPUTS */
+.login-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #e7c2b9;
+}
+
+/* LABEL */
+.login-box label {
+  text-align: left;
+  font-size: 14px;
+}
+
+/* LINK */
+.login-box a {
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+/* BOTÃO */
+.login-box button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6b6b2e;
+  color: white;
+  cursor: pointer;
 }

@@ -26,7 +26,7 @@
                 </figure>
         </section>
 
-        <section>
+        <form>
             <h1 class="title"><strong>Cadastra-se</strong></h1>
             <br><br>
 
@@ -35,24 +35,24 @@
             <br><br>
             <label for="nome">Nome</label>
             <br>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo">
+            <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo">
             <br>
             <label for="email">E-mail</label>
             <br>
-            <input type="email" id="email" name="email" placeholder="Digite seu e-mail favorito">
+            <input type="email" id="email" name="email"  autocomplete="email" placeholder="Digite seu e-mail favorito">
             <br>
-            <label for="tel">Telefone</label>
+            <label for="telefone">Telefone</label>
             <br>
             <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15">
             <br>
             <label for="senha">Senha</label>
             <br>
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            <input type="password" id="senha" name="senha" autocomplete="new-password" placeholder="Digite sua senha">
             <br>
             <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
             <br>
             <p>Já tem uma conta? <a href="login.html" target="_blank">Clique aqui</a></p>
-        </section> 
+        </form> 
     </main>
     <footer>
         <p><a href="index.html" target="_blank"><strong>StarDev</strong></a></p>
@@ -61,6 +61,32 @@
 </body>
 
 <script>
-    
+    document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
+        const nome = document.getElementById("nome").value
+        const email = document.getElementById("email").value
+        const senha = document.getElementById("senha").value
+        const telefone = document.getElementById("telefone").value
+
+        const resposta = await fetch (`http://localhost:3000/cadastro`, {
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                "nome":nome,
+                "email":email,
+                "senha":senha,
+                "telefone":telefone
+            })
+        })
+
+        if(resposta.ok){
+            const dados = await resposta.json()
+            alert(dados.resposta)
+        }else{
+            alert("algo deu errado !")
+        }
+    })
 </script>
 </html>

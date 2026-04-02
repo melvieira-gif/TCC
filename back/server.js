@@ -70,8 +70,8 @@ app.post("/cadastro", async (req,res)=>{
        const {
            nome = "",
            email = "",
-           telefone = "",
-           senha = ""
+           senha = "",
+           telefone = ""
            } = req.body || {};
            const senhaTrim = senha.trim().replace("ㅤ", "");
            // tratativas para ver se esta tudo correto
@@ -89,21 +89,25 @@ app.post("/cadastro", async (req,res)=>{
     if (nome.length < 6){
         return res.json({"resposta": "Preencha o seu nome completo"});
     }
-    if (telefone.length <= 13){
+    if (telefone.length <= 12){
         return res.json({"resposta": "Prencha o seu telefone (XX)XXXXX-XXXX"});
     }
 
     // verificar email existente
     const sqlSelect = `SELECT * FROM cadastro WHERE email = ?`;
     const [rows] = await conexao.query(sqlSelect, [email]);
+
+    if (rows.length !== 0){
+        return res.json({"resposta":"Email já esta cadastrado! Tente novamente"});
+    }
     
     // criar hash da senha
     const crypto = require("crypto");
     const hash = crypto.createHash("sha256").update(senhaTrim).digest("hex");
 
     // inserir novo usuário
-    const sqlInsert = `INSERT INTO cadastro (nome, email, telefone, senha) VALUES (?,?,?,?)`;
-    const [resul2] = await conexao.query(sqlInsert, [nome, email, telefone, hash]);
+    const sqlInsert = `INSERT INTO cadastro (nome, email, senha, telefone) VALUES (?,?,?,?)`;
+    const [resul2] = await conexao.query(sqlInsert, [nome, email, hash, telefone]);
 
     if (resul2.affectedRows === 1){
         return res.json({"resposta":"Cadastro feito com sucesso!"});
