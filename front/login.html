@@ -1,47 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - StarDev</title>
     <link rel="stylesheet" href="style.css">
+    <title>Login-StarDev</title>
 </head>
-<body>
+<body id="body_index_cadastro">
+    <main id="main_divisao_ld">
 
+        <section id="esquerda">
+            <figure id="img_logo_login">
+                <a href="index.html" target="_blank"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
+            </figure>
+        </section>
 
-    <main>
-        <!-- LADO ESQUERDO -->
-        <section id="login-container">
-            <section class="left">
-                <img src="logo.svg" alt="Imagem lateral" id="imagemgrandelogin">
-            </section>
-    
-            <!-- LADO DIREITO -->
-            <section class="right">
-    
-                <section class="login-box">
-                    <section>
-                        <img src="logoflu.svg" alt="Logo do login" id="logoflu_login">
-                    </section>
-                    <h2>Acesse a plataforma</h2>
-    
-                    <label>E-mail</label>
-                    <input type="email">
-    
-                    <label>Senha</label>
-                    <input type="password">
-    
-                    <a href="cadastro.html">não tem um cadastro? Clique aqui</a>
-    
-                    <button>Entrar</button>
-                </section>
-            </section>
+        <section id="direita">
+            <figure id="img_logoflu_login">
+                <img src="logoflu.svg" alt="LOGO_LOGIN_DIREITA">
+            </figure>
+            <h1>Acesse a Plataforma</h1>
+            <label for="email_login" id="label_email_login">E-mail</label>
+            <input type="email" id="input_email_login" placeholder="Digite um email...">
+            <br><br>
+            <label for="senha_login" id="label_senha_login">Senha</label>
+            <input type="password" id="input_senha_login" placeholder="Digite uma senha">
+            <p>Não tem cadastro ainda? <a href="cadastro.html" target="_self" class="hrefs">Clique aqui</a></p>
+            <br><br>
+            <button><strong>Entrar</strong></button>
         </section>
     </main>
-    <footer id="footer_login">
-        <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
-    </footer>
-
 </body>
-
 </html>

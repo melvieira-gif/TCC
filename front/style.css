@@ -2,31 +2,30 @@
   box-sizing: border-box; 
   margin: 0px;
   padding: 0px; 
+}
+
+#body_index_cadastro {
+  font-family: "Josefin Sans", sans-serif;
+  background: #e4bbb1;
+  color: #f2e9e1;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+#header_index_cadastro {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-body {
-font-family: "Josefin Sans", sans-serif;
-background: #e4bbb1;
-color: #f2e9e1;
--webkit-font-smoothing: antialiased;
-margin: 0px;
-padding: 0px;
-}
-
-
-header {
-width: 100%;
-height: 100%;
-padding: 30px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 0;
-background-color: #804256; /* barra clara */
-position: sticky;
-top: 0;
-z-index: 50;
+  margin-bottom: 0;
+  background-color: #804256; /* barra clara */
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .logo img {
@@ -37,18 +36,18 @@ z-index: 50;
 }
 
 nav {
-display: flex;
-gap: 36px;
-align-items: center;
+  display: flex;
+  gap: 36px;
+  align-items: center;
 }
 
 nav a {
-text-decoration: none;
-color: #f2e9e1;
-font-weight: 600;
-font-size: 15px;
-letter-spacing: 0.6px;
-transition: color .2s, transform .15s;
+  text-decoration: none;
+  color: #f2e9e1;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  transition: color .2s, transform .15s;
 }
 
 nav a:hover { 
@@ -57,31 +56,31 @@ nav a:hover {
 }
 
 .banner {
-width: 100%;
-height: 100%; /* altura do banner */
-overflow: hidden;
-margin: 0px;
-padding: 0px;
+  width: 100%;
+  height: 100%; /* altura do banner */
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
 }
 
 .banner img {
-width: 100%;
-height: 100%;
-object-fit: cover; /* mantém proporção e corta excesso */
-display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantém proporção e corta excesso */
+  display: block;
 }
 
 figure {
-margin: 0px;
+  margin: 0px;
 }
 
 #home {
-text-align: center;
-font-size: 1.5rem;
-color: #f2e9e1;
-margin-bottom: 28px;
-margin: 50px;
-line-height: 1.6;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #f2e9e1;
+  margin-bottom: 28px;
+  margin: 50px;
+  line-height: 1.6;
 }
 
 fieldset {
@@ -124,10 +123,10 @@ input::placeholder {
 }
 
 textarea::placeholder {
-color: #804256;
-font-style: oblique;
-font-family: "Josefin Sans", sans-serif;
-padding: 0.6rem;
+  color: #804256;
+  font-style: oblique;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 0.6rem;
 }
 
 button {
@@ -139,7 +138,7 @@ button {
   cursor: pointer;
 }
 
-footer {
+#footer_index_cadastro {
   background-color: #804256;
   padding: 2rem;
   text-align: center;
@@ -149,126 +148,122 @@ footer {
   color: #f2e9e1
 }
 
-footer a {
+#footer_index_cadastro a {
   text-decoration: none;
   color: #db9a8f;
 }
 
 #name, #email {
-width: 500px;
-text-align: center;
-display: block;
-margin: 0 auto;
+  width: 500px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 #feedback {
-width: 500px;
-margin: 0 auto 20px auto; /* centraliza o bloco */
+  width: 500px;
+  margin: 0 auto 20px auto; /* centraliza o bloco */
 }
 
 #feedback label {
-display: block;
-text-align: left; /* força alinhamento à esquerda */
-margin-bottom: 5px;
+  display: block;
+  text-align: left; /* força alinhamento à esquerda */
+  margin-bottom: 5px;
 }
 
 #feedback input,
 #feedback textarea {
-width: 100%;
-padding: 0.6rem;
+  width: 100%;
+  padding: 0.6rem;
 }
 
 #feedback button {
-display: block;
-margin: 20px auto 0 auto;
+  display: block;
+  margin: 20px auto 0 auto;
 }
 
 #feedback fieldset {
-width: 500px;
-margin: 0 auto;
+  width: 500px;
+  margin: 0 auto;
 }
 
-/* CONTAINER PRINCIPAL */
-#login-container {
+/*login*/
+
+#main_divisao_ld {
   display: flex;
-  height: calc(100vh - 100px);
+  width: 100%;
+  height: 100vh;
 }
 
-/* ESQUERDA */
-.left {
+/*esquerdapt*/
+#esquerda {
   width: 50%;
   height: 100%;
-  background-color: #804256;;
+  background-color: #804256;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#imagemgrandelogin {
-  width: 300px;
-}
-
-/* DIREITA */
-.right {
-  width: 100%;
+/*direitapl*/
+#direita {
+  width: 50%;
   height: 100%;
-  background-color: #d39a8f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  background-color: #d19283;
 
-/* CAIXA LOGIN */
-.login-box {
-  display: flex;
+  display: flex; /*somente*/
   flex-direction: column;
-  gap: 12px;
-  width: 280px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-/* logo do login flu */
-#logoflu_login {
-  height: 100%;
-  width: 100%;
-  margin-bottom: 50%;
+/*lgesquerda*/
+#img_logo_login img {
+  width: 80%;
+  max-width: 500px;
 }
 
-/* INPUTS */
-.login-box input {
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  background-color: #e7c2b9;
+/*lgfludireita*/
+#img_logoflu_login {
+  margin-bottom: 15px;
 }
 
-/* LABEL */
-.login-box label {
+#img_logoflu_login img {
+  width: 150px;
+}
+
+#direita h1 {
+  color: #f2e9e1;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+#direita label {
+  width: 250px;
   text-align: left;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
-/* LINK */
-.login-box a {
-  font-size: 12px;
-  color: white;
-  text-decoration: none;
-}
-
-/* BOTÃO */
-.login-box button {
-  margin-top: 10px;
+#input_email_login, #input_senha_login {
+  width: 250px;
   padding: 10px;
   border: none;
   border-radius: 6px;
-  background-color: #6b6b2e;
-  color: white;
-  cursor: pointer;
+  background-color: #e6b2a6;
+  margin-bottom: 15px;
+  color: #804256;
 }
 
-/* footer login */
-#footer_login{
-  /* margin: 50px; */
-  /* padding: 40px; */
-  height: 60px;
+#input_email_login::placeholder, #input_senha_login::placeholder {
+  color: #804256;
+}
+
+#input_email_login:focus, #input_senha_login:focus {
+  outline: none;
+  background-color: #f0c3b8;
+}
+
+.hrefs{
+  color: #716f35;
 }
