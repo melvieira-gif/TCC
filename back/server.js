@@ -10,6 +10,28 @@ app.use(express.json())
 app.use(cors())
 
 
+const jwt = require("jsonwebtoken")
+const SECRET = "segredo_super_secreto"
+
+function verificarToken(req,res,next){
+    const token = req.headers["authorization"]
+
+    if(!token){
+        return res.status(401).json({erro:"Token não enviado"})
+    }
+
+    try{
+        const decoded = jwt.verify(token, SECRET)
+        req.usuario = decoded
+        next()
+    }catch{
+        return res.status(401).json({erro:"Token inválido"})
+    }
+}
+
+
+
+
 app.post("/contato", async (req,res)=>{
     try {
 
@@ -136,14 +158,28 @@ app.post("/login", async (req,res) =>{
         }
 
         const hashdoBanco = resultado[0].senha
-        const crypto = require("crypto")
-        const hash = crypto.createHash("sha256").update(senhaTrim).digest("hex")
+        const senhaValida = await bcrypt.compare(senhaTrim, hashdoBanco)
         
-        if (hash === hashdoBanco) {
-            return res.json ({
-                "resposta":"Login feito com sucesso"
-                
+        if (senhaValida) {
+            
+            const usuario = resultado[0]
+            const token = jwt.sign(
+                {
+                    // onde vai buscar o email
+                    id: usuario.id,
+                    email: usuario.email,
+                }, 
+                SECRET, 
+                {
+                    expiresIn: "1h"
+                }
+            )
+            
+            res.json({
+                "mensagem":"Acesso Ok", 
+                "token":token
             })
+
         } else {
             return res.json ({
                 "resposta":"Seu email ou senha estão incorretos"
@@ -155,7 +191,7 @@ app.post("/login", async (req,res) =>{
     }
 })
 
-app.post("/CadastroAulas", async (req,res) =>{
+app.post("/CadastroAulas", verificarToken ,async (req,res) =>{
     try {
         const {materia, duracao, qtd_aulas} = req.body
         let sql = `INSERT INTO aulas (materia, duracao, qtd_aulas) VALUES (?,?,?)`
