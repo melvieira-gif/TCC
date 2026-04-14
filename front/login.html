@@ -35,15 +35,18 @@
     document.getElementById("btn_login").addEventListener("click", async (e)=>{
         e.preventDefault()
 
-        const email = await fetch("http://111.10.9.133:3000/login", {
+        const email = document.getElementById("input_email_login").value
+        const senha = document.getElementById("input_senha_login").value
+
+        const resposta = await fetch("http://10.111.9.133:3000/login", {
             method:"POST",
             headers:{
                 "Accept":"application/json",
                 "Content-Type":"application/json"
             },
             body: JSON.stringify({
-                email: email,
-                senha: senha
+                "email": email,
+                "senha": senha
             })
         })
 
