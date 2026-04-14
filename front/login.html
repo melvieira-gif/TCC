@@ -35,10 +35,19 @@
         const email = document.getElementById("input_email_login").value
         const senha = document.getElementById("input_senha_login").value
 
+
+        const token = localStorage.getItem("token") fetch("http://111.10.9.133:3000/CadastroAulas", { 
+            method:"POST", 
+            headers:{ 
+                "Content-Type":"application/json", 
+                "Authorization": token 
+            }, 
+            body: JSON.stringify({...}) })
+
+
         const resposta = await fetch("http://10.111.9.133:3000/login", {
             method:"POST",
             headers:{
-                "Accept":"application/json",
                 "Content-Type":"application/json"
             },
             body: JSON.stringify({
@@ -46,8 +55,12 @@
                 "senha": senha
             })
         })
-        if(resposta.ok){
+        const dados = await resposta.json()
+        if(dados.token){
+            localStorage.setItem("token", dados.token)
             window.location.href = "aulas.html"
+        }else{
+            alert(dados.resposta)
         }
     })
 </script>
