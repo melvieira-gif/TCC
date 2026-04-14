@@ -11,6 +11,9 @@
   -webkit-font-smoothing: antialiased;
   margin: 0px;
   padding: 0px;
+  min-height: 100vh;      /* ocupa a tela toda */
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -81,6 +84,10 @@ figure {
   margin-bottom: 28px;
   margin: 50px;
   line-height: 1.6;
+}
+
+main{
+  flex: 1;
 }
 
 fieldset {
@@ -276,7 +283,6 @@ button {
 }
 
 #img_logoflu_cadastro img {
-<<<<<<< HEAD
   width: 200px;
 }
 
@@ -284,15 +290,16 @@ button {
   font-weight: 300;
   text-align: center;
   margin-top: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 #label_nome, #label_email, #label_telefone, #label_senha {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
+  width: 250px;
 }
 
 #input_nome, #input_email, #input_telefone, #input_senha{
@@ -301,7 +308,7 @@ button {
   border: none;
   border-radius: 6px;
   background-color: #fbfbfb54;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   color: #804256;
 } 
 
@@ -319,11 +326,8 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background-color: #716f356b;
+  padding: 40px;
+  margin: 10px;
+  height: 40rem; */
 }
-=======
-  width: 150px;
-  margin: 10;
-}
-
-
->>>>>>> ce8a12d569fc3178ca5579d723a76e15c645182e
