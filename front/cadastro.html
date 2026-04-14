@@ -20,35 +20,36 @@
     </header>
     <main>
         <section id="img_logoflu_cadastro">
-                <figure>
-                    <img src="logoflu.svg" alt="LOGOTIPO STARDEV" class="logoflu">
-                </figure>
+            <figure>
+                <img src="logoflu.svg" alt="LOGOTIPO STARDEV" class="logoflu">
+            </figure>
         </section>
 
-        <form>
-            <h1 class="title"><strong>Cadastra-se</strong></h1>
-            <br><br>
-            <br><br>
-            <label for="nome">Nome</label>
+        <section>
+            <h1 id="h1_cadastro">Cadastra-se</h1>
             <br>
-            <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo">
-            <br>
-            <label for="email">E-mail</label>
-            <br>
-            <input type="email" id="email" name="email"  autocomplete="email" placeholder="Digite seu e-mail favorito">
-            <br>
-            <label for="telefone">Telefone</label>
-            <br>
-            <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15">
-            <br>
-            <label for="senha">Senha</label>
-            <br>
-            <input type="password" id="senha" name="senha" autocomplete="new-password" placeholder="Digite sua senha">
-            <br>
-            <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
-            <br>
-            <p>Já tem uma conta? <a href="login.html" target="_blank">Clique aqui</a></p>
-        </form> 
+            <section id="section_cadastro">
+                <label for="nome" id="label_nome">Nome</label>
+                <br>
+                <input type="text" id="input_nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo">
+                <br>
+                <label for="email" id="label_email">E-mail</label>
+                <br>
+                <input type="email" id="input_email" name="email"  autocomplete="email" placeholder="Digite seu e-mail favorito">
+                <br>
+                <label for="telefone" id="label_telefone">Telefone</label>
+                <br>
+                <input type="text" id="input_telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15">
+                <br>
+                <label for="senha" id="label_senha">Senha</label>
+                <br>
+                <input type="password" id="input_senha" name="senha" autocomplete="new-password" placeholder="Digite sua senha">
+                <br>
+                <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
+                <br>
+                <p>Já tem uma conta? <a href="login.html" target="_blank" class="hrefs">Clique aqui</a></p>
+            </section>
+        </section> 
     </main>
     <footer id="footer_index_cadastro">
         <p><a href="index.html" target="_blank" class="hrefs"><strong>StarDev</strong></a></p>
@@ -63,7 +64,7 @@
         const senha = document.getElementById("senha").value
         const telefone = document.getElementById("telefone").value
 
-        const resposta = await fetch (`http://111.10.9.133:3000/cadastro`, {
+        const resposta = await fetch (`http://10.111.9.133:3000/cadastro`, {
             method:"POST",
             headers:{
                 "Accept":"application/json",

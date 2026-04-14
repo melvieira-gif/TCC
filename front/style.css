@@ -1,16 +1,19 @@
 * { 
   box-sizing: border-box; 
-  margin: 0px;
-  padding: 0px; 
+  /* margin: 0px;
+  padding: 0px;  */
 }
 
 #body_index_cadastro {
   font-family: "Josefin Sans", sans-serif;
-  background: #e4bbb1;
+  background: #d19283 ;
   color: #f2e9e1;
   -webkit-font-smoothing: antialiased;
   margin: 0px;
   padding: 0px;
+  min-height: 100vh;      /* ocupa a tela toda */
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -83,6 +86,10 @@ figure {
   line-height: 1.6;
 }
 
+main{
+  flex: 1;
+}
+
 fieldset {
   border: 2px solid #804256;
   border-radius: 5px;
@@ -140,7 +147,7 @@ button {
 
 #footer_index_cadastro {
   background-color: #804256;
-  padding: 2rem;
+  padding: 10px;
   text-align: center;
 }
 
@@ -210,7 +217,6 @@ button {
   width: 50%;
   height: 100%;
   background-color: #d19283;
-
   display: flex; 
   flex-direction: column;
   justify-content: center;
@@ -269,11 +275,59 @@ button {
 /* cadastro */
 
 #img_logoflu_cadastro{
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 #img_logoflu_cadastro img {
-  width: 150px;
-  margin: 10;
+  width: 200px;
 }
 
+#h1_cadastro {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
+#label_nome, #label_email, #label_telefone, #label_senha {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 14px;
+  margin-bottom: 0px;
+  width: 250px;
+}
+
+#input_nome, #input_email, #input_telefone, #input_senha{
+  width: 250px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #fbfbfb54;
+  margin-bottom: 0px;
+  color: #804256;
+} 
+
+#input_nome::placeholder, #input_email::placeholder, #input_telefone::placeholder, #input_senha::placeholder{
+  color: #804256;
+}
+
+#input_nome:focus, #input_email:focus, #input_telefone:focus, #input_senha:focus {
+  outline: none;
+  background-color: #f0c3b8;
+}
+
+#section_cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: #716f356b;
+  padding: 40px;
+  margin: 10px;
+  height: 40rem; */
+}
