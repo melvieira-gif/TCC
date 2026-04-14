@@ -211,19 +211,17 @@ button {
   height: 100%;
   background-color: #d19283;
 
-  display: flex; /*somente*/
+  display: flex; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/*lgesquerda*/
 #img_logo_login img {
   width: 80%;
   max-width: 500px;
 }
 
-/*lgfludireita*/
 #img_logoflu_login {
   margin-bottom: 15px;
 }
@@ -266,4 +264,14 @@ button {
 
 .hrefs{
   color: #716f35;
+}
+
+/* cadastro */
+
+#img_logoflu_cadastro{
+  margin-bottom: 15px;
+}
+#img_logoflu_cadastro img {
+  width: 150px;
+  margin: 10;
 }
