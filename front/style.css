@@ -276,6 +276,7 @@ button {
 }
 
 #img_logoflu_cadastro img {
+<<<<<<< HEAD
   width: 200px;
 }
 
@@ -319,3 +320,10 @@ button {
   justify-content: center;
   flex-direction: column;
 }
+=======
+  width: 150px;
+  margin: 10;
+}
+
+
+>>>>>>> ce8a12d569fc3178ca5579d723a76e15c645182e

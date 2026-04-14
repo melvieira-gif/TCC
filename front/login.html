@@ -35,10 +35,14 @@
     document.getElementById("btn_login").addEventListener("click", async (e)=>{
         e.preventDefault()
 
+<<<<<<< HEAD
         const email = document.getElementById("input_email_login").value
         const senha = document.getElementById("input_senha_login").value
 
         const resposta = await fetch("http://10.111.9.133:3000/login", {
+=======
+        const email = await fetch("http://10.111.9.133:3000/login", {
+>>>>>>> ce8a12d569fc3178ca5579d723a76e15c645182e
             method:"POST",
             headers:{
                 "Accept":"application/json",
@@ -46,14 +50,16 @@
             },
             body: JSON.stringify({
                 "email": email,
+<<<<<<< HEAD
                 "senha": senha
             })
+=======
+                "senha": senha})
+>>>>>>> ce8a12d569fc3178ca5579d723a76e15c645182e
         })
 
-        const dados = await resposta.json()
-        alert(dados.resposta)
 
-        if(dados.resposta === "Login feito com sucesso"){
+        if(resposta.ok){
             window.location.href = "aulas.html"
         }
     })
