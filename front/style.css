@@ -269,5 +269,9 @@ button {
 /* cadastro */
 
 #img_logoflu_cadastro{
-  
+  margin-bottom: 15px;
+}
+#img_logoflu_cadastro img {
+  width: 150px;
+  margin: 10;
 }
