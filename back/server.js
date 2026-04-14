@@ -142,8 +142,7 @@ app.post("/login", async (req,res) =>{
         if (hash === hashdoBanco) {
             return res.json ({
                 "resposta":"Login feito com sucesso"
-                "sucesso": true,
-                "nome": resultado[0].nome
+                
             })
         } else {
             return res.json ({

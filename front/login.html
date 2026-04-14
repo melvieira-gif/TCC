@@ -27,8 +27,34 @@
             <input type="password" id="input_senha_login" placeholder="Digite uma senha">
             <p>Não tem cadastro ainda? <a href="cadastro.html" target="_self" class="hrefs">Clique aqui</a></p>
             <br><br>
-            <button><strong>Entrar</strong></button>
+            <button id="btn_login"><strong>Entrar</strong></button>
         </section>
     </main>
 </body>
+<script>
+    document.getElementById("btn_login").addEventListener("click", async (e)=>{
+        e.preventDefault()
+
+        const email = await fetch("http://111.10.9.133:3000/login", {
+            method:"POST",
+            headers:{
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        })
+
+        const dados = await resposta.json()
+        alert(dados.resposta)
+
+        if(dados.resposta === "Login feito com sucesso"){
+            window.location.href = "aulas.html"
+        }
+    })
+   
+</script>
+
 </html>
