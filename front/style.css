@@ -126,7 +126,7 @@ figure {
 
 #details_index {
   margin-top: 30px;
-  margin-bottom: 20rem;
+  margin-bottom: 10px;
   background-color: #eccc6e;
   border-radius: 5px;
   padding: 1rem;
@@ -139,7 +139,7 @@ figure {
 }
 
 #ol {
-  margin: 1.5rem;
+  margin: 1rem;
 }
 
 #ol li {
@@ -334,6 +334,10 @@ button {
 
 /* cadastro */
 
+#section_total_cadastro{
+  margin-top: 2rem;
+}
+
 #img_logoflu_cadastro{
   margin-top: 20px;
   margin-bottom: 5px;
@@ -390,4 +394,71 @@ button {
   padding: 40px;
   margin: 10px;
   height: 40rem; */
+}
+
+/* aulas1 */
+
+.ftichome img {
+  width: 60px;
+  display: block;
+  float: left;
+  margin: 0px;
+}
+
+#aulas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#fd, #back, #cl{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #804256;
+  margin: 5px;
+}
+
+#lg, #db, #dm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #716f35;
+  margin: 5px;
+}
+
+#dw, #ps, #riot{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #a56940;
+  margin: 5px;
+}
+
+#front, #si, #lp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #eccc6e;
+  margin: 5px;
+}
+
+#section_aulas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }

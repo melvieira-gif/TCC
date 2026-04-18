@@ -10,7 +10,7 @@
     <main id="main_divisao_ld">
         <section id="esquerda">
             <figure id="img_logo_login">
-                <a href="index.html" target="_blank"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
+                <a href="index.html" target="_self"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
             </figure>
         </section>
         <section id="direita">
@@ -29,14 +29,14 @@
         </section>
     </main>
 </body>
-<script>
+<!-- <script>
     document.getElementById("btn_login").addEventListener("click", async (e)=>{
         e.preventDefault()
         const email = document.getElementById("input_email_login").value
         const senha = document.getElementById("input_senha_login").value
 
 
-        const token = localStorage.getItem("token") fetch("http://10.111.9.133:3000/CadastroAulas", { 
+        const token = localStorage.getItem("token") fetch("http://10.111.9.174:3000/CadastroAulas", { 
             method:"POST", 
             headers:{ 
                 "Content-Type":"application/json", 
@@ -45,7 +45,7 @@
             body: JSON.stringify({...}) })
 
 
-        const resposta = await fetch("http://10.111.9.133:3000/login", {
+        const resposta = await fetch("http://10.111.9.174:3000/login", {
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -64,4 +64,4 @@
         }
     })
 </script>
-</html>
+</html> -->
