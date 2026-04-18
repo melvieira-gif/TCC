@@ -399,7 +399,7 @@ button {
 /* aulas1 */
 
 .ftichome img {
-  width: 60px;
+  width: 30px;
   display: block;
   float: left;
   margin: 0px;
@@ -410,6 +410,9 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 30px;
 }
 
 #fd, #back, #cl{
@@ -420,7 +423,7 @@ button {
   width: 200px;
   height: 200px;
   background-color: #804256;
-  margin: 5px;
+  margin: 20px;
 }
 
 #lg, #db, #dm{
@@ -431,7 +434,7 @@ button {
   width: 200px;
   height: 200px;
   background-color: #716f35;
-  margin: 5px;
+  margin: 20px;
 }
 
 #dw, #ps, #riot{
@@ -442,7 +445,7 @@ button {
   width: 200px;
   height: 200px;
   background-color: #a56940;
-  margin: 5px;
+  margin: 20px;
 }
 
 #front, #si, #lp{
@@ -453,7 +456,7 @@ button {
   width: 200px;
   height: 200px;
   background-color: #eccc6e;
-  margin: 5px;
+  margin: 20px;
 }
 
 #section_aulas{
@@ -461,4 +464,9 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+
+.hrefs_au{
+  color: #f2e9e1;
+  text-decoration: none;
 }
