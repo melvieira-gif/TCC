@@ -6,15 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <title>Login-StarDev</title>
 </head>
-<body id="body_index_cadastro">
+<body id="body_login">
     <main id="main_divisao_ld">
-
         <section id="esquerda">
             <figure id="img_logo_login">
-                <a href="index.html" target="_blank"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
+                <a href="index.html" target="_self"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
             </figure>
         </section>
-
         <section id="direita">
             <figure id="img_logoflu_login">
                 <img src="logoflu.svg" alt="LOGO_LOGIN_DIREITA">
@@ -31,14 +29,27 @@
         </section>
     </main>
 </body>
-<script>
+<!-- <script>
     document.getElementById("btn_login").addEventListener("click", async (e)=>{
         e.preventDefault()
         const email = document.getElementById("input_email_login").value
         const senha = document.getElementById("input_senha_login").value
 
 
+<<<<<<< HEAD
         const resposta = await fetch("http://10.111.9.133:3000/login", {
+=======
+        const token = localStorage.getItem("token") fetch("http://10.111.9.174:3000/CadastroAulas", { 
+            method:"POST", 
+            headers:{ 
+                "Content-Type":"application/json", 
+                "Authorization": token 
+            }, 
+            body: JSON.stringify({...}) })
+
+
+        const resposta = await fetch("http://10.111.9.174:3000/login", {
+>>>>>>> a67f4afac63d084a71c3ad56ca6686cae27fbfa3
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -57,4 +68,4 @@
         }
     })
 </script>
-</html>
+</html> -->

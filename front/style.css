@@ -1,9 +1,7 @@
 * { 
-  box-sizing: border-box; 
-  /* margin: 0px;
-  padding: 0px;  */
+  box-sizing: border-box;
 }
-
+/* home (index) */
 #body_index_cadastro {
   font-family: "Josefin Sans", sans-serif;
   background: #d19283 ;
@@ -11,9 +9,18 @@
   -webkit-font-smoothing: antialiased;
   margin: 0px;
   padding: 0px;
-  min-height: 100vh;      /* ocupa a tela toda */
+  min-height: 100vh;  
   display: flex;
   flex-direction: column;
+}
+
+#body_login{
+  font-family: "Josefin Sans", sans-serif;
+  background: #d19283 ;
+  color: #f2e9e1;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px;
+  padding: 0px;
 }
 
 
@@ -86,26 +93,79 @@ figure {
   line-height: 1.6;
 }
 
+#ftcriadoras {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.lauane, .melissa{
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  margin: 10px;
+  padding: 0px;
+}
+
+.lauane img, .melissa img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 360px;
+  border: 4px solid #a56940;
+}
+
+#descricao_ftcriadoras{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+}
+
+#details_index {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color: #eccc6e;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+#summary_index {
+  color: #a56940;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+#ol {
+  margin: 1rem;
+}
+
+#ol li {
+  padding: 0.2rem;
+}
+
 main{
   flex: 1;
 }
 
 fieldset {
-  border: 2px solid #804256;
+  border: 4px solid #716f35;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 2rem;
   margin: 10px;
 }
 
 legend {
   color: #804256;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
 }
 
 textarea {
   outline: none;
   border-radius: 5px;
-  border: 2px solid #804256;
+  border: 3px solid #804256;
   background-color: transparent;
   color: #804256;
 }
@@ -114,7 +174,7 @@ textarea {
 input[type="text"], input[type="email"]{
   width: 100%;
   padding: 0.6rem;
-  border: 2px solid #804256;
+  border: 3px solid #804256;
   outline: none;
   border-radius: 5px;
   background-color: transparent;
@@ -274,6 +334,10 @@ button {
 
 /* cadastro */
 
+#section_total_cadastro{
+  margin-top: 2rem;
+}
+
 #img_logoflu_cadastro{
   margin-top: 20px;
   margin-bottom: 5px;
@@ -330,4 +394,155 @@ button {
   padding: 40px;
   margin: 10px;
   height: 40rem; */
+}
+
+/* aulas1 */
+
+.ftichome img {
+  width: 30px;
+  display: block;
+  float: left;
+  margin: 0px;
+}
+
+#aulas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+#fd, #back, #cl{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #804256;
+  margin: 20px;
+}
+
+#lg, #db, #dm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #716f35;
+  margin: 20px;
+}
+
+#dw, #ps, #riot{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #a56940;
+  margin: 20px;
+}
+
+#front, #si, #lp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #eccc6e;
+  margin: 20px;
+}
+
+#section_aulas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.hrefs_au{
+  color: #f2e9e1;
+  text-decoration: none;
+}
+
+/* aulaback */
+
+.carrossel {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  cursor: grab;
+  padding: 20px;
+  margin: 0px;
+}
+
+.carrossel:active {
+  cursor: grabbing;
+  margin: 0px;
+}
+
+#afd, #aback, #acl{
+  min-width: 200px;
+  height: 100px;
+  background-color: #804256;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2e9e1;
+  border-radius: 10px;
+  font-size: 12px;
+  flex-shrink: 0;
+  padding: 10px;
+  user-select: none; /* evita selecionar texto ao arrastar */
+}
+
+#alg, #adb, #adm{
+  min-width: 200px;
+  height: 100px;
+  background-color: #716f35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2e9e1;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  user-select: none; /* evita selecionar texto ao arrastar */
+}
+
+#adw, #aps, #ariot{
+  min-width: 200px;
+  height: 100px;
+  background-color: #a56940;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: #f2e9e1;
+  border-radius: 10px;
+  font-size: 12px;
+  flex-shrink: 0;
+  user-select: none; /* evita selecionar texto ao arrastar */
+}
+
+#afront, #asi, #alp{
+  min-width: 200px;
+  height: 100px;
+  padding: 10px;
+  font-size: 12px;
+  background-color: #eccc6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2e9e1;
+  border-radius: 10px;
+  flex-shrink: 0;
+  user-select: none; /* evita selecionar texto ao arrastar */
 }

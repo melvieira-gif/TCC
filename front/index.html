@@ -9,7 +9,7 @@
 <body id="body_index_cadastro">
     <header id="header_index_cadastro">
         <figure class="logo">
-            <a href="index.html" target="_blank" class="hrefs"><img src="logo.svg" alt="LOGOTIPO StarDev" href="index.html"></a>
+            <a href="index.html" target="_self" class="hrefs"><img src="logo.svg" alt="LOGOTIPO StarDev" href="index.html"></a>
         </figure>
         <nav>
             <a href="#home">HOME</a>
@@ -42,6 +42,35 @@
                 porém haverá algumas instruções de ser conteúdo para: Iniciantes, Intermediários e Avançados.
             </p>
         </section>
+        <section id="ftcriadoras">
+            <figure class="lauane">
+                <img src="ftlau.svg" alt="LAUANEPASQUINI">
+            </figure>
+            <figure class="melissa">
+                <img src="ftmel.svg" alt="MELISSACRISTINA">
+            </figure>
+        </section>
+        <section id="descricao_ftcriadoras">
+            <details id="details_index">
+                <summary id="summary_index"><strong>Lauane Pasquini</strong></summary>
+                <ol id="ol">
+                    <p>Coautora da StarDev</p>
+                    <p>Desenvolvedora Front-end</p>
+                    <p>Web Designer</p>
+                    <p>Videomaker</p>
+                    <p>Technical Writer</p>
+                </ol>
+            </details>
+            <br>
+            <details id="details_index">
+                <summary id="summary_index"><strong>Melissa Cristina</strong></summary>
+                <ol id="ol">
+                    <p>Coautora da StarDev</p>
+                    <p>Desenvolvedora Back-end</p>
+                    <p>Database Developer</p>
+                </ol>
+            </details>
+        </section>
         <!--Formulário de feedback-->
         <section id="feedback">
             <h2> Nos dê seu feedback</h2>
@@ -66,7 +95,7 @@
     </main>
     <!--ADICIONAR DEPOIS O CANAL E REDES SOCIAIS NO FOOTER-->
     <footer id="footer_index_cadastro">
-        <p><a href="cadastro.html" target="_blank" class="hrefs">Cadastra-se</a></p>
+        <p><a href="cadastro.html" target="_self" class="hrefs">Cadastra-se</a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
 </body>
@@ -77,7 +106,7 @@
         const nome = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const comentario = document.getElementById("comentarios").value;
-        const resposta = await fetch("http://10.111.9.133:3000/contato", {     
+        const resposta = await fetch("http://10.111.9.174:3000/contato", {     
             method: "POST",
             headers: {
                 "Accept": "application/json",
