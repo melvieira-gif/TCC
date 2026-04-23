@@ -176,6 +176,6 @@ app.post("/CadastroAulas", async (req,res) =>{
 
 app.listen(3000, () =>{
     console.log("servidor rodando na porta 3000")
-    console.log(`Abre o link http://10.111.9.174:3000`)
+    console.log(`Abre o link http://10.111.9.133:3000`)
 })
 
