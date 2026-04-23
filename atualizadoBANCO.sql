@@ -1,0 +1,52 @@
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              12.15.0.7171
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Copiando estrutura do banco de dados para stardev
+DROP DATABASE IF EXISTS `stardev`;
+CREATE DATABASE IF NOT EXISTS `stardev` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
+USE `stardev`;
+
+-- Copiando estrutura para tabela stardev.cadastro
+DROP TABLE IF EXISTS `cadastro`;
+CREATE TABLE IF NOT EXISTS `cadastro` (
+  `id_cadastro` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` text NOT NULL,
+  `telefone` varchar(15) NOT NULL DEFAULT '',
+  `nivel` varchar(50) DEFAULT 'U',
+  PRIMARY KEY (`id_cadastro`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Copiando dados para a tabela stardev.cadastro: ~9 rows (aproximadamente)
+DELETE FROM `cadastro`;
+INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
+	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'd97e69b8cb7e8e8f159d0a4b57d469e06bfe2f241322f7e663aa94555534a6e7', '2147483647', 'U'),
+	(2, 'Lauane Ribeiro', 'lauaneteste@gmail.com', 'bfe61a27a6811bbd325383dee08c7dbd34c1886467f2f94e57cbedff9be0e073', '(18)98817-5506', 'U'),
+	(3, 'BRUNO FERREIRA', 'brunoteste@hotmail.cm', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '(18)98823-2550', 'U'),
+	(4, 'Bruno Teste', 'BRUNÃOFERREIRÃO', 'b90fe858ff448ca34d553ee4d31b0ee2f566be6e3279a8de3df8d72a690d8d6e', '(18)98823-2550', 'U'),
+	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U'),
+	(6, 'Matheus Prof', 'matheus@hotmail', '$2b$10$gKt2BGmbRcsbZ7BgxECrOOG.70Lx2f.dDrhg1KziUiVECxNZd8Wma', '(18)999881-5504', 'U'),
+	(7, 'Matheus Teste', 'matheus@gmail.com', '$2b$10$5fTrjCA3li2ygyK4Q3h5bOsro0Rz5B/eReepJMAQwDqdHhropO3sa', '(18)999881-5504', 'U'),
+	(8, 'Matheus ProfTesste', 'testematheus@gmail.com', '$2b$10$PBzhit9vgCLC5qEb2uL6aObqgwTRiss0URw4oqpD4zrz1lwMd2yw.', '(18)99981-5544', 'U'),
+	(9, 'Melissa Vieira', 'melissacgv1@gmail.com', '$2b$10$TubkfzGCffSyjWndojuv0.YJhnTcS40Ef...8JB0FcIY7cN2wPqEe', 'melissasteste@h', 'U');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
