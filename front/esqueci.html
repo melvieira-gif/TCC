@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Esqueci-StarDev</title>
+</head>
+<body id="body_login">
+    <main id="main_divisao_ld">
+        <section id="esquerda">
+            <figure id="img_logo_login">
+                <a href="index.html" target="_self"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
+            </figure>
+        </section>
+        <section id="direita">
+            <figure id="img_logoflu_login">
+                <img src="logoflu.svg" alt="LOGO_LOGIN_DIREITA">
+            </figure>
+            <h1>Recuperar Acesso</h1>
+            <label><strong>E-mail</strong>
+                <input type="email" id="input_email_esqueci" placeholder="Digite um email...">
+            </label>
+            <br><br>
+            <label><strong>Nova Senha</strong>
+                <input type="password" id="input_senha_esqueci" placeholder="Digite uma senha">
+            </label>
+            <br>
+            <label><strong>Confirmar Nova Senha</strong>
+                <input type="password" id="input_senha_esqueci1" placeholder="Digite uma senha">
+            </label>
+            <br><br>
+            <button id="btn_atualizar"><strong>Atualizar</strong></button>
+        </section>
+    </main>
+</body>
+<script>
+    document.getElementById("btn_atualizar").addEventListener("click", async (e)=>{
+        // e.preventDefault()
+        const email = document.getElementById("input_email_esqueci").value
+        const Novasenha = document.getElementById("input_senha_esqueci").value
+        const ConfirmarSenha = document.getElementById("input_senha_esqueci1").value
+
+        const token = localStorage.getItem("token")
+
+        if(Novasenha !== ConfirmarSenha){
+            alert("Senha ou email incorreto")
+        }
+
+        //VERIFICAR EMAIL
+        const verificar = await fetch("http://10.111.9.133:3000/verificarEmail",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email })
+        })
+
+        const res = await verificar.json()
+        if(!res.existe){
+            alert("Email não encontrado!")
+            return
+        }
+
+
+        //VERIICAR A SENHA 
+        const resposta = await fetch("http://10.111.9.133:3000/trocarSenha",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":"Bearer " + token
+            },
+            body: JSON.stringify({
+                email,
+                Novasenha
+            })
+        })
+
+        const dados = await resposta.json()
+
+        alert(dados.resposta)
+
+        if(dados.resposta === "Senha alterada com sucesso"){
+            localStorage.removeItem("token")
+            window.location.href = "login.html"
+        }
+
+    })
+</script>
+</html> 

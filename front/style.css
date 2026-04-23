@@ -293,7 +293,7 @@ button {
 }
 
 #img_logoflu_login img {
-  width: 150px;
+  width: 500px;
 }
 
 #direita h1 {
@@ -545,4 +545,29 @@ button {
   border-radius: 10px;
   flex-shrink: 0;
   user-select: none; /* evita selecionar texto ao arrastar */
+}
+
+/*esqueci*/
+
+#input_email_esqueci, #input_senha_esqueci, #input_senha_esqueci1 {
+  width: 250px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e6b2a6;
+  margin-bottom: 15px;
+  color: #804256;
+}
+
+#input_email_esqueci::placeholder, #input_senha_esqueci::placeholder, #input_senha_esqueci1::placeholder {
+  color: #804256;
+}
+
+#input_email_esqueci:focus, #input_senha_esqueci:focus, #input_senha_esqueci1:focus {
+  outline: none;
+  background-color: #f0c3b8;
+}
+
+.hrefs{
+  color: #716f35;
 }

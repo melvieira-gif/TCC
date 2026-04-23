@@ -210,29 +210,28 @@ app.post("/CadastroAulas", verificarToken ,async (req,res) =>{
     }
 })
 
-
-function autenticarToken(){
+function autenticarToken(req, res, next){
     const authHeader = req.headers["authorization"];
+
     if (!authHeader) {
         return res.status(401).json({ error: "Token não fornecido" });
     }
-    const token = authHeader.split(" ")[1]; // Bearer TOKEN
-    jwt.verify(token, "SUA_API_KEY", (err, user) => {
+
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, SECRET, (err, user) => {
         if (err) {
-        return res.status(403).json({ error: "Token inválido" });
-    }
-    req.user = user; // dados do token
-    next();
-  });
+            return res.status(403).json({ error: "Token inválido" });
+        }
+
+        req.usuario = user;
+        next();
+    });
 }
 
-app.post("/perfil", autenticarToken,(req,res)=>{
-    res.send(req.user)
-})
-
-app.put("/trocarSenha", verificarToken, async (req, res) => {
+app.put("/trocarSenha", autenticarToken, async (req, res) => {
     try {
-        const { senhaAtual, novaSenha } = req.body
+        const { email, novaSenha } = req.body
 
         const userId = req.usuario.id
 
@@ -246,13 +245,7 @@ app.put("/trocarSenha", verificarToken, async (req, res) => {
 
         const usuario = resultado[0]
 
-        // verificar senha atual
-        const senhaValida = await bcrypt.compare(senhaAtual, usuario.senha)
-
-        if (!senhaValida) {
-            return res.json({ resposta: "Senha atual incorreta" })
-        }
-
+    
         // validar nova senha
         if (!novaSenha || novaSenha.trim().length < 6) {
             return res.json({ resposta: "Nova senha muito curta" })
@@ -274,6 +267,25 @@ app.put("/trocarSenha", verificarToken, async (req, res) => {
     } catch (error) {
         console.log(error)
         return res.json({ resposta: "Erro no servidor" })
+    }
+})
+
+app.post("/verificarEmail", async (req, res) => {
+    try {
+        const { email } = req.body
+
+        const sql = "SELECT * FROM cadastro WHERE email = ?"
+        const [resultado] = await conexao.query(sql, [email])
+
+        if (resultado.length > 0) {
+            return res.json({ existe: true })
+        } else {
+            return res.json({ existe: false })
+        }
+
+    } catch (error) {
+        console.log(error)
+        return res.json({ erro: "Erro no servidor" })
     }
 })
 
