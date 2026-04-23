@@ -230,6 +230,53 @@ app.post("/perfil", autenticarToken,(req,res)=>{
     res.send(req.user)
 })
 
+app.put("/trocarSenha", verificarToken, async (req, res) => {
+    try {
+        const { senhaAtual, novaSenha } = req.body
+
+        const userId = req.usuario.id
+
+        // buscar usuário no banco
+        const sql = "SELECT * FROM cadastro WHERE id = ?"
+        const [resultado] = await conexao.query(sql, [userId])
+
+        if (resultado.length === 0) {
+            return res.json({ resposta: "Usuário não encontrado" })
+        }
+
+        const usuario = resultado[0]
+
+        // verificar senha atual
+        const senhaValida = await bcrypt.compare(senhaAtual, usuario.senha)
+
+        if (!senhaValida) {
+            return res.json({ resposta: "Senha atual incorreta" })
+        }
+
+        // validar nova senha
+        if (!novaSenha || novaSenha.trim().length < 6) {
+            return res.json({ resposta: "Nova senha muito curta" })
+        }
+
+        // gerar novo hash
+        const novaSenhaHash = await bcrypt.hash(novaSenha.trim(), 10)
+
+        // atualizar no banco
+        const sqlUpdate = "UPDATE cadastro SET senha = ? WHERE id = ?"
+        const [update] = await conexao.query(sqlUpdate, [novaSenhaHash, userId])
+
+        if (update.affectedRows === 1) {
+            return res.json({ resposta: "Senha alterada com sucesso!" })
+        } else {
+            return res.json({ resposta: "Erro ao atualizar senha" })
+        }
+
+    } catch (error) {
+        console.log(error)
+        return res.json({ resposta: "Erro no servidor" })
+    }
+})
+
 app.listen(porta,()=>{
     console.log(`servidor rodando na porta ${porta}`)
 })
