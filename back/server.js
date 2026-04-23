@@ -210,6 +210,26 @@ app.post("/CadastroAulas", verificarToken ,async (req,res) =>{
     }
 })
 
+
+function autenticarToken(){
+    const authHeader = req.headers["authorization"];
+    if (!authHeader) {
+        return res.status(401).json({ error: "Token não fornecido" });
+    }
+    const token = authHeader.split(" ")[1]; // Bearer TOKEN
+    jwt.verify(token, "SUA_API_KEY", (err, user) => {
+        if (err) {
+        return res.status(403).json({ error: "Token inválido" });
+    }
+    req.user = user; // dados do token
+    next();
+  });
+}
+
+app.post("/perfil", autenticarToken,(req,res)=>{
+    res.send(req.user)
+})
+
 app.listen(porta,()=>{
     console.log(`servidor rodando na porta ${porta}`)
 })
