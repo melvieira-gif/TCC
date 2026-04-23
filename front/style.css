@@ -285,7 +285,7 @@ button {
 
 #img_logo_login img {
   width: 80%;
-  max-width: 500px;
+  max-width: 1000px;
 }
 
 #img_logoflu_login {
@@ -293,29 +293,29 @@ button {
 }
 
 #img_logoflu_login img {
-  width: 500px;
+  width: 300px;
 }
 
 #direita h1 {
   color: #f2e9e1;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 #direita label {
-  width: 250px;
+  width: 300px;
   text-align: left;
-  font-size: 14px;
+  font-size: 24px;
   margin-bottom: 5px;
 }
 
 #input_email_login, #input_senha_login {
-  width: 250px;
+  width:300px;
   padding: 10px;
   border: none;
   border-radius: 6px;
   background-color: #e6b2a6;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #804256;
 }
 
