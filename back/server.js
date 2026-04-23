@@ -93,7 +93,9 @@ app.post("/cadastro", async (req,res)=>{
            nome = "",
            email = "",
            senha = "",
-           telefone = ""
+           telefone=""
+           
+           
            } = req.body || {};
            const senhaTrim = senha.trim().replace("ㅤ", "");
            // tratativas para ver se esta tudo correto
@@ -124,8 +126,7 @@ app.post("/cadastro", async (req,res)=>{
     }
     
     // criar hash da senha
-    const crypto = require("crypto");
-    const hash = crypto.createHash("sha256").update(senhaTrim).digest("hex");
+    const hash = await bcrypt.hash(senhaTrim, 10)
 
     // inserir novo usuário
     const sqlInsert = `INSERT INTO cadastro (nome, email, senha, telefone) VALUES (?,?,?,?)`;

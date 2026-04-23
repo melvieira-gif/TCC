@@ -59,10 +59,10 @@
 
 <script>
     document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
-        const nome = document.getElementById("nome").value
-        const email = document.getElementById("email").value
-        const senha = document.getElementById("senha").value
-        const telefone = document.getElementById("telefone").value
+        const nome = document.getElementById("input_nome").value
+        const email = document.getElementById("input_email").value
+        const senha = document.getElementById("input_senha").value
+        const telefone = document.getElementById("input_telefone").value
 
         const resposta = await fetch (`http://10.111.9.133:3000/cadastro`, {
             method:"POST",
