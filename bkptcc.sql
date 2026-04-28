@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `telefone` varchar(15) NOT NULL DEFAULT '',
   `nivel` varchar(50) DEFAULT 'U',
   PRIMARY KEY (`id_cadastro`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.cadastro: ~6 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.cadastro: ~9 rows (aproximadamente)
 DELETE FROM `cadastro`;
 INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'd97e69b8cb7e8e8f159d0a4b57d469e06bfe2f241322f7e663aa94555534a6e7', '2147483647', 'U'),
@@ -67,7 +67,9 @@ INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `ni
 	(4, 'Bruno Teste', 'BRUNÃOFERREIRÃO', 'b90fe858ff448ca34d553ee4d31b0ee2f566be6e3279a8de3df8d72a690d8d6e', '(18)98823-2550', 'U'),
 	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U'),
 	(6, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', '$2b$10$9bhqeUJA3Nhc5Qr2Lu.4Neji1/3tqU7nBwHmcqri/YGCN4israxem', '(18) 99653-4326', 'U'),
-	(7, 'Kemilly Reginão', 'kemillyrignao@email.com', '$2b$10$qDOJ1wAv9/GbumTqCT5rPOvKswj4aIZKEJggPJwujQTwHnAEk5Njq', '(18) 99689-5996', 'U');
+	(7, 'Kemilly Reginão', 'kemillyrignao@email.com', '$2b$10$qDOJ1wAv9/GbumTqCT5rPOvKswj4aIZKEJggPJwujQTwHnAEk5Njq', '(18) 99689-5996', 'U'),
+	(8, 'Lauane Ribeiro', 'lauaneribeiro@email.com', '$2b$10$xBU5HHtYsfiztNw66x5KxOEhKNizh9QcRfwv4pzd3JZGCmqHpTGfW', '(18) 99653-4326', 'U'),
+	(9, 'Michele Pasquini', 'michelepasquini@email.com', '$2b$10$cBLo5QLyUQK9VXzxS/tIXuaVP40A80FhA0VwLZVGmCN/8KTvRj1nO', '(18) 99653-4326', 'U');
 
 -- Copiando estrutura para tabela stardev.contato
 DROP TABLE IF EXISTS `contato`;
@@ -77,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `contato` (
   `email` varchar(100) NOT NULL,
   `comentario` text NOT NULL,
   PRIMARY KEY (`id_contato`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.contato: ~9 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.contato: ~12 rows (aproximadamente)
 DELETE FROM `contato`;
 INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM'),
@@ -90,7 +92,10 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(6, 'testando se fun', 'testetestete@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
 	(7, 'BRUNO FERREIRA', 'BRUNÃOFERREIRÃO', 'TESTANDO O CONTATO'),
 	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane'),
-	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3');
+	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3'),
+	(10, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site do mundo '),
+	(11, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site'),
+	(12, 'Lauane Pasquini Ribeiro', 'lauanepasquini@email.br', 'Melhor site do mundo');
 
 -- Copiando estrutura para tabela stardev.materias
 DROP TABLE IF EXISTS `materias`;
