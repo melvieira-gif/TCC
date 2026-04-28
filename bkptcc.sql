@@ -2,7 +2,7 @@
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.15.0.7171
+-- HeidiSQL Versão:              12.10.0.7000
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,6 +21,7 @@ CREATE DATABASE IF NOT EXISTS `stardev` /*!40100 DEFAULT CHARACTER SET utf8mb4 C
 USE `stardev`;
 
 -- Copiando estrutura para tabela stardev.aulas
+DROP TABLE IF EXISTS `aulas`;
 CREATE TABLE IF NOT EXISTS `aulas` (
   `id_aula` int(11) NOT NULL AUTO_INCREMENT,
   `materia` varchar(50) NOT NULL DEFAULT '0',
@@ -46,6 +47,7 @@ INSERT INTO `aulas` (`id_aula`, `materia`, `duracao`, `qtd_aulas`) VALUES
 	(12, 'LinguagemProgramacao', '1hora', 12);
 
 -- Copiando estrutura para tabela stardev.cadastro
+DROP TABLE IF EXISTS `cadastro`;
 CREATE TABLE IF NOT EXISTS `cadastro` (
   `id_cadastro` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -66,6 +68,7 @@ INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `ni
 	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U');
 
 -- Copiando estrutura para tabela stardev.contato
+DROP TABLE IF EXISTS `contato`;
 CREATE TABLE IF NOT EXISTS `contato` (
   `id_contato` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
@@ -87,6 +90,7 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane');
 
 -- Copiando estrutura para tabela stardev.materias
+DROP TABLE IF EXISTS `materias`;
 CREATE TABLE IF NOT EXISTS `materias` (
   `id_materias` int(11) NOT NULL AUTO_INCREMENT,
   `nome_aulas` varchar(50) NOT NULL DEFAULT '0',
