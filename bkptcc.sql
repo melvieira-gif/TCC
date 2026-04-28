@@ -56,16 +56,18 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `telefone` varchar(15) NOT NULL DEFAULT '',
   `nivel` varchar(50) DEFAULT 'U',
   PRIMARY KEY (`id_cadastro`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.cadastro: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.cadastro: ~6 rows (aproximadamente)
 DELETE FROM `cadastro`;
 INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'd97e69b8cb7e8e8f159d0a4b57d469e06bfe2f241322f7e663aa94555534a6e7', '2147483647', 'U'),
 	(2, 'Lauane Ribeiro', 'lauaneteste@gmail.com', 'bfe61a27a6811bbd325383dee08c7dbd34c1886467f2f94e57cbedff9be0e073', '(18)98817-5506', 'U'),
 	(3, 'BRUNO FERREIRA', 'brunoteste@hotmail.cm', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '(18)98823-2550', 'U'),
 	(4, 'Bruno Teste', 'BRUNÃOFERREIRÃO', 'b90fe858ff448ca34d553ee4d31b0ee2f566be6e3279a8de3df8d72a690d8d6e', '(18)98823-2550', 'U'),
-	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U');
+	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U'),
+	(6, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', '$2b$10$9bhqeUJA3Nhc5Qr2Lu.4Neji1/3tqU7nBwHmcqri/YGCN4israxem', '(18) 99653-4326', 'U'),
+	(7, 'Kemilly Reginão', 'kemillyrignao@email.com', '$2b$10$qDOJ1wAv9/GbumTqCT5rPOvKswj4aIZKEJggPJwujQTwHnAEk5Njq', '(18) 99689-5996', 'U');
 
 -- Copiando estrutura para tabela stardev.contato
 DROP TABLE IF EXISTS `contato`;
@@ -75,9 +77,9 @@ CREATE TABLE IF NOT EXISTS `contato` (
   `email` varchar(100) NOT NULL,
   `comentario` text NOT NULL,
   PRIMARY KEY (`id_contato`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.contato: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.contato: ~9 rows (aproximadamente)
 DELETE FROM `contato`;
 INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM'),
@@ -87,7 +89,8 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(5, 'Melissa Vieira', 'melissacgv1@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
 	(6, 'testando se fun', 'testetestete@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
 	(7, 'BRUNO FERREIRA', 'BRUNÃOFERREIRÃO', 'TESTANDO O CONTATO'),
-	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane');
+	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane'),
+	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3');
 
 -- Copiando estrutura para tabela stardev.materias
 DROP TABLE IF EXISTS `materias`;
