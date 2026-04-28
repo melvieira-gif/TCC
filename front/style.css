@@ -5,7 +5,7 @@
 /* home (index) */
 #body_index_cadastro {
   font-family: "Josefin Sans", sans-serif;
-  background: linear-gradient(135deg, #db9a8f, #c87f75, #804256);
+  background: linear-gradient(135deg, #804256b2, #716f35ad, #a5684094, #db9a8fa1, #eccc6e8c);
   background-size: 300% 300%;
   animation: gradientMove 12s ease infinite;
   color: #f2e9e1;
@@ -104,7 +104,6 @@ figure {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  background-color: #716f352d;
   border-radius: 5px;
   padding: 20px;
   margin: 5px;
@@ -634,7 +633,6 @@ button {
 
 /* animações */
 
-
 /* CARDS */
 .card-criadora {
   background: #eccc6e;
@@ -688,7 +686,7 @@ button:hover {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: brightness(0.5);
+  filter: brightness(0.9);
   /* escurece pra destacar texto */
 }
 
@@ -732,15 +730,15 @@ button:hover {
 
 /* verso */
 .card-back {
-  background: #eccc6e;
-  color: #716f35;
+  background: #716f35;
+  color: #f2e9e1;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
 
