@@ -64,12 +64,12 @@
                 },
                 body: JSON.stringify({
                     email,
-                    novaSenha: Novasenha
+                    novaSenha: novaSenha
                 })
             })
             const dados = await resposta.json()
             alert(dados.resposta)
-            if(dados.resposta === "Senha alterada com sucesso"){
+            if(dados.resposta === "Senha redefinida com sucesso"){
                 localStorage.removeItem("token")
                 window.location.href = "login.html"
             }
