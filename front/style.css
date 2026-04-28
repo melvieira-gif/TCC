@@ -26,6 +26,25 @@
   padding: 0px;
 }
 
+.alerta {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #716f35;
+  color: #f2e9e1;
+  padding: 15px 25px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.alerta.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 #header_index_cadastro {
   width: 100%;
