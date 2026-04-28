@@ -99,36 +99,34 @@
         <p><a href="cadastro.html" target="_self" class="hrefs">Cadastra-se</a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
+    <script>
+        //CONTATO
+        document.getElementById("btn_enviar").addEventListener("click", async () => {
+            const nome = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const comentario = document.getElementById("comentarios").value;
+            const resposta = await fetch("http://10.111.9.174:3000/contato", {     
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "nome": nome,
+                    "email": email,
+                    "comentario": comentario})
+            });
+            // terceira etapa - pegar a resposta do back-end
+            if(resposta.ok){
+                const dados = await resposta.json()
+                document.getElementById("resultadoFale").innerText = dados.resposta
+                alert("Feedback enviado !")
+            }else{
+    
+            }
+            
+    
+       });
+    </script>
 </body>
-
-<script>
-    //CONTATO
-    document.getElementById("btn_enviar").addEventListener("click", async () => {
-        const nome = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const comentario = document.getElementById("comentarios").value;
-        const resposta = await fetch("http://10.111.9.133:3000/contato", {     
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "nome": nome,
-                "email": email,
-                "comentario": comentario})
-        });
-        // terceira etapa - pegar a resposta do back-end
-        if(resposta.ok){
-            const dados = await resposta.json()
-            document.getElementById("resultadoFale").innerText = dados.resposta
-            alert("Feedback enviado !")
-        }else{
-
-        }
-        
-
-   });
-   </script>
-
 </html>

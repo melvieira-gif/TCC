@@ -190,7 +190,7 @@ app.put("/trocarSenha", autenticarToken, async (req, res) => {
         const { email, novaSenha } = req.body
         const userId = req.usuario.id
         // buscar usuário no banco
-        const sql = "SELECT * FROM cadastro WHERE id = ?"
+        const sql = "SELECT * FROM cadastro WHERE id_cadastro = ?"
         const [resultado] = await conexao.query(sql, [userId])
         if (resultado.length === 0) {
             return res.json({ resposta: "Usuário não encontrado" })
@@ -203,7 +203,7 @@ app.put("/trocarSenha", autenticarToken, async (req, res) => {
         // gerar novo hash
         const novaSenhaHash = await bcrypt.hash(novaSenha.trim(), 10)
         // atualizar no banco
-        const sqlUpdate = "UPDATE cadastro SET senha = ? WHERE id = ?"
+        const sqlUpdate = "UPDATE cadastro SET senha = ? WHERE id_cadastro = ?"
         const [update] = await conexao.query(sqlUpdate, [novaSenhaHash, userId])
         if (update.affectedRows === 1) {
             return res.json({ resposta: "Senha alterada com sucesso!" })
@@ -233,4 +233,26 @@ app.post("/verificarEmail", async (req, res) => {
 
 app.listen(porta,()=>{
     console.log(`servidor rodando na porta ${porta}`)
+})
+
+app.put("/recuperarSenha", async (req, res) => {
+    try {
+        const { email, novaSenha } = req.body
+        const sql = "SELECT * FROM cadastro WHERE email=?"
+        const [user] = await conexao.query(sql, [email])
+        if (user.length === 0) {
+            return res.json({ resposta: "Email não encontrado" })
+        }
+        const hash = await bcrypt.hash(novaSenha, 10)
+        const update = `
+            UPDATE cadastro 
+            SET senha=? 
+            WHERE email=?
+        `
+        await conexao.query(update, [hash, email])
+        return res.json({ resposta: "Senha redefinida com sucesso" })
+    } catch (error) {
+        console.log(error)
+        res.json({ erro: "Erro no servidor" })
+    }
 })

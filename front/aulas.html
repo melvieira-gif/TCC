@@ -44,5 +44,12 @@
         <p><a href="cadastro.html" target="_self" class="hrefs">Cadastra-se</a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
+    <script>
+        const token = localStorage.getItem("token")
+        if(!token){
+            alert("Você precisa estar logado!")
+            window.location.href = "login.html"
+        }
+    </script>
 </body>
 </html>
