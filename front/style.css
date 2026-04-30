@@ -287,8 +287,9 @@ button {
 }
 
 #feedback fieldset {
-  width: 500px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  background-color: #80425652;
 }
 
 /*login*/
@@ -467,57 +468,24 @@ button {
   font-size: 30px;
 }
 
-#fd,
-#back,
-#cl {
+.card-aula {
+  min-width: 200px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  width: 200px;
-  height: 200px;
-  background-color: #804256;
-  margin: 20px;
+  color: #f2e9e1;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-#lg,
-#db,
-#dm {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 200px;
-  height: 200px;
-  background-color: #716f35;
-  margin: 20px;
-}
-
-#dw,
-#ps,
-#riot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 200px;
-  height: 200px;
-  background-color: #a56940;
-  margin: 20px;
-}
-
-#front,
-#si,
-#lp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 200px;
-  height: 200px;
-  background-color: #eccc6e;
-  margin: 20px;
-}
+.roxo { background-color: #804256; }
+.verde { background-color: #716f35; }
+.marrom { background-color: #a56940; }
+.amarelo { background-color: #eccc6e; }
 
 #section_aulas {
   display: flex;
