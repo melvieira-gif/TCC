@@ -51,7 +51,13 @@
             const dados = await resposta.json()
             if(dados.token){
                 localStorage.setItem("token", dados.token)
-                window.location.href = "aulas.html"
+                localStorage.setItem("nivel", dados.nivel)
+
+                if(dados.nivel === "A"){
+                    window.location.href = "admin.html"
+                } else {
+                    window.location.href = "aulas.html"
+                }
             }else{
                 alert(dados.resposta)
             }

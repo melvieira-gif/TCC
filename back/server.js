@@ -147,10 +147,13 @@ app.post("/login", async (req, res) => {
             return res.json({ resposta: "Email ou senha incorretos" });
         }
 
+        
+
         const token = jwt.sign(
             {
                 id: usuario.id_cadastro,
-                email: usuario.email
+                email: usuario.email,
+                nivel: usuario.nivel
             },
             SECRET,
             { expiresIn: "1h" }
@@ -158,7 +161,8 @@ app.post("/login", async (req, res) => {
 
         return res.json({
             mensagem: "Acesso liberado",
-            token: token
+            token: token,
+            nivel: usuario.nivel 
         });
 
     } catch (error) {
@@ -172,12 +176,19 @@ app.post("/login", async (req, res) => {
 ========================= */
 app.post("/CadastroAulas", verificarToken, async (req, res) => {
     try {
+
+        // 🔥 AQUI SIM!
+        if (req.usuario.nivel !== "A") {
+            return res.status(403).json({ resposta: "Acesso negado" });
+        }
+
         const { materia, duracao, qtd_aulas } = req.body;
 
         const sql = `
             INSERT INTO aulas (materia, duracao, qtd_aulas)
             VALUES (?,?,?)
         `;
+
         const [result] = await conexao.query(sql, [materia, duracao, qtd_aulas]);
 
         if (result.affectedRows === 1) {
@@ -191,7 +202,6 @@ app.post("/CadastroAulas", verificarToken, async (req, res) => {
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    TROCAR SENHA (LOGADO)
 ========================= */
