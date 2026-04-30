@@ -312,6 +312,17 @@ app.put("/usuario", verificarToken, async (req, res) => {
     }
 });
 
+
+
+/* =========================
+   listar aulas
+========================= */
+app.get("/aulas", async (req, res) => {
+    const [dados] = await conexao.query("SELECT * FROM aulas");
+    res.json(dados);
+});
+
+
 /* =========================
    START
 ========================= */
