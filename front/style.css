@@ -5,7 +5,7 @@
 /* home (index) */
 #body_index_cadastro {
   font-family: "Josefin Sans", sans-serif;
-  background: linear-gradient(135deg, #804256b2, #716f35ad, #a5684094, #db9a8fa1, #eccc6e8c);
+  background: linear-gradient(135deg, #804256b2, #716f35ad, #a5684094, #db9a8fa1, #eccc6eb4);
   background-size: 300% 300%;
   animation: gradientMove 12s ease infinite;
   color: #f2e9e1;
