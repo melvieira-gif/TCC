@@ -49,7 +49,7 @@
         }
 
         //VERIFICAR EMAIL
-        const verificar = await fetch("http://10.111.9.133:3000/verificarEmail",{
+        const verificar = await fetch("http://192.168.2.66:3000/verificarEmail",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -65,7 +65,7 @@
 
 
         //VERIICAR A SENHA 
-        const resposta = await fetch("http://10.111.9.133:3000/trocarSenha",{
+        const resposta = await fetch("http://192.168.2.66:3000/trocarSenha",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",

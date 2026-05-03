@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     //criar as configurações do Banco De Dados
 
     host:"localhost",
-    host:"10.111.9.133",
+    host:"192.168.2.66",
     user:"root",
     password:"",
     port:3306,
