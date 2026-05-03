@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,14 +31,16 @@
         <section id="home" data-aos="fade-up">
             <h2>HOME</h2>
             <p>
-                A StarDev surgiu da identificação de uma lacuna no ensino de tecnologia: a falta de um curso online que reunisse, 
-                de forma clara, objetiva e direta, os principais conteúdos de um curso técnico em TI. Inspirada em referências consolidadas do ensino digital, 
-                a plataforma integra o melhor desses modelos para oferecer uma experiência completa e acessível. 
-                Com conteúdos próprios desenvolvidos em formato de vídeo e disponibilizados via YouTube, 
-                a StarDev direciona seus usuários para um ambiente organizado e intuitivo, onde, já na tela inicial, 
-                é possível acessar diversas disciplinas e escolher aquela de maior interesse. Ao selecionar uma área, 
-                o estudante é conduzido a uma página estruturada com aulas divididas por tópicos específicos, 
-                além de classificadas por níveis — iniciante, intermediário e avançado — 
+                A StarDev surgiu da identificação de uma lacuna no ensino de tecnologia: a falta de um curso online que
+                reunisse,
+                de forma clara, objetiva e direta, os principais conteúdos de um curso técnico em TI. Inspirada em
+                referências consolidadas do ensino digital,
+                a plataforma integra o melhor desses modelos para oferecer uma experiência completa e acessível.
+                Com conteúdos próprios desenvolvidos em formato de vídeo e disponibilizados via YouTube,
+                a StarDev direciona seus usuários para um ambiente organizado e intuitivo, onde, já na tela inicial,
+                é possível acessar diversas disciplinas e escolher aquela de maior interesse. Ao selecionar uma área,
+                o estudante é conduzido a uma página estruturada com aulas divididas por tópicos específicos,
+                além de classificadas por níveis — iniciante, intermediário e avançado —
                 permitindo uma jornada de aprendizado progressiva, personalizada e alinhada ao ritmo de cada usuário.
             </p>
         </section>
@@ -93,64 +94,71 @@
         <p class="paragrafo-footer">&copy; 2026 StarDev</p>
     </footer>
 </body>
-
 <script>
-    //CONTATO
+    // CONTATO
     document.getElementById("btn_enviar").addEventListener("click", async () => {
         const nome = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const comentario = document.getElementById("comentarios").value;
-        const resposta = await fetch("http://192.168.2.66:3000/contato", {     
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "nome": nome,
-                "email": email,
-                "comentario": comentario})
-        });
-    </script>
-    <script>
-        const cards = document.querySelectorAll('.card-3d');
-        // ATIVA no scroll
-        function ativarFlip() {
-            const windowHeight = window.innerHeight;
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const inner = card.querySelector('.card-inner');
-
-                if (rect.top < windowHeight - 150) {
-                    inner.classList.add('virado');
-                }
+        try {
+            const resposta = await fetch("http://192.168.2.66:3000/contato", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    email: email,
+                    comentario: comentario
+                })
             });
+            const dados = await resposta.json();
+            if (resposta.ok) {
+                mostrarAlerta("Feedback enviado com sucesso!");
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("comentarios").value = "";
+            } else {
+                mostrarAlerta("Erro ao enviar feedback.");
+            }
+        } catch (erro) {
+            console.log(erro);
+            mostrarAlerta("Erro ao conectar com o servidor.");
         }
-        window.addEventListener('scroll', ativarFlip);
-        // VOLTAR AO CLICAR
+    });
+    // CARDS
+    const cards = document.querySelectorAll('.card-3d');
+    function ativarFlip() {
+        const windowHeight = window.innerHeight;
         cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const inner = card.querySelector('.card-inner');
-                inner.classList.toggle('virado');
-            });
+            const rect = card.getBoundingClientRect();
+            const inner = card.querySelector('.card-inner');
+            if (rect.top < windowHeight - 150) {
+                inner.classList.add('virado');
+            }
         });
-    </script>
-    <script>
-        function mostrarAlerta(mensagem) {
-            const alerta = document.getElementById("alerta");
-            const texto = document.getElementById("alerta-texto");
-        
-            texto.innerText = mensagem;
-        
-            alerta.classList.add("mostrar");
-        
-            setTimeout(() => {
-                alerta.classList.remove("mostrar");
-            }, 3000);
-        }
-        </script>
-    <div id="alerta" class="alerta">
-        <p id="alerta-texto"></p>
-    </div>
+    }
+    window.addEventListener('scroll', ativarFlip);
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const inner = card.querySelector('.card-inner');
+            inner.classList.toggle('virado');
+        });
+    });
+    // ALERTA
+    function mostrarAlerta(mensagem) {
+        const alerta = document.getElementById("alerta");
+        const texto = document.getElementById("alerta-texto");
+        texto.innerText = mensagem;
+        alerta.classList.add("mostrar");
+        setTimeout(() => {
+            alerta.classList.remove("mostrar");
+        }, 3000);
+    }
+</script>
+<div id="alerta" class="alerta">
+    <p id="alerta-texto"></p>
+</div>
 </body>
 </html>

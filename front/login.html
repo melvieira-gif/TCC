@@ -33,35 +33,38 @@
     </main>
 </body>
 <script>
-    document.getElementById("btn_login").addEventListener("click", async (e)=>{
-        e.preventDefault()
-        const email = document.getElementById("input_email_login").value
-        const senha = document.getElementById("input_senha_login").value
-
-
-        const resposta = await fetch("http://192.168.2.66:3000/login", {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({
-                "email": email,
-                "senha": senha
-            })
-            const dados = await resposta.json()
-            if(dados.token){
-                localStorage.setItem("token", dados.token)
-                localStorage.setItem("nivel", dados.nivel)
-
-                if(dados.nivel === "A"){
-                    window.location.href = "admin/admin.html"
+    document.getElementById("btn_login").addEventListener("click", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("input_email_login").value;
+        const senha = document.getElementById("input_senha_login").value;
+        try {
+            const resposta = await fetch("http://192.168.2.66:3000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    senha: senha
+                })
+            });
+            const dados = await resposta.json();
+            if (dados.token) {
+                localStorage.setItem("token", dados.token);
+                localStorage.setItem("nivel", dados.nivel);
+                if (dados.nivel === "A") {
+                    window.location.href = "admin/admin.html";
                 } else {
-                    window.location.href = "aulas.html"
+                    window.location.href = "aulas.html";
                 }
-            }else{
-                alert(dados.resposta)
+            } else {
+                alert(dados.resposta);
             }
-        })
-    </script>
+        } catch (erro) {
+            console.log(erro);
+            alert("Erro ao conectar com o servidor.");
+        }
+    });
+</script>
 </body>
-</html> 
+</html>
