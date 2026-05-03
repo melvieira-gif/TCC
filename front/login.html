@@ -31,7 +31,6 @@
             <button id="btn_login"><strong>Entrar</strong></button>
         </section>
     </main>
-<<<<<<< HEAD
 </body>
 <script>
     document.getElementById("btn_login").addEventListener("click", async (e)=>{
@@ -48,24 +47,6 @@
             body: JSON.stringify({
                 "email": email,
                 "senha": senha
-=======
-    <script>
-        document.getElementById("btn_login").addEventListener("click", async (e)=>{
-            e.preventDefault()
-            const email = document.getElementById("input_email_login").value
-            const senha = document.getElementById("input_senha_login").value
-    
-    
-            const resposta = await fetch("http://10.111.9.174:3000/login", {
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify({
-                    "email": email,
-                    "senha": senha
-                })
->>>>>>> ad24f241ca642976a0d01375ae51d6e595005def
             })
             const dados = await resposta.json()
             if(dados.token){

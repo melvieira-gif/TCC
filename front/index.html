@@ -92,7 +92,6 @@
         <p><a href="cadastro.html" class="hrefs">Cadastre-se</a></p>
         <p class="paragrafo-footer">&copy; 2026 StarDev</p>
     </footer>
-<<<<<<< HEAD
 </body>
 
 <script>
@@ -111,28 +110,6 @@
                 "nome": nome,
                 "email": email,
                 "comentario": comentario})
-=======
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        // FEEDBACK
-        document.getElementById("btn_enviar").addEventListener("click", async () => {
-            const nome = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const comentario = document.getElementById("comentarios").value;
-            const resposta = await fetch("http://10.111.9.174:3000/contato", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ nome, email, comentario })
-            });
-            if (resposta.ok) {
-                const dados = await resposta.json();
-                document.getElementById("resultadoFale").innerText = dados.resposta;
-                mostrarAlerta("Feedback enviado!");
-            }
->>>>>>> ad24f241ca642976a0d01375ae51d6e595005def
         });
     </script>
     <script>

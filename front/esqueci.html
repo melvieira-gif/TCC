@@ -34,7 +34,6 @@
             <button id="btn_atualizar"><strong>Atualizar</strong></button>
         </section>
     </main>
-<<<<<<< HEAD
 </body>
 <script>
     document.getElementById("btn_atualizar").addEventListener("click", async (e)=>{
@@ -75,24 +74,6 @@
             body: JSON.stringify({
                 email,
                 Novasenha
-=======
-    <script>
-        document.getElementById("btn_atualizar").addEventListener("click", async (e)=>{
-            // e.preventDefault()
-            const email = document.getElementById("input_email_esqueci").value
-            const novaSenha = document.getElementById("input_senha_esqueci").value
-            const ConfirmarSenha = document.getElementById("input_senha_esqueci1").value
-            if(novaSenha !== ConfirmarSenha){
-                alert("Senha ou email incorreto")
-            }
-            //VERIFICAR EMAIL
-            const verificar = await fetch("http://10.111.9.174:3000/verificarEmail",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email })
->>>>>>> ad24f241ca642976a0d01375ae51d6e595005def
             })
             const res = await verificar.json()
             if(!res.existe){
