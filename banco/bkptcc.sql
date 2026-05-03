@@ -2,7 +2,7 @@
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.15.0.7171
+-- HeidiSQL Versão:              12.10.0.7000
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `aulas` (
   PRIMARY KEY (`id_aula`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.aulas: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.aulas: ~12 rows (aproximadamente)
 DELETE FROM `aulas`;
 INSERT INTO `aulas` (`id_aula`, `materia`, `duracao`, `qtd_aulas`) VALUES
 	(1, 'Back-End', '1hora', 12),
@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `telefone` varchar(15) NOT NULL DEFAULT '',
   `nivel` varchar(50) DEFAULT 'U',
   PRIMARY KEY (`id_cadastro`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.cadastro: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.cadastro: ~10 rows (aproximadamente)
 DELETE FROM `cadastro`;
 INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'd97e69b8cb7e8e8f159d0a4b57d469e06bfe2f241322f7e663aa94555534a6e7', '2147483647', 'U'),
@@ -66,12 +66,11 @@ INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `ni
 	(3, 'BRUNO FERREIRA', 'brunoteste@hotmail.cm', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '(18)98823-2550', 'U'),
 	(4, 'Bruno Teste', 'BRUNÃOFERREIRÃO', 'b90fe858ff448ca34d553ee4d31b0ee2f566be6e3279a8de3df8d72a690d8d6e', '(18)98823-2550', 'U'),
 	(5, 'Matheus Oliver', 'matheusoliveira@gmail.com', '1234567Matheus', '(18)98823-2550', 'U'),
-	(6, 'Matheus Prof', 'matheus@hotmail', '$2b$10$gKt2BGmbRcsbZ7BgxECrOOG.70Lx2f.dDrhg1KziUiVECxNZd8Wma', '(18)999881-5504', 'U'),
-	(7, 'Matheus Teste', 'matheus@gmail.com', '$2b$10$5fTrjCA3li2ygyK4Q3h5bOsro0Rz5B/eReepJMAQwDqdHhropO3sa', '(18)999881-5504', 'U'),
-	(8, 'Matheus ProfTesste', 'testematheus@gmail.com', '$2b$10$PBzhit9vgCLC5qEb2uL6aObqgwTRiss0URw4oqpD4zrz1lwMd2yw.', '(18)99981-5544', 'U'),
-	(9, 'Melissa Vieira', 'melissacgv1@gmail.com', '$2b$10$TubkfzGCffSyjWndojuv0.YJhnTcS40Ef...8JB0FcIY7cN2wPqEe', 'melissasteste@h', 'U'),
-	(11, 'Lauane Pasquini Ribeiro', 'lauanepasquine8@gmail.com', '$2b$10$nBT7uPgA2GBOBgxC5LMmWuUBkIMSNX/946x4lbIb/Hb006ak8l8ua', '(18) 996890559', 'U'),
-	(12, 'Matheus', 'matheus.oliverira', '$2b$10$F4iHcr/Tk5Xuz0j7J5OvluvKJt6kjorJOGk3pDZTZkuvksv.XdpUS', '(18) 999999999', 'U');
+	(6, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', '$2b$10$9bhqeUJA3Nhc5Qr2Lu.4Neji1/3tqU7nBwHmcqri/YGCN4israxem', '(18) 99653-4326', 'U'),
+	(7, 'Kemilly Reginão', 'kemillyrignao@email.com', '$2b$10$qDOJ1wAv9/GbumTqCT5rPOvKswj4aIZKEJggPJwujQTwHnAEk5Njq', '(18) 99689-5996', 'U'),
+	(8, 'Lauane Ribeiro', 'lauaneribeiro@email.com', '$2b$10$va86GtwgkrB0V1r6xIghh.ZkK1T38uaGw6dv61sQIlf1sCgSCcr8S', '(18) 99653-4326', 'U'),
+	(9, 'Michele Pasquini', 'michelepasquini@email.com', '$2b$10$cBLo5QLyUQK9VXzxS/tIXuaVP40A80FhA0VwLZVGmCN/8KTvRj1nO', '(18) 99653-4326', 'U'),
+	(10, 'Kemilly Reginão', 'kemillyreginao@email.com', '$2b$10$ZsarrM/OMLudTmzucF2zKufROi0EJsMqf0.wvWPfhCVjlFCPtJPZK', '(18) 999999999', 'U');
 
 -- Copiando estrutura para tabela stardev.contato
 DROP TABLE IF EXISTS `contato`;
@@ -81,9 +80,9 @@ CREATE TABLE IF NOT EXISTS `contato` (
   `email` varchar(100) NOT NULL,
   `comentario` text NOT NULL,
   PRIMARY KEY (`id_contato`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.contato: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.contato: ~16 rows (aproximadamente)
 DELETE FROM `contato`;
 INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM'),
@@ -93,7 +92,15 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 	(5, 'Melissa Vieira', 'melissacgv1@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
 	(6, 'testando se fun', 'testetestete@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
 	(7, 'BRUNO FERREIRA', 'BRUNÃOFERREIRÃO', 'TESTANDO O CONTATO'),
-	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane');
+	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane'),
+	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3'),
+	(10, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site do mundo '),
+	(11, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site'),
+	(12, 'Lauane Pasquini Ribeiro', 'lauanepasquini@email.br', 'Melhor site do mundo'),
+	(13, 'Lauane Pasquini', 'lauane@email.com', 'lauane megamente'),
+	(14, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou'),
+	(15, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou'),
+	(16, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'sgdfgsdffdgsd fgdfgdfg');
 
 -- Copiando estrutura para tabela stardev.materias
 DROP TABLE IF EXISTS `materias`;

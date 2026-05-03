@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adm-Listar Aulas</title>
+    <link rel="stylesheet" href="/front/style.css">
+</head>
+
+<body>
+    <header id="header_index_cadastro">
+        <figure class="logo">
+            <a href="index.html" class="hrefs">
+                <img src="/front/logo.svg" alt="LOGOTIPO StarDev">
+            </a>
+        </figure>
+        <nav>
+            <a href="#aulas">AULAS</a>
+            <a href="#adicionar">ADICIONAR</a>
+            <a href="#editar">EDITAR</a>
+            <a href="#ocultar">OCULTAR</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Aulas cadastradas</h1>
+            <!-- Aqui é onde as aulas vão aparecer -->
+            <div id="listaAulas">
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+
+        // =========================
+        // 🔒 PROTEÇÃO (SÓ ADMIN)
+        // =========================
+
+        // pega o token e o nível salvos no login
+        const token = localStorage.getItem("token");
+        const nivel = localStorage.getItem("nivel");
+
+        // se não tiver token OU não for admin → bloqueia
+        if (!token || nivel !== "A") {
+            alert("Acesso negado");
+            window.location.href = "../login.html";
+        }
+
+
+        // =========================
+        // 📚 FUNÇÃO PARA BUSCAR AULAS
+        // =========================
+
+        async function carregarAulas() {
+
+            try {
+                // faz requisição para o backend
+                const res = await fetch("http://10.111.9.174:3000/aulas");
+
+                // se der erro na resposta
+                if (!res.ok) {
+                    throw new Error("Erro ao buscar aulas");
+                }
+
+                // transforma resposta em JSON
+                const aulas = await res.json();
+
+                // pega a div do HTML
+                const div = document.getElementById("listaAulas");
+
+                // limpa antes de mostrar (pra não duplicar)
+                div.innerHTML = "";
+
+                // se não tiver nenhuma aula
+                if (aulas.length === 0) {
+                    div.innerHTML = "<p>Nenhuma aula cadastrada</p>";
+                    return;
+                }
+
+                // percorre todas as aulas
+                aulas.forEach(aula => {
+
+                    // cria uma div para cada aula
+                    const card = document.createElement("div");
+
+                    // coloca o conteúdo dentro da div
+                    // ⚠️ usa os nomes que vêm do banco:
+                    // materia, duracao, qtd_aulas, id_aula
+                    card.innerHTML = `
+                    <h3>${aula.materia}</h3>
+                    <p>Duração: ${aula.duracao}</p>
+                    <p>Quantidade de aulas: ${aula.qtd_aulas}</p>
+    
+                    <!-- botão editar -->
+                    <button onclick="editar(${aula.id_aula})">Editar</button>
+    
+                    <!-- botão excluir -->
+                    <button onclick="deletar(${aula.id_aula})">Excluir</button>
+                `;
+
+                    // adiciona no HTML
+                    div.appendChild(card);
+                });
+
+            } catch (erro) {
+                // se der erro mostra no console
+                console.error(erro);
+
+                // mostra mensagem na tela
+                document.getElementById("listaAulas").innerHTML =
+                    "<p>Erro ao carregar aulas</p>";
+            }
+        }
+
+
+        // =========================
+        // ✏️ EDITAR
+        // =========================
+
+        // redireciona para outra página passando o ID
+        function editar(id) {
+            window.location.href = `editar.html?id=${id}`;
+        }
+
+
+        // =========================
+        // ❌ EXCLUIR
+        // =========================
+
+        async function deletar(id) {
+
+            // pergunta antes de excluir
+            const confirmar = confirm("Deseja excluir essa aula?");
+            if (!confirmar) return;
+
+            try {
+                // envia requisição DELETE para o backend
+                const res = await fetch(`http://10.111.9.174:3000/aulas/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                });
+
+                // se der erro
+                if (!res.ok) {
+                    throw new Error("Erro ao excluir");
+                }
+
+                alert("Aula excluída!");
+
+                // recarrega a lista depois de excluir
+                carregarAulas();
+
+            } catch (erro) {
+                console.error(erro);
+                alert("Erro ao excluir aula");
+            }
+        }
+
+
+        // =========================
+        // 🚀 INICIAR
+        // =========================
+
+        // chama a função quando abre a página
+        carregarAulas();
+
+    </script>
+</html>

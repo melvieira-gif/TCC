@@ -57,6 +57,7 @@
         <p><a href="index.html" target="_self" class="hrefs"><strong>StarDev</strong></a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
+<<<<<<< HEAD
 </body>
 
 <script>
@@ -77,15 +78,36 @@
                 "email":email,
                 "senha":senha,
                 "telefone":telefone
+=======
+    <script>
+        document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
+            const nome = document.getElementById("input_nome").value
+            const email = document.getElementById("input_email").value
+            const senha = document.getElementById("input_senha").value
+            const telefone = document.getElementById("input_telefone").value
+    
+            const resposta = await fetch (`http://10.111.9.174:3000/cadastro`, {
+                method:"POST",
+                headers:{
+                    "Accept":"application/json",
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    "nome":nome,
+                    "email":email,
+                    "senha":senha,
+                    "telefone":telefone
+                })
+>>>>>>> ad24f241ca642976a0d01375ae51d6e595005def
             })
+    
+            if(resposta.ok){
+                const dados = await resposta.json()
+                alert(dados.resposta)
+            }else{
+                alert("algo deu errado !")
+            }
         })
-
-        if(resposta.ok){
-            const dados = await resposta.json()
-            alert(dados.resposta)
-        }else{
-            alert("algo deu errado !")
-        }
-    })
-</script>
+    </script>
+</body>
 </html>

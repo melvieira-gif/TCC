@@ -19,22 +19,22 @@
         </nav>
     </header>
     <main>
-        <div class="carrossel-container">
-            <div class="carrossel drag">
-                <p id="afd"><a href="afundamentos.html" target="_blank" class="hrefs_au">Fundamentos da Programação</a></p>
-                <p id="alg"><a href="alogica.html" target="_blank" class="hrefs_au">Lógica de Programação</a></p>
-                <p id="adw"><a href="aweb.html" target="_blank" class="hrefs_au">Desenvolvimento Web</a></p>
-                <p id="afront"><a href="afront.html" target="_blank" class="hrefs_au">Front-end</a></p>
-                <p id="aback"><a href="aback.html" target="_blank" class="hrefs_au">Back-end</a></p>
-                <p id="adb"><a href="adb.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
-                <p id="aps"><a href="aprojetos.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
-                <p id="asi"><a href="aseguranca.html" target="_blank"class="hrefs_au">Segurança da Informação</a></p>
-                <p id="acl"><a href="alimpo.html" target="_blank"class="hrefs_au">Código Limpo</a></p>
-                <p id="adm"><a href="amobile.html" target="_blank" class="hrefs_au">Desenvolvimento Mobile</a></p>
-                <p id="ariot"><a href="arede.html" target="_blank" class="hrefs_au">Redes e IOT</a></p>
-                <p id="alp"><a href="alinguagens.html" target="_blank" class="hrefs_au">Linguagem de Programação</a></p>
-            </div>
-        </div>
+        <section class="carrossel-container">
+            <section class="carrossel drag">
+                <p class="card-aula roxo"><a href="afundamentos.html" target="_blank" class="hrefs_au">Fundamentos da Programação</a></p>
+                <p class="card-aula verde"><a href="alogica.html" target="_blank" class="hrefs_au">Lógica de Programação</a></p>
+                <p class="card-aula marrom"><a href="aweb.html" target="_blank" class="hrefs_au">Desenvolvimento Web</a></p>
+                <p class="card-aula amarelo"><a href="afront.html" target="_blank" class="hrefs_au">Front-end</a></p>
+                <p class="card-aula roxo"><a href="aback.html" target="_blank" class="hrefs_au">Back-end</a></p>
+                <p class="card-aula verde"><a href="adb.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
+                <p class="card-aula marrom"><a href="aprojetos.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
+                <p class="card-aula amarelo"><a href="aseguranca.html" target="_blank"class="hrefs_au">Segurança da Informação</a></p>
+                <p class="card-aula roxo"><a href="alimpo.html" target="_blank"class="hrefs_au">Código Limpo</a></p>
+                <p class="card-aula verde"><a href="amobile.html" target="_blank" class="hrefs_au">Desenvolvimento Mobile</a></p>
+                <p class="card-aula marrom"><a href="arede.html" target="_blank" class="hrefs_au">Redes e IOT</a></p>
+                <p class="card-aula amarelo"><a href="alinguagens.html" target="_blank" class="hrefs_au">Linguagem de Programação</a></p>
+            </section>
+        </section>
         <section>
             <iframe 
             width="560" 
@@ -48,30 +48,30 @@
             </iframe>
         </section>
     </main>
+    <script>
+        const carrossel = document.querySelector('.drag');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        carrossel.addEventListener('mousedown', (e) => {
+          isDown = true;
+          carrossel.classList.add('active');
+          startX = e.pageX - carrossel.offsetLeft;
+          scrollLeft = carrossel.scrollLeft;
+        });
+        carrossel.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+        carrossel.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+        carrossel.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - carrossel.offsetLeft;
+          const walk = (x - startX) * 2; // velocidade
+          carrossel.scrollLeft = scrollLeft - walk;
+        });
+    </script>
 </body>
-<script>
-    const carrossel = document.querySelector('.drag');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    carrossel.addEventListener('mousedown', (e) => {
-      isDown = true;
-      carrossel.classList.add('active');
-      startX = e.pageX - carrossel.offsetLeft;
-      scrollLeft = carrossel.scrollLeft;
-    });
-    carrossel.addEventListener('mouseleave', () => {
-      isDown = false;
-    });
-    carrossel.addEventListener('mouseup', () => {
-      isDown = false;
-    });
-    carrossel.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carrossel.offsetLeft;
-      const walk = (x - startX) * 2; // velocidade
-      carrossel.scrollLeft = scrollLeft - walk;
-    });
-</script>
 </html>

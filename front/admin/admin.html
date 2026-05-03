@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrativa</title>
+    <link rel="stylesheet" href="/front/style.css">
+
+
+    <script>
+        const token = localStorage.getItem("token");
+        const nivel = localStorage.getItem("nivel");
+
+        if(!token || nivel !== "A"){
+            alert("Acesso negado");
+            window.location.href = "../login.html";
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Área Administrativa</h2>
+</body>
+
+</html>
