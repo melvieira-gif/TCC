@@ -35,45 +35,53 @@
         </section>
     </main>
     <script>
-        document.getElementById("btn_atualizar").addEventListener("click", async (e)=>{
-            // e.preventDefault()
-            const email = document.getElementById("input_email_esqueci").value
-            const novaSenha = document.getElementById("input_senha_esqueci").value
-            const ConfirmarSenha = document.getElementById("input_senha_esqueci1").value
-            if(novaSenha !== ConfirmarSenha){
-                alert("Senha ou email incorreto")
+        document.getElementById("btn_atualizar").addEventListener("click", async () => {
+            const email = document.getElementById("input_email_esqueci").value;
+            const novaSenha = document.getElementById("input_senha_esqueci").value;
+            const confirmarSenha = document.getElementById("input_senha_esqueci1").value;
+            const token = localStorage.getItem("token");
+            // Verifica se as senhas são iguais
+            if (novaSenha !== confirmarSenha) {
+                alert("As senhas não coincidem!");
+                return;
             }
-            //VERIFICAR EMAIL
-            const verificar = await fetch("http://10.111.9.174:3000/verificarEmail",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email })
-            })
-            const res = await verificar.json()
-            if(!res.existe){
-                alert("Email não encontrado!")
-                return
+            try {
+                // Verificar se o email existe
+                const verificar = await fetch("http://192.168.2.66:3000/verificarEmail", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                });
+                const res = await verificar.json();
+                if (!res.existe) {
+                    alert("Email não encontrado!");
+                    return;
+                }
+                // Atualizar senha
+                const resposta = await fetch("http://192.168.2.66:3000/trocarSenha", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        novaSenha: novaSenha
+                    })
+                });
+                const dados = await resposta.json();
+                alert(dados.resposta);
+                if (dados.resposta === "Senha redefinida com sucesso") {
+                    localStorage.removeItem("token");
+                    window.location.href = "login.html";
+                }
+            } catch (erro) {
+                console.log(erro);
+                alert("Erro ao conectar com o servidor.");
             }
-            //VERIICAR A SENHA 
-            const resposta = await fetch("http://10.111.9.174:3000/recuperarSenha",{
-                method:"PUT",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    novaSenha: novaSenha
-                })
-            })
-            const dados = await resposta.json()
-            alert(dados.resposta)
-            if(dados.resposta === "Senha redefinida com sucesso"){
-                localStorage.removeItem("token")
-                window.location.href = "login.html"
-            }
-        })
+        });
     </script>
 </body>
-</html> 
+</html>

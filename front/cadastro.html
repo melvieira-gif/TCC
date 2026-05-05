@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
   <link rel="stylesheet" href="/front/style.css">
   <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
 </head>
-
 <body id="body_index_cadastro">
     <header id="header_index_cadastro">
         <figure class="logo">
@@ -32,11 +30,13 @@
                 <section id="section_cadastro">
                     <label for="nome" id="label_nome">Nome</label>
                     <br>
-                    <input type="text" id="input_nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo">
+                    <input type="text" id="input_nome" name="nome" autocomplete="name"
+                        placeholder="Digite seu nome completo">
                     <br>
                     <label for="email" id="label_email">E-mail</label>
                     <br>
-                    <input type="email" id="input_email" name="email"  autocomplete="email" placeholder="Digite seu e-mail favorito">
+                    <input type="email" id="input_email" name="email" autocomplete="email"
+                        placeholder="Digite seu e-mail favorito">
                     <br>
                     <label for="telefone" id="label_telefone">Telefone</label>
                     <br>
@@ -44,47 +44,51 @@
                     <br>
                     <label for="senha" id="label_senha">Senha</label>
                     <br>
-                    <input type="password" id="input_senha" name="senha" autocomplete="new-password" placeholder="Digite sua senha">
+                    <input type="password" id="input_senha" name="senha" autocomplete="new-password"
+                        placeholder="Digite sua senha">
                     <br>
                     <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
                     <br>
                     <p>Já tem uma conta? <a href="/front/login.html" target="_self" class="hrefs">Clique aqui</a></p>
                 </section>
             </section>
-        </section> 
+        </section>
     </main>
     <footer id="footer_index_cadastro">
         <p><a href="/front/index.html" target="_self" class="hrefs"><strong>StarDev</strong></a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
     <script>
-        document.getElementById("btn_salvar_cadastro").addEventListener("click", async ()=>{
-            const nome = document.getElementById("input_nome").value
-            const email = document.getElementById("input_email").value
-            const senha = document.getElementById("input_senha").value
-            const telefone = document.getElementById("input_telefone").value
-    
-            const resposta = await fetch (`http://10.111.9.174:3000/cadastro`, {
-                method:"POST",
-                headers:{
-                    "Accept":"application/json",
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    "nome":nome,
-                    "email":email,
-                    "senha":senha,
-                    "telefone":telefone
-                })
-            })
-    
-            if(resposta.ok){
-                const dados = await resposta.json()
-                alert(dados.resposta)
-            }else{
-                alert("algo deu errado !")
+        document.getElementById("btn_salvar_cadastro").addEventListener("click", async () => {
+            const nome = document.getElementById("input_nome").value;
+            const email = document.getElementById("input_email").value;
+            const senha = document.getElementById("input_senha").value;
+            const telefone = document.getElementById("input_telefone").value;
+            try {
+                const resposta = await fetch("http://192.168.2.66:3000/cadastro", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nome: nome,
+                        email: email,
+                        senha: senha,
+                        telefone: telefone
+                    })
+                });
+                if (resposta.ok) {
+                    const dados = await resposta.json();
+                    alert(dados.resposta);
+                } else {
+                    alert("Algo deu errado!");
+                }
+            } catch (erro) {
+                console.log(erro);
+                alert("Erro ao conectar com o servidor.");
             }
-        })
+        });
     </script>
 </body>
 </html>
