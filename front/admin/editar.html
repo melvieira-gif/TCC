@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Feedback</title>
+    <link rel="stylesheet" href="/front/style.css">
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
+</head>
+<body id="body_index_cadastro">
+    <header id="header_index_cadastro">
+        <h2>Editar Feedback</h2>
+    </header>
+    <main>
+        <label>Nome</label>
+        <input type="text" id="nome">
+        <label>Email</label>
+        <input type="email" id="email">
+        <label>Comentário</label>
+        <textarea id="comentario"></textarea>
+        <button onclick="salvar()">Salvar</button>
+    </main>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        async function salvar() {
+            const token = localStorage.getItem("token");
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const comentario = document.getElementById("comentario").value;
+            await fetch(`http://10.111.9.174:3000/feedbacks/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    nome,
+                    email,
+                    comentario
+                })
+            });
+            alert("Feedback atualizado");
+            window.location.href = "/front/admin/feedback.html";
+        }
+    </script>
+</body>
+</html>
