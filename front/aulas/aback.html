@@ -38,7 +38,7 @@
                 <img src="/front/img/logo.svg" alt="Chat">
             </section>
             <section id="chatbot">
-                <div class="chat-header">StarBot</div>
+                <div class="chat-header">DevMentor</div>
                 <div id="chat-box"></div>
                 <div id="chat-options"></div>
             </section>
@@ -81,14 +81,13 @@
         const chatBox = document.getElementById("chat-box");
         const chatOptions = document.getElementById("chat-options");
         chatBox.innerHTML = `
-            <p>Olá, eu sou o StarBot.</p>
-            <p>Como posso te ajudar?</p>
+            <p>Olá! Eu sou o DevMentor.<br>Fui programado para te ajudar</p>
         `;
 
         chatOptions.innerHTML = `
             <button onclick="mostrarResumo(this)">Resumo</button>
-            <button onclick="mostrarDuvida(this)">Reexplicação</button>
-            <button onclick="proximaAula(this)">Próximo</button>
+            <button onclick="mostrarDuvida(this)">Reexplicar</button>
+            <button onclick="proximaAula(this)">> Aula</button>
         `;
         function animarBotao(botao){
             botao.style.transform = "scale(0.90)";
@@ -98,21 +97,13 @@
                 botao.style.boxShadow = "none";
             }, 300);
         }
-
-        // pegando aulas do admin
-        const API = "http://localhost:3000/videoaulas";
+        const API = "http://10.111.9.174:3000/videoaulas";
         const lista = document.getElementById("listaAulas");
-
-        // 🔥 MUDE AQUI PARA CADA PÁGINA
         const MATERIA = "Back-End";
-
         async function carregarAulas() {
             const res = await fetch(API);
             const data = await res.json();
-
             lista.innerHTML = "";
-
-            // 🔥 FILTRO
             const filtradas = data.filter(a => a.materia === MATERIA);
 
             filtradas.forEach(aula => {
@@ -130,7 +121,6 @@
                 `;
             });
         }
-
         carregarAulas();
     </script>
 </body>

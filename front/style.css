@@ -468,8 +468,8 @@ button {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 85px;
-  height: 85px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: linear-gradient(135deg, #804256, #a56940, #716f35);
   display: flex;
@@ -478,162 +478,77 @@ button {
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
-  
-  animation: flutuar 3s ease-in-out infinite;
-  transition: all 0.4s ease;
+  transition: 0.3s;
 }
-
 #chatbot-icon:hover{
-  transform: scale(1.12) rotate(8deg);
-  box-shadow: 0px 15px 40px rgba(0,0,0,0.45);
+  transform: scale(1.1);
 }
-
 #chatbot-icon img{
-  width: 45px;
+  width: 35px;
   filter: brightness(0) invert(1);
 }
-
-/* aura pulsante */
-#chatbot-icon::before{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: rgba(236,204,110,0.3);
-  animation: pulseGlow 2s infinite;
-  z-index: -1;
-}
-
-/* caixa principal */
+/* CAIXA PRINCIPAL */
 #chatbot{
   position: fixed;
-  bottom: 130px;
-  right: 30px;
-  width: 360px;
-  height: 480px;
-  background: rgba(128,66,86,0.95);
-  backdrop-filter: blur(15px);
-  border-radius: 25px;
-  overflow: hidden;
+  bottom: 110px;
+  right: 25px;
+
+  width: 260px;              /* menor */
+  padding: 18px;             /* menos espaço interno */
+
+  background: rgba(113,111,53,0.95);
+  border-radius: 18px;
+
   display: none;
   flex-direction: column;
-  z-index: 999;
-  box-shadow: 
-      0 20px 60px rgba(0,0,0,0.4),
-      inset 0 0 20px rgba(255,255,255,0.05);
-
-  animation: abrirChat 0.6s ease;
-}
-
-/* header */
-.chat-header{
-  background: linear-gradient(90deg,#804256,#a56940);
-  padding: 18px;
-  font-size: 20px;
-  font-weight: bold;
+  align-items: center;
   text-align: center;
-  color: #f2e9e1;
-  letter-spacing: 1px;
-}
 
-/* área de mensagens */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* sombra mais leve */
+}
+/* TÍTULO */
+.chat-header{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* TEXTO */
 #chat-box{
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  font-size: 18px;
-  color: #f2e9e1;
-  line-height: 1.5;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
 }
-
-/* botões */
+/* BOTÕES */
 #chat-options{
-  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
 #chat-options button{
-  background: linear-gradient(135deg,#716f35,#a56940);
+  background: #804256;
   color: #f2e9e1;
   border: none;
-  padding: 14px;
-  border-radius: 15px;
-  cursor: pointer;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: bold;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
-/* efeito muito bonito no hover */
 #chat-options button:hover{
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+  background: #a56940;
+  transform: scale(1.05);
 }
 
-/* efeito click */
-#chat-options button:active{
-  transform: scale(0.95);
-}
-/* brilho passando */
-#chat-options button::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.2);
-  transform: skewX(-20deg);
-  transition: 0.6s;
-}
-#chat-options button:hover::before{
-  left: 120%;
-}
-/* scrollbar personalizada */
-#chat-box::-webkit-scrollbar{
-  width: 8px;
-}
-#chat-box::-webkit-scrollbar-thumb{
-  background: #eccc6e;
-  border-radius: 20px;
-}
-/* RESPONSIVO */
-@media(max-width:768px){
-  #chatbot{
-      width: 90%;
-      right: 5%;
-      height: 420px;
-  }
-  #chatbot-icon{
-      width: 70px;
-      height: 70px;
-  }
-}
-/* animação flutuando */
-@keyframes flutuar{
-  0%{transform: translateY(0px);}
-  50%{transform: translateY(-10px);}
-  100%{transform: translateY(0px);}
-}
-/* aura */
-@keyframes pulseGlow{
-  0%{transform: scale(1);opacity: 1;}
-  100%{transform: scale(1.5);opacity: 0;}
-}
-/* abertura do chat */
-@keyframes abrirChat{
-  from{opacity: 0;transform: translateY(50px) scale(0.8);}
-  to{opacity: 1;transform: translateY(0px) scale(1);}
-}
+
 
 /* animações */
-
+/* chatbot */
+@keyframes abrirChat{
+  from{opacity: 0; transform: translateY(20px);}
+  to{opacity: 1; transform: translateY(0);}
+}
 /* CARDS */
 .card-criadora {
   background: #eccc6e;
