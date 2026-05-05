@@ -36,30 +36,64 @@
             </section>
         </section>
     </main>
-    <script>
-        const carrossel = document.querySelector('.drag');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        carrossel.addEventListener('mousedown', (e) => {
-          isDown = true;
-          carrossel.classList.add('active');
-          startX = e.pageX - carrossel.offsetLeft;
-          scrollLeft = carrossel.scrollLeft;
-        });
-        carrossel.addEventListener('mouseleave', () => {
-          isDown = false;
-        });
-        carrossel.addEventListener('mouseup', () => {
-          isDown = false;
-        });
-        carrossel.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - carrossel.offsetLeft;
-          const walk = (x - startX) * 2; // velocidade
-          carrossel.scrollLeft = scrollLeft - walk;
-        });
-    </script>
 </body>
+<script>
+    const carrossel = document.querySelector('.drag');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    carrossel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carrossel.classList.add('active');
+        startX = e.pageX - carrossel.offsetLeft;
+        scrollLeft = carrossel.scrollLeft;
+    });
+    carrossel.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carrossel.offsetLeft;
+        const walk = (x - startX) * 2; // velocidade
+        carrossel.scrollLeft = scrollLeft - walk;
+    });
+    
+        // pegando aulas do admin
+        const API = "http://localhost:3000/videoaulas";
+        const lista = document.getElementById("listaAulas");
+
+        // 🔥 MUDE AQUI PARA CADA PÁGINA
+        const MATERIA = "Back-End";
+
+        async function carregarAulas() {
+            const res = await fetch(API);
+            const data = await res.json();
+
+            lista.innerHTML = "";
+
+            // 🔥 FILTRO
+            const filtradas = data.filter(a => a.materia === MATERIA);
+
+            filtradas.forEach(aula => {
+                lista.innerHTML += `
+                    <div>
+                        <h3>${aula.nomeVAulas}</h3>
+                        <p>${aula.descricao}</p>
+
+                        <iframe width="300" height="200"
+                            src="${aula.link_video.replace("watch?v=", "embed/")}"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+            });
+        }
+
+    carregarAulas();
+</script>
 </html>

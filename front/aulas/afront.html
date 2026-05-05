@@ -60,6 +60,40 @@
           const walk = (x - startX) * 2; // velocidade
           carrossel.scrollLeft = scrollLeft - walk;
         });
+
+        // pegando aulas do admin
+        const API = "http://localhost:3000/videoaulas";
+        const lista = document.getElementById("listaAulas");
+
+        // 🔥 MUDE AQUI PARA CADA PÁGINA
+        const MATERIA = "Front-End";
+
+        async function carregarAulas() {
+            const res = await fetch(API);
+            const data = await res.json();
+
+            lista.innerHTML = "";
+
+            // 🔥 FILTRO
+            const filtradas = data.filter(a => a.materia === MATERIA);
+
+            filtradas.forEach(aula => {
+                lista.innerHTML += `
+                    <div>
+                        <h3>${aula.nomeVAulas}</h3>
+                        <p>${aula.descricao}</p>
+
+                        <iframe width="300" height="200"
+                            src="${aula.link_video.replace("watch?v=", "embed/")}"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+            });
+        }
+
+        carregarAulas();
     </script>
 </body>
 </html>
