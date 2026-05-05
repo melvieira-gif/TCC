@@ -328,15 +328,15 @@ app.listen(porta, () => {
 });
 
 /* =========================
-   LISTAR FEEDBACKS
+   LISTAR FEEDBACKS (ADMIN)
 ========================= */
 app.get("/feedbacks", verificarToken, async (req, res) => {
     try {
 
-        if(req.usuario.nivel !== "A"){
+        if (req.usuario.nivel !== "A") {
             return res.status(403).json({
                 resposta: "Acesso negado"
-            })
+            });
         }
 
         const sql = `
@@ -349,10 +349,99 @@ app.get("/feedbacks", verificarToken, async (req, res) => {
 
         res.json(dados);
 
-    } catch(error){
+    } catch (error) {
         console.log(error);
+
         res.status(500).json({
             erro: "Erro ao buscar feedbacks"
         });
     }
 });
+
+/* =========================
+   EDITAR FEEDBACK
+========================= */
+app.put("/feedbacks/:id", verificarToken, async (req, res) => {
+    try {
+
+        if (req.usuario.nivel !== "A") {
+            return res.status(403).json({
+                resposta: "Acesso negado"
+            });
+        }
+
+        const id = req.params.id;
+        const { nome, email, comentario } = req.body;
+
+        const sql = `
+            UPDATE contato
+            SET nome=?, email=?, comentario=?
+            WHERE id_contato=?
+        `;
+
+        const [resultado] = await conexao.query(sql, [
+            nome,
+            email,
+            comentario,
+            id
+        ]);
+
+        if (resultado.affectedRows === 1) {
+            return res.json({
+                resposta: "Feedback atualizado com sucesso"
+            });
+        }
+
+        res.json({
+            resposta: "Feedback não encontrado"
+        });
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            erro: "Erro ao atualizar feedback"
+        });
+    }
+});
+
+/* =========================
+   EXCLUIR FEEDBACK
+========================= */
+app.delete("/feedbacks/:id", verificarToken, async (req, res) => {
+    try {
+
+        if (req.usuario.nivel !== "A") {
+            return res.status(403).json({
+                resposta: "Acesso negado"
+            });
+        }
+
+        const id = req.params.id;
+
+        const sql = `
+            DELETE FROM contato
+            WHERE id_contato=?
+        `;
+
+        const [resultado] = await conexao.query(sql, [id]);
+
+        if (resultado.affectedRows === 1) {
+            return res.json({
+                resposta: "Feedback removido com sucesso"
+            });
+        }
+
+        res.json({
+            resposta: "Feedback não encontrado"
+        });
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            erro: "Erro ao excluir feedback"
+        });
+    }
+});
+

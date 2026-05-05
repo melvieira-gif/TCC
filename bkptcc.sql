@@ -79,29 +79,31 @@ CREATE TABLE IF NOT EXISTS `contato` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `comentario` text NOT NULL,
+  `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status_feedback` varchar(20) DEFAULT 'Pendente',
   PRIMARY KEY (`id_contato`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Copiando dados para a tabela stardev.contato: ~17 rows (aproximadamente)
 DELETE FROM `contato`;
-INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
-	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM'),
-	(2, 'melissa cristina', 'melissasteste@hotmail.cm', 'qqqqqqqqqqqqqqqqqqq'),
-	(3, 'melissa cristina', 'melissasteste@hotmail.cm', 'rrrrrrrrrrrrrrrrr'),
-	(4, 'Teste Nome', 'teste@email.com', 'Isso é um comentário válido'),
-	(5, 'Melissa Vieira', 'melissacgv1@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
-	(6, 'testando se fun', 'testetestete@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk'),
-	(7, 'BRUNO FERREIRA', 'BRUNÃOFERREIRÃO', 'TESTANDO O CONTATO'),
-	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane'),
-	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3'),
-	(10, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site do mundo '),
-	(11, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site'),
-	(12, 'Lauane Pasquini Ribeiro', 'lauanepasquini@email.br', 'Melhor site do mundo'),
-	(13, 'Lauane Pasquini', 'lauane@email.com', 'lauane megamente'),
-	(14, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou'),
-	(15, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou'),
-	(16, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'sgdfgsdffdgsd fgdfgdfg'),
-	(17, 'Felipe Neto', 'felipeneto@email.com', 'Saga Minecraft');
+INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`, `data_envio`, `status_feedback`) VALUES
+	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM', '2026-05-05 13:24:30', 'Pendente'),
+	(2, 'melissa cristina', 'melissasteste@hotmail.cm', 'qqqqqqqqqqqqqqqqqqq', '2026-05-05 13:24:30', 'Pendente'),
+	(3, 'melissa cristina', 'melissasteste@hotmail.cm', 'rrrrrrrrrrrrrrrrr', '2026-05-05 13:24:30', 'Pendente'),
+	(4, 'Teste Nome', 'teste@email.com', 'Isso é um comentário válido', '2026-05-05 13:24:30', 'Pendente'),
+	(5, 'Melissa Vieira', 'melissacgv1@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk', '2026-05-05 13:24:30', 'Pendente'),
+	(6, 'testando se fun', 'testetestete@gmail.com', 'kkkkkkkkkkkkkkkkkkkkkkkkkk', '2026-05-05 13:24:30', 'Pendente'),
+	(7, 'BRUNO FERREIRA', 'BRUNÃOFERREIRÃO', 'TESTANDO O CONTATO', '2026-05-05 13:24:30', 'Pendente'),
+	(8, 'Maria Laura Pasquini Ribeiro', 'marialaurapasquini@gmail.com', 'Olá sou irmã da Lauane', '2026-05-05 13:24:30', 'Pendente'),
+	(9, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'Melhor site que já vi em minha vida <3', '2026-05-05 13:24:30', 'Pendente'),
+	(10, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site do mundo ', '2026-05-05 13:24:30', 'Pendente'),
+	(11, 'Lauane Pasquini', 'lauanepasquini@email.com', 'Melhor site', '2026-05-05 13:24:30', 'Pendente'),
+	(12, 'Lauane Pasquini Ribeiro', 'lauanepasquini@email.br', 'Melhor site do mundo', '2026-05-05 13:24:30', 'Pendente'),
+	(13, 'Lauane Pasquini', 'lauane@email.com', 'lauane megamente', '2026-05-05 13:24:30', 'Pendente'),
+	(14, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou', '2026-05-05 13:24:30', 'Pendente'),
+	(15, 'Kemilly Reginão', 'reginao@email.com', 'Reginão gostou', '2026-05-05 13:24:30', 'Pendente'),
+	(16, 'Lauane Pasquini Ribeiro', 'lauane.ribeiro@aluno.senai.br', 'sgdfgsdffdgsd fgdfgdfg', '2026-05-05 13:24:30', 'Pendente'),
+	(17, 'Felipe Neto', 'felipeneto@email.com', 'Saga Minecraft', '2026-05-05 13:24:30', 'Pendente');
 
 -- Copiando estrutura para tabela stardev.materias
 DROP TABLE IF EXISTS `materias`;
