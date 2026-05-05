@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
 }
-
 #body_login {
   font-family: "Josefin Sans", sans-serif;
   background: #d19283;
@@ -25,7 +24,6 @@
   margin: 0px;
   padding: 0px;
 }
-
 .alerta {
   position: fixed;
   bottom: 30px;
@@ -40,12 +38,10 @@
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   z-index: 999;
 }
-
 .alerta.mostrar {
   opacity: 1;
   transform: translateY(0);
 }
-
 #header_index_cadastro {
   width: 100%;
   height: 100%;
@@ -60,20 +56,17 @@
   top: 0;
   z-index: 50;
 }
-
 .logo img {
   width: 60px;
   display: block;
   float: left;
   margin: 0px;
 }
-
 nav {
   display: flex;
   gap: 36px;
   align-items: center;
 }
-
 nav a {
   text-decoration: none;
   color: #f2e9e1;
@@ -82,12 +75,10 @@ nav a {
   letter-spacing: 0.6px;
   transition: color .2s, transform .15s;
 }
-
 nav a:hover {
   color: #db9a8f;
   transform: translateY(-1px);
 }
-
 .banner {
   width: 100%;
   height: 100%;
@@ -96,7 +87,6 @@ nav a:hover {
   margin: 0px;
   padding: 0px;
 }
-
 .banner img {
   width: 100%;
   height: 100%;
@@ -104,11 +94,9 @@ nav a:hover {
   /* mantém proporção e corta excesso */
   display: block;
 }
-
 figure {
   margin: 0px;
 }
-
 #home {
   text-align: center;
   font-size: 1.5rem;
@@ -117,7 +105,6 @@ figure {
   margin: 50px;
   line-height: 1.6;
 }
-
 #ftcriadoras {
   display: flex;
   justify-content: center;
@@ -129,7 +116,6 @@ figure {
   margin-left: 300px;
   margin-right: 300px;
 }
-
 .lauane,
 .melissa {
   width: 400px;
@@ -138,7 +124,6 @@ figure {
   margin: 10px;
   padding: 0px;
 }
-
 .lauane img,
 .melissa img {
   width: 100%;
@@ -148,14 +133,12 @@ figure {
   border-radius: 360px;
   border: 4px solid #a56940;
 }
-
 #descricao_ftcriadoras {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 150px;
 }
-
 #details_index {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -163,38 +146,31 @@ figure {
   border-radius: 5px;
   padding: 1rem;
 }
-
 #summary_index {
   color: #a56940;
   margin: 0.5rem;
   cursor: pointer;
 }
-
 #ol {
   margin: 1rem;
   color: #804256;
 }
-
 #ol li {
   padding: 0.2rem;
 }
-
 main {
   flex: 1;
 }
-
 fieldset {
   border: 4px solid #716f35;
   border-radius: 5px;
   padding: 2rem;
   margin: 10px;
 }
-
 legend {
   color: #804256;
   padding: 0.5rem;
 }
-
 textarea {
   outline: none;
   border-radius: 5px;
@@ -202,8 +178,6 @@ textarea {
   background-color: transparent;
   color: #804256;
 }
-
-
 input[type="text"],
 input[type="email"] {
   width: 100%;
@@ -215,21 +189,18 @@ input[type="email"] {
   color: #804256;
 
 }
-
 input::placeholder {
   color: #804256;
   font-family: "Josefin Sans", sans-serif;
   font-style: oblique;
 
 }
-
 textarea::placeholder {
   color: #804256;
   font-style: oblique;
   font-family: "Josefin Sans", sans-serif;
   padding: 0.6rem;
 }
-
 button {
   background-color: #716f35;
   border: none;
@@ -238,22 +209,18 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-
 #footer_index_cadastro {
   background-color: #804256;
   padding: 10px;
   text-align: center;
 }
-
 .paragrafo-footer {
   color: #f2e9e1
 }
-
 #footer_index_cadastro a {
   text-decoration: none;
   color: #db9a8f;
 }
-
 #name,
 #email {
   width: 500px;
@@ -261,45 +228,37 @@ button {
   display: block;
   margin: 0 auto;
 }
-
 #feedback {
   width: 500px;
   margin: 0 auto 20px auto;
   /* centraliza o bloco */
 }
-
 #feedback label {
   display: block;
   text-align: left;
   /* força alinhamento à esquerda */
   margin-bottom: 5px;
 }
-
 #feedback input,
 #feedback textarea {
   width: 100%;
   padding: 0.6rem;
 }
-
 #feedback button {
   display: block;
   margin: 20px auto 0 auto;
 }
-
 #feedback fieldset {
   width: 100%;
   max-width: 500px;
   background-color: #716f357a;
 }
-
 /*login*/
-
 #main_divisao_ld {
   display: flex;
   width: 100%;
   height: 100vh;
 }
-
 /*esquerdapt*/
 #esquerda {
   width: 50%;
@@ -309,7 +268,6 @@ button {
   justify-content: center;
   align-items: center;
 }
-
 /*direitapl*/
 #direita {
   width: 50%;
@@ -320,33 +278,27 @@ button {
   justify-content: center;
   align-items: center;
 }
-
 #img_logo_login img {
   width: 80%;
   max-width: 1000px;
 }
-
 #img_logoflu_login {
   margin-bottom: 15px;
 }
-
 #img_logoflu_login img {
   width: 300px;
 }
-
 #direita h1 {
   color: #f2e9e1;
   margin-bottom: 20px;
   font-size: 32px;
 }
-
 #direita label {
   width: 300px;
   text-align: left;
   font-size: 24px;
   margin-bottom: 5px;
 }
-
 #input_email_login,
 #input_senha_login {
   width: 300px;
@@ -357,28 +309,22 @@ button {
   margin-bottom: 20px;
   color: #804256;
 }
-
 #input_email_login::placeholder,
 #input_senha_login::placeholder {
   color: #804256;
 }
-
 #input_email_login:focus,
 #input_senha_login:focus {
   outline: none;
   background-color: #f0c3b8;
 }
-
 .hrefs {
   color: #716f35;
 }
-
 /* cadastro */
-
 #section_total_cadastro {
   margin-top: 2rem;
 }
-
 #img_logoflu_cadastro {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -386,18 +332,15 @@ button {
   align-items: center;
   justify-content: center;
 }
-
 #img_logoflu_cadastro img {
   width: 200px;
 }
-
 #h1_cadastro {
   font-weight: 300;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
 #label_nome,
 #label_email,
 #label_telefone,
@@ -409,7 +352,6 @@ button {
   margin-bottom: 0px;
   width: 250px;
 }
-
 #input_nome,
 #input_email,
 #input_telefone,
@@ -422,14 +364,12 @@ button {
   margin-bottom: 0px;
   color: #804256;
 }
-
 #input_nome::placeholder,
 #input_email::placeholder,
 #input_telefone::placeholder,
 #input_senha::placeholder {
   color: #804256;
 }
-
 #input_nome:focus,
 #input_email:focus,
 #input_telefone:focus,
@@ -437,21 +377,18 @@ button {
   outline: none;
   background-color: #f0c3b8;
 }
-
 #section_cadastro {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-
 .ftichome img {
   width: 30px;
   display: block;
   float: left;
   margin: 0px;
 }
-
 #aulas {
   display: flex;
   align-items: center;
@@ -461,7 +398,6 @@ button {
   margin-bottom: 30px;
   font-size: 30px;
 }
-
 .card-aula {
   min-width: 200px;
   height: 100px;
@@ -475,24 +411,20 @@ button {
   flex-shrink: 0;
   user-select: none;
 }
-
 .roxo { background-color: #804256; }
 .verde { background-color: #716f35; }
 .marrom { background-color: #a56940; }
 .amarelo { background-color: #eccc6e; }
-
 #section_aulas {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
-
 .hrefs_au {
   color: #f2e9e1;
   text-decoration: none;
 }
-
 .carrossel {
   display: flex;
   gap: 20px;
@@ -501,14 +433,11 @@ button {
   padding: 20px;
   margin: 0px;
 }
-
 .carrossel:active {
   cursor: grabbing;
   margin: 0px;
 }
-
 /*esqueciMINHASENHA*/
-
 #input_email_esqueci,
 #input_senha_esqueci,
 #input_senha_esqueci1 {
@@ -520,55 +449,187 @@ button {
   margin-bottom: 15px;
   color: #804256;
 }
-
 #input_email_esqueci::placeholder,
 #input_senha_esqueci::placeholder,
 #input_senha_esqueci1::placeholder {
   color: #804256;
 }
-
 #input_email_esqueci:focus,
 #input_senha_esqueci:focus,
 #input_senha_esqueci1:focus {
   outline: none;
   background-color: #f0c3b8;
 }
-
 .hrefs {
   color: #716f35;
 }
-
-/* CHATBOT */
-
-#chatbot {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background: #804256;
-  color: #f2e9e1;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
+/* chatbot */
 #chatbot-icon {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 70px;
-  height: 70px;
-  background-color: #716f35;
+  bottom: 25px;
+  right: 25px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #804256, #a56940, #716f35);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 999;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+  
+  animation: flutuar 3s ease-in-out infinite;
+  transition: all 0.4s ease;
 }
 
-#chatbot-icon img {
-  width: 40px;
+#chatbot-icon:hover{
+  transform: scale(1.12) rotate(8deg);
+  box-shadow: 0px 15px 40px rgba(0,0,0,0.45);
+}
+
+#chatbot-icon img{
+  width: 45px;
+  filter: brightness(0) invert(1);
+}
+
+/* aura pulsante */
+#chatbot-icon::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(236,204,110,0.3);
+  animation: pulseGlow 2s infinite;
+  z-index: -1;
+}
+
+/* caixa principal */
+#chatbot{
+  position: fixed;
+  bottom: 130px;
+  right: 30px;
+  width: 360px;
+  height: 480px;
+  background: rgba(128,66,86,0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  box-shadow: 
+      0 20px 60px rgba(0,0,0,0.4),
+      inset 0 0 20px rgba(255,255,255,0.05);
+
+  animation: abrirChat 0.6s ease;
+}
+
+/* header */
+.chat-header{
+  background: linear-gradient(90deg,#804256,#a56940);
+  padding: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #f2e9e1;
+  letter-spacing: 1px;
+}
+
+/* área de mensagens */
+#chat-box{
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 18px;
+  color: #f2e9e1;
+  line-height: 1.5;
+}
+
+/* botões */
+#chat-options{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#chat-options button{
+  background: linear-gradient(135deg,#716f35,#a56940);
+  color: #f2e9e1;
+  border: none;
+  padding: 14px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* efeito muito bonito no hover */
+#chat-options button:hover{
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+}
+
+/* efeito click */
+#chat-options button:active{
+  transform: scale(0.95);
+}
+/* brilho passando */
+#chat-options button::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+  transition: 0.6s;
+}
+#chat-options button:hover::before{
+  left: 120%;
+}
+/* scrollbar personalizada */
+#chat-box::-webkit-scrollbar{
+  width: 8px;
+}
+#chat-box::-webkit-scrollbar-thumb{
+  background: #eccc6e;
+  border-radius: 20px;
+}
+/* RESPONSIVO */
+@media(max-width:768px){
+  #chatbot{
+      width: 90%;
+      right: 5%;
+      height: 420px;
+  }
+  #chatbot-icon{
+      width: 70px;
+      height: 70px;
+  }
+}
+/* animação flutuando */
+@keyframes flutuar{
+  0%{transform: translateY(0px);}
+  50%{transform: translateY(-10px);}
+  100%{transform: translateY(0px);}
+}
+/* aura */
+@keyframes pulseGlow{
+  0%{transform: scale(1);opacity: 1;}
+  100%{transform: scale(1.5);opacity: 0;}
+}
+/* abertura do chat */
+@keyframes abrirChat{
+  from{opacity: 0;transform: translateY(50px) scale(0.8);}
+  to{opacity: 1;transform: translateY(0px) scale(1);}
 }
 
 /* animações */

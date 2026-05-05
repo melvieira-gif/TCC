@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const porta = 3000;
 
 const cors = require("cors");
 const conexao = require("./db.js");
@@ -320,12 +319,7 @@ app.get("/aulas", async (req, res) => {
     res.json(dados);
 });
 
-/* =========================
-   START
-========================= */
-app.listen(porta, () => {
-    console.log(`Servidor rodando na porta ${porta}`);
-});
+
 
 /* =========================
    LISTAR FEEDBACKS (ADMIN)
@@ -444,4 +438,92 @@ app.delete("/feedbacks/:id", verificarToken, async (req, res) => {
         });
     }
 });
+// =====================================================
+// VIDEOAULAS
+// =====================================================
 
+// LISTAR (com nome da matéria)
+app.get('/videoaulas', async (req, res) => {
+    try {
+        const [rows] = await pool.execute(`
+            SELECT 
+                v.id_videoAulas,
+                v.nomeVAulas,
+                v.descricao,
+                v.link_video,
+                v.id_materia,
+                a.materia
+            FROM videoaulas v
+            LEFT JOIN aulas a ON v.id_materia = a.id_aula
+            ORDER BY v.id_videoAulas DESC
+        `);
+
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+// CADASTRAR
+app.post('/videoaulas', async (req, res) => {
+    try {
+        const { nomeVAulas, descricao, link_video, id_materia } = req.body;
+
+        const [result] = await pool.execute(`
+            INSERT INTO videoaulas (nomeVAulas, descricao, link_video, id_materia)
+            VALUES (?, ?, ?, ?)
+        `, [nomeVAulas, descricao, link_video, id_materia]);
+
+        res.status(201).json({
+            message: "Videoaula criada",
+            id: result.insertId
+        });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+// EDITAR
+app.put('/videoaulas/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nomeVAulas, descricao, link_video, id_materia } = req.body;
+
+        await pool.execute(`
+            UPDATE videoaulas
+            SET nomeVAulas=?, descricao=?, link_video=?, id_materia=?
+            WHERE id_videoAulas=?
+        `, [nomeVAulas, descricao, link_video, id_materia, id]);
+
+        res.json({ message: "Atualizado com sucesso" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+// EXCLUIR
+app.delete('/videoaulas/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await pool.execute(
+            'DELETE FROM videoaulas WHERE id_videoAulas=?',
+            [id]
+        );
+
+        res.json({ message: "Deletado com sucesso" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+});

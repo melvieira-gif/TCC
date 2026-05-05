@@ -38,6 +38,7 @@
                 <img src="/front/img/logo.svg" alt="Chat">
             </section>
             <section id="chatbot">
+                <div class="chat-header">StarBot</div>
                 <div id="chat-box"></div>
                 <div id="chat-options"></div>
             </section>
@@ -79,17 +80,24 @@
         });
         const chatBox = document.getElementById("chat-box");
         const chatOptions = document.getElementById("chat-options");
-
         chatBox.innerHTML = `
             <p>Olá, eu sou o StarBot.</p>
             <p>Como posso te ajudar?</p>
         `;
 
         chatOptions.innerHTML = `
-            <button>Resumo da aula</button>
-            <button>Não entendi esse conteúdo</button>
-            <button>Próxima aula</button>
+            <button onclick="mostrarResumo(this)">Resumo</button>
+            <button onclick="mostrarDuvida(this)">Reexplicação</button>
+            <button onclick="proximaAula(this)">Próximo</button>
         `;
+        function animarBotao(botao){
+            botao.style.transform = "scale(0.90)";
+            botao.style.boxShadow = "0px 0px 20px #eccc6e";
+            setTimeout(() => {
+                botao.style.transform = "scale(1)";
+                botao.style.boxShadow = "none";
+            }, 300);
+        }
     </script>
 </body>
 </html>
