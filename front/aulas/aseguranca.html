@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança da Informação</title>
+    <link rel="stylesheet" href="/front/style.css">
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
+</head>
+<body id="body_index_cadastro">
+    <header id="header_index_cadastro">
+        <figure class="logo">
+            <a href="/front/index.html" target="_self" class="hrefs"><img src="/front/img/logo.svg" alt="LOGOTIPO StarDev" href="/front/index.html"></a>
+        </figure>
+        <nav>
+            <figure class="ftichome">
+                <a href="/front/aulas.html" target="_self" class="hrefs"><img src="/front/img/home.svg" alt="ICONE HOME.SVG"></a>
+            </figure>
+        </nav>
+    </header>
+    <main>
+        <section class="carrossel-container">
+            <section class="carrossel drag">
+                <p class="card-aula roxo"><a href="/front/aulas/afundamentos.html" target="_blank" class="hrefs_au">Fundamentos da Programação</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/alogica.html" target="_blank" class="hrefs_au">Lógica de Programação</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/aweb.html" target="_blank" class="hrefs_au">Desenvolvimento Web</a></p>
+                <p class="card-aula amarelo"><a href="/front/aulas/afront.html" target="_blank" class="hrefs_au">Front-end</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/aback.html" target="_blank" class="hrefs_au">Back-end</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/adb.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/aprojetos.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
+                <p class="card-aula amarelo"><a href="/front/aulas/aseguranca.html" target="_blank"class="hrefs_au">Segurança da Informação</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/alimpo.html" target="_blank"class="hrefs_au">Código Limpo</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/amobile.html" target="_blank" class="hrefs_au">Desenvolvimento Mobile</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/arede.html" target="_blank" class="hrefs_au">Redes e IOT</a></p>
+                <p class="card-aula amarelo"><a href="/front/aulas/alinguagens.html" target="_blank" class="hrefs_au">Linguagem de Programação</a></p>
+            </section>
+        </section>
+        <section>
+            <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/8Bhly6Mr9Oc?si=RSzyzDerT6PXUfJB" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+            </iframe>
+        </section>
+    </main>
+    <script>
+        const carrossel = document.querySelector('.drag');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        carrossel.addEventListener('mousedown', (e) => {
+          isDown = true;
+          carrossel.classList.add('active');
+          startX = e.pageX - carrossel.offsetLeft;
+          scrollLeft = carrossel.scrollLeft;
+        });
+        carrossel.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+        carrossel.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+        carrossel.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - carrossel.offsetLeft;
+          const walk = (x - startX) * 2; // velocidade
+          carrossel.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>

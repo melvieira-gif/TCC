@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrativa</title>
     <link rel="stylesheet" href="/front/style.css">
-
-
-    <script>
-        const token = localStorage.getItem("token");
-        const nivel = localStorage.getItem("nivel");
-
-        if(!token || nivel !== "A"){
-            alert("Acesso negado");
-            window.location.href = "../login.html";
-        }
-    </script>
-
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
 </head>
 <body>
     <h1>Área Administrativa</h2>
+        <script>
+            const token = localStorage.getItem("token");
+            const nivel = localStorage.getItem("nivel");
+            if (!token || nivel !== "A") {
+                alert("Acesso negado");
+                window.location.href = "../login.html";
+            }
+        </script>
 </body>
-
 </html>
