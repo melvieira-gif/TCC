@@ -443,13 +443,7 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: #716f356b;
-  padding: 40px;
-  margin: 10px;
-  height: 40rem; */
 }
-
-/* aulas1 */
 
 .ftichome img {
   width: 30px;
@@ -499,8 +493,6 @@ button {
   text-decoration: none;
 }
 
-/* aulaback */
-
 .carrossel {
   display: flex;
   gap: 20px;
@@ -515,79 +507,7 @@ button {
   margin: 0px;
 }
 
-#afd,
-#aback,
-#acl {
-  min-width: 200px;
-  height: 100px;
-  background-color: #804256;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  border-radius: 5px;
-  font-size: 12px;
-  flex-shrink: 0;
-  padding: 10px;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#alg,
-#adb,
-#adm {
-  min-width: 200px;
-  height: 100px;
-  background-color: #716f35;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  font-size: 12px;
-  padding: 10px;
-  border-radius: 5px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#adw,
-#aps,
-#ariot {
-  min-width: 200px;
-  height: 100px;
-  background-color: #a56940;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  color: #f2e9e1;
-  border-radius: 5px;
-  font-size: 12px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#afront,
-#asi,
-#alp {
-  min-width: 200px;
-  height: 100px;
-  padding: 10px;
-  font-size: 12px;
-  background-color: #eccc6e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  border-radius: 5px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-/*esqueci*/
+/*esqueciMINHASENHA*/
 
 #input_email_esqueci,
 #input_senha_esqueci,
@@ -616,6 +536,39 @@ button {
 
 .hrefs {
   color: #716f35;
+}
+
+/* CHATBOT */
+
+#chatbot {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: #804256;
+  color: #f2e9e1;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+#chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  background-color: #716f35;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#chatbot-icon img {
+  width: 40px;
 }
 
 /* animações */
@@ -740,4 +693,14 @@ button:hover {
 /* estado virado */
 .card-inner.virado {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  #section_aulas {
+    flex-direction: column;
+  }
+
+  .card-aula {
+    width: 100%;
+  }
 }
