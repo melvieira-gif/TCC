@@ -312,8 +312,6 @@ app.put("/usuario", verificarToken, async (req, res) => {
     }
 });
 
-
-
 /* =========================
    listar aulas
 ========================= */
@@ -322,10 +320,39 @@ app.get("/aulas", async (req, res) => {
     res.json(dados);
 });
 
-
 /* =========================
    START
 ========================= */
 app.listen(porta, () => {
     console.log(`Servidor rodando na porta ${porta}`);
+});
+
+/* =========================
+   LISTAR FEEDBACKS
+========================= */
+app.get("/feedbacks", verificarToken, async (req, res) => {
+    try {
+
+        if(req.usuario.nivel !== "A"){
+            return res.status(403).json({
+                resposta: "Acesso negado"
+            })
+        }
+
+        const sql = `
+            SELECT id_contato, nome, email, comentario
+            FROM contato
+            ORDER BY id_contato DESC
+        `;
+
+        const [dados] = await conexao.query(sql);
+
+        res.json(dados);
+
+    } catch(error){
+        console.log(error);
+        res.status(500).json({
+            erro: "Erro ao buscar feedbacks"
+        });
+    }
 });
