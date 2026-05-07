@@ -85,25 +85,39 @@
                 aulas.forEach(aula => {
 
                     // cria uma div para cada aula
-                    const card = document.createElement("div");
 
                     // coloca o conteúdo dentro da div
                     // ⚠️ usa os nomes que vêm do banco:
                     // materia, duracao, qtd_aulas, id_aula
-                    card.innerHTML = `
-                    <h3>${aula.materia}</h3>
-                    <p>Duração: ${aula.duracao}</p>
-                    <p>Quantidade de aulas: ${aula.qtd_aulas}</p>
-    
-                    <!-- botão editar -->
-                    <button onclick="editar(${aula.id_aula})">Editar</button>
-    
-                    <!-- botão excluir -->
-                    <button onclick="deletar(${aula.id_aula})">Excluir</button>
-                `;
+                     const card = document.createElement("div");
 
-                    // adiciona no HTML
-                    div.appendChild(card);
+                    card.innerHTML = `
+
+                        <h3>${aula.nomeVAulas}</h3>
+
+                        <p>${aula.descricao}</p>
+
+                        <iframe
+                            width="400"
+                            height="220"
+                            src="${aula.link_video}"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+
+                            <br><br>
+
+                            <button onclick="editar(${aula.id_videoAulas})">
+                                Editar
+                            </button>
+
+                            <button onclick="deletar(${aula.id_videoAulas})">
+                                Excluir
+                            </button>
+                        `;
+
+                        // adiciona no HTML
+                        div.appendChild(card);
                 });
 
             } catch (erro) {
@@ -139,7 +153,7 @@
 
             try {
                 // envia requisição DELETE para o backend
-                const res = await fetch(`http://10.111.9.174:3000/aulas/${id}`, {
+                const res = await fetch(`http://10.111.9.174:3000/videoaulas/${id}`, {
                     method: "DELETE",
                     headers: {
                         "Authorization": "Bearer " + token

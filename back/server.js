@@ -442,7 +442,7 @@ app.delete('/videoaulas/:id', async (req, res) => {
         const { id } = req.params;
 
         await conexao.query(
-            'DELETE FROM videoaulas WHERE id_videoAulas=?',
+            'DELETE FROM materias WHERE id_videoAulas=?',
             [id]
         );
 
