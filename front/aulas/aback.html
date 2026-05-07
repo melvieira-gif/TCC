@@ -38,7 +38,13 @@
                 <p class="card-aula marrom"><a href="/front/aulas/arede.html" target="_blank" class="hrefs_au">Redes e IOT</a></p>
                 <p class="card-aula amarelo"><a href="/front/aulas/alinguagens.html" target="_blank" class="hrefs_au">Linguagem de Programação</a></p>
             </section>
-            <section id="listaAulas"></section>
+            <section id="listaAulas">
+               <div class="card-video">
+                    <h3 class="titulovideo"></h3>
+                    <p class="descricaovideo"></p>
+                    <iframe src="https://www.youtube.com/watch?v=YIvGf2IjaXI" frameborder="0" allowfullscreen></iframe>
+               </div> 
+            </section>
             <!-- CHATBOT -->
             <section id="chatbot-icon">
                 <img src="/front/img/logo.svg" alt="DevMentor">
@@ -160,21 +166,25 @@
                 const filtradas = data.filter(
                     a => a.materia === MATERIA
                 );
-                filtradas.forEach(aula => {
+                for (const aula of filtradas) {
+                    const videoId = aula.link.split("v=")[1];
+                    // pega dados automáticos do youtube
+                    const ytRes = await fetch(
+                        `https://www.youtube.com/oembed?url=${aula.link}&format=json`
+                    );
+                    const ytData = await ytRes.json();
                     lista.innerHTML += `
                         <div class="card-video">
-                            <h3>${aula.nome_aulas}</h3>
-                            <p>${aula.descricao}</p>
+                            <h3>${ytData.title}</h3>
+                            <p>Canal: ${ytData.author_name}</p>
                             <iframe
-                                width="300"
-                                height="200"
-                                src="${aula.link.replace("watch?v=", "embed/")}"
+                                src="https://www.youtube.com/embed/${videoId}"
                                 frameborder="0"
                                 allowfullscreen>
                             </iframe>
                         </div>
                     `;
-                });
+                }
             } catch (erro) {
                 console.log(erro);
                 lista.innerHTML = `
