@@ -2,7 +2,7 @@
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.10.0.7000
+-- HeidiSQL Versão:              12.12.0.7122
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,18 +33,18 @@ CREATE TABLE IF NOT EXISTS `aulas` (
 -- Copiando dados para a tabela stardev.aulas: ~12 rows (aproximadamente)
 DELETE FROM `aulas`;
 INSERT INTO `aulas` (`id_aula`, `materia`, `duracao`, `qtd_aulas`) VALUES
-	(1, 'Back-End', '1hora', 12),
+	(1, 'Back-End', '1hora', 10),
 	(2, 'FundamentosProgramacao', '1hora', 10),
 	(3, 'LogicaProgramacao', '1hora', 10),
-	(4, 'DesenvolvimentoWeb', '1hora', 11),
-	(5, 'Front-End', '1hora', 11),
+	(4, 'DesenvolvimentoWeb', '1hora', 10),
+	(5, 'Front-End', '1hora', 10),
 	(6, 'BancoDados', '1hora', 10),
-	(7, 'ProjetoSoftware', '1hora', 12),
-	(8, 'SegurancaInformacao', '1hora', 12),
-	(9, 'CodigoLimpo', '1hora', 12),
-	(10, 'DesenvolvimentoMobile', '1hora', 13),
+	(7, 'ProjetoSoftware', '1hora', 10),
+	(8, 'SegurancaInformacao', '1hora', 10),
+	(9, 'CodigoLimpo', '1hora', 10),
+	(10, 'DesenvolvimentoMobile', '1hora', 10),
 	(11, 'RedesIOT', '1hora', 10),
-	(12, 'LinguagemProgramacao', '1hora', 12);
+	(12, 'LinguagemProgramacao', '1hora', 10);
 
 -- Copiando estrutura para tabela stardev.cadastro
 DROP TABLE IF EXISTS `cadastro`;

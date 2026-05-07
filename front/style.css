@@ -541,6 +541,125 @@ button {
   transform: scale(1.05);
 }
 
+/* continuação... */
+/*VIDEOAULAS*/
+
+#listaAulas{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px;
+}
+.card-video{
+  width: 320px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  padding: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.card-video:hover{
+  transform: translateY(-5px);
+}
+.card-video h3{
+  color: #f2e9e1;
+  margin-bottom: 10px;
+}
+.card-video p{
+  color: #f2e9e1;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+.card-video iframe{
+  width: 100%;
+  border-radius: 10px;
+}
+/*CHATBOT*/
+#chatbot-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+  transition: 0.3s;
+}
+#chatbot-icon:hover{
+  transform: scale(1.1);
+}
+#chatbot-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#chatbot{
+  position: fixed;
+  bottom: 110px;
+  right: 25px;
+  width: 260px;
+  padding: 18px;
+  background: rgba(113,111,53,0.95);
+  border-radius: 18px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  animation: abrirChat 0.4s ease;
+}
+.chat-header{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#chat-box{
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+#chat-options{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#chat-options button{
+  background: #804256;
+  color: #f2e9e1;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#chat-options button:hover{
+  background: #a56940;
+  transform: scale(1.05);
+}
+@keyframes abrirChat{
+  from{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 /* animações */

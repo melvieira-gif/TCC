@@ -373,14 +373,11 @@ app.delete("/feedbacks/:id", verificarToken, async (req, res) => {
         });
     }
 });
-// =====================================================
 // VIDEOAULAS
-// =====================================================
-
 // LISTAR (com nome da matéria)
 app.get('/videoaulas', async (req, res) => {
     try {
-        const [rows] = await pool.execute(`
+        const [rows] = await conexao.query(`
             SELECT 
                 v.id_videoAulas,
                 v.nomeVAulas,
@@ -404,7 +401,7 @@ app.post('/videoaulas', async (req, res) => {
     try {
         const { nomeVAulas, descricao, link_video, id_materia } = req.body;
 
-        const [result] = await pool.execute(`
+        const [result] = await conexao.query(`
             INSERT INTO videoaulas (nomeVAulas, descricao, link_video, id_materia)
             VALUES (?, ?, ?, ?)
         `, [nomeVAulas, descricao, link_video, id_materia]);
@@ -425,7 +422,7 @@ app.put('/videoaulas/:id', async (req, res) => {
         const { id } = req.params;
         const { nomeVAulas, descricao, link_video, id_materia } = req.body;
 
-        await pool.execute(`
+        await conexao.query(`
             UPDATE videoaulas
             SET nomeVAulas=?, descricao=?, link_video=?, id_materia=?
             WHERE id_videoAulas=?
@@ -444,7 +441,7 @@ app.delete('/videoaulas/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
-        await pool.execute(
+        await conexao.query(
             'DELETE FROM videoaulas WHERE id_videoAulas=?',
             [id]
         );
