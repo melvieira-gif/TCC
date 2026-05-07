@@ -27,7 +27,7 @@
             const nome = document.getElementById("nome").value;
             const email = document.getElementById("email").value;
             const comentario = document.getElementById("comentario").value;
-            await fetch(`http://10.111.9.174:3000/feedbacks/${id}`, {
+            await fetch(`http://192.168.2.66:3000/feedbacks/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
