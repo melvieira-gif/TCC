@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,15 @@
 <body id="body_index_cadastro">
     <header id="header_index_cadastro">
         <figure class="logo">
-            <a href="/front/index.html" target="_self" class="hrefs"><img src="/front/img/logo.svg"alt="LOGOTIPO StarDev" href="/front/index.html"></a>
+            <a href="/front/index.html" target="_self" class="hrefs">
+                <img src="/front/img/logo.svg" alt="LOGOTIPO StarDev">
+            </a>
         </figure>
         <nav>
             <figure class="ftichome">
-                <a href="/front/aulas.html" target="_self" class="hrefs"><img src="/front/img/home.svg" alt="ICONE HOME.SVG"></a>
+                <a href="/front/aulas.html" target="_self" class="hrefs">
+                    <img src="/front/img/home.svg" alt="ICONE HOME">
+                </a>
             </figure>
         </nav>
     </header>
@@ -27,15 +31,17 @@
                 <p class="card-aula amarelo"><a href="/front/aulas/afront.html" target="_blank" class="hrefs_au">Front-end</a></p>
                 <p class="card-aula roxo"><a href="/front/aulas/aback.html" target="_blank" class="hrefs_au">Back-end</a></p>
                 <p class="card-aula verde"><a href="/front/aulas/adb.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
-                <p class="card-aula marrom"><a href="/front/aulas/aprojetos.html" target="_blank" class="hrefs_au">Banco de Dados</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/aprojetos.html" target="_blank" class="hrefs_au">Projetos</a></p>
                 <p class="card-aula amarelo"><a href="/front/aulas/aseguranca.html" target="_blank" class="hrefs_au">Segurança da Informação</a></p>
                 <p class="card-aula roxo"><a href="/front/aulas/alimpo.html" target="_blank" class="hrefs_au">Código Limpo</a></p>
-                <p class="card-aula verde"><a href="/front/aulas/amobile.html" target="_blank"class="hrefs_au">Desenvolvimento Mobile</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/amobile.html" target="_blank" class="hrefs_au">Desenvolvimento Mobile</a></p>
                 <p class="card-aula marrom"><a href="/front/aulas/arede.html" target="_blank" class="hrefs_au">Redes e IOT</a></p>
                 <p class="card-aula amarelo"><a href="/front/aulas/alinguagens.html" target="_blank" class="hrefs_au">Linguagem de Programação</a></p>
             </section>
+            <section id="listaAulas"></section>
+            <!-- CHATBOT -->
             <section id="chatbot-icon">
-                <img src="/front/img/logo.svg" alt="Chat">
+                <img src="/front/img/logo.svg" alt="DevMentor">
             </section>
             <section id="chatbot">
                 <div class="chat-header">DevMentor</div>
@@ -45,13 +51,13 @@
         </section>
     </main>
     <script>
+        // CARROSSEL
         const carrossel = document.querySelector('.drag');
         let isDown = false;
         let startX;
         let scrollLeft;
         carrossel.addEventListener('mousedown', (e) => {
             isDown = true;
-            carrossel.classList.add('active');
             startX = e.pageX - carrossel.offsetLeft;
             scrollLeft = carrossel.scrollLeft;
         });
@@ -65,30 +71,56 @@
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - carrossel.offsetLeft;
-            const walk = (x - startX) * 2; // velocidade
+            const walk = (x - startX) * 2;
             carrossel.scrollLeft = scrollLeft - walk;
         });
+        // CHATBOT
         const icon = document.getElementById("chatbot-icon");
         const bot = document.getElementById("chatbot");
         bot.style.display = "none";
         icon.addEventListener("click", () => {
             if (bot.style.display === "none") {
-                bot.style.display = "block";
+                bot.style.display = "flex";
             } else {
                 bot.style.display = "none";
             }
         });
         const chatBox = document.getElementById("chat-box");
         const chatOptions = document.getElementById("chat-options");
+        const MATERIA = "Back-End";
+        const conteudos = {
+            "Back-End": {
+                resumo: `
+                Back-end é responsável pela lógica do sistema,
+                banco de dados, APIs e autenticação.
+                `,
+
+                duvida: `
+                O back-end funciona como o cérebro do sistema.
+                Ele processa tudo no servidor.
+                `,
+                proxima: "Banco de Dados"
+            }
+        };
         chatBox.innerHTML = `
-            <p>Olá! Eu sou o DevMentor.<br>Fui programado para te ajudar</p>
+            <p>
+                Olá! Eu sou o DevMentor.
+                <br>
+                Fui programado para te ajudar.
+            </p>
         `;
         chatOptions.innerHTML = `
-            <button onclick="mostrarResumo(this)">Resumo</button>
-            <button onclick="mostrarDuvida(this)">Reexplicar</button>
-            <button onclick="proximaAula(this)">> Aula</button>
+            <button onclick="mostrarResumo(this)">
+                Resumo
+            </button>
+            <button onclick="mostrarDuvida(this)">
+                Reexplicar
+            </button>
+            <button onclick="proximaAula(this)">
+                Próxima Aula
+            </button>
         `;
-        function animarBotao(botao){
+        function animarBotao(botao) {
             botao.style.transform = "scale(0.90)";
             botao.style.boxShadow = "0px 0px 20px #eccc6e";
             setTimeout(() => {
@@ -96,29 +128,60 @@
                 botao.style.boxShadow = "none";
             }, 300);
         }
+        function mostrarResumo(botao) {
+            animarBotao(botao);
+            chatBox.innerHTML = `
+                <p>${conteudos[MATERIA].resumo}</p>
+            `;
+        }
+        function mostrarDuvida(botao) {
+            animarBotao(botao);
+            chatBox.innerHTML = `
+                <p>${conteudos[MATERIA].duvida}</p>
+            `;
+        }
+        function proximaAula(botao) {
+            animarBotao(botao);
+            chatBox.innerHTML = `
+                <p>
+                    Próxima aula:
+                    <br><br>
+                    <strong>${conteudos[MATERIA].proxima}</strong>
+                </p>
+            `;
+        }
+        // VIDEOAULAS
         const API = "http://10.111.9.174:3000/videoaulas";
         const lista = document.getElementById("listaAulas");
-        const MATERIA = "Back-End";
         async function carregarAulas() {
-            const res = await fetch(API);
-            const data = await res.json();
-            lista.innerHTML = "";
-            const filtradas = data.filter(a => a.materia === MATERIA);
-
-            filtradas.forEach(aula => {
-                lista.innerHTML += `
-                    <div>
-                        <h3>${aula.nomeVAulas}</h3>
-                        <p>${aula.descricao}</p>
-
-                        <iframe width="300" height="200"
-                            src="${aula.link_video.replace("watch?v=", "embed/")}"
-                            frameborder="0"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+            try {
+                const res = await fetch(API);
+                const data = await res.json();
+                lista.innerHTML = "";
+                const filtradas = data.filter(
+                    a => a.materia === MATERIA
+                );
+                filtradas.forEach(aula => {
+                    lista.innerHTML += `
+                        <div class="card-video">
+                            <h3>${aula.nomeVAulas}</h3>
+                            <p>${aula.descricao}</p>
+                            <iframe
+                                width="300"
+                                height="200"
+                                src="${aula.link_video.replace("watch?v=", "embed/")}"
+                                frameborder="0"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    `;
+                });
+            } catch (erro) {
+                console.log(erro);
+                lista.innerHTML = `
+                    <p>Erro ao carregar videoaulas.</p>
                 `;
-            });
+            }
         }
         carregarAulas();
     </script>
