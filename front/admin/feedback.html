@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedbacks</title>
+    <link rel="stylesheet" href="/front/style.css">
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
+</head>
+<body id="body_index_cadastro">
+
+    <header id="header_index_cadastro">
+        <h2>Feedbacks Recebidos</h2>
+        <nav>
+            <a href="/front/admin/dashboard.html">Dashboard</a>
+            <a href="/front/admin/listarAulas.html">Aulas</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Comentário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="listaFeedbacks"></tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        async function carregarFeedbacks() {
+            const token = localStorage.getItem("token");
+            const nivel = localStorage.getItem("nivel");
+            if (nivel !== "A") {
+                alert("Acesso negado");
+                window.location.href = "/front/login.html";
+                return;
+            }
+            const resposta = await fetch("http://10.111.9.174:3000/feedbacks", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const dados = await resposta.json();
+            const tabela = document.getElementById("listaFeedbacks");
+            tabela.innerHTML = "";
+            dados.forEach(feedback => {
+                tabela.innerHTML += `
+            <tr>
+                <td>${feedback.id_contato}</td>
+                <td>${feedback.nome}</td>
+                <td>${feedback.email}</td>
+                <td>${feedback.comentario}</td>
+                <td>
+                    <button onclick="editar(${feedback.id_contato})">
+                        Editar
+                    </button>
+                    <button onclick="excluirFeedback(${feedback.id_contato})">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        `;
+            });
+        }
+        function editar(id) {
+            window.location.href = `./editar.html?id=${id}`;
+        }
+        async function excluirFeedback(id) {
+            const token = localStorage.getItem("token");
+            await fetch(`http://10.111.9.174:3000/feedbacks/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            carregarFeedbacks();
+        }
+        carregarFeedbacks();
+    </script>
+</body>
+</html>

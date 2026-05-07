@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro-StarDev</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro-StarDev</title>
+  <link rel="stylesheet" href="/front/style.css">
+  <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
 </head>
 <body id="body_index_cadastro">
     <header id="header_index_cadastro">
         <figure class="logo">
-            <a href="index.html" target="_self" class="hrefs"><img src="logo.svg" alt="LOGOTIPO StarDev" href="index.html"></a>
+            <a href="/front/index.html" target="_self" class="hrefs"><img src="/front/img/logo.svg" alt="LOGOTIPO StarDev" href="/front/index.html"></a>
         </figure>
         <nav>
-            <a href="cadastro.html">CADASTRA-SE</a>
-            <a href="login.html">LOGIN</a>
+            <a href="/front/cadastro.html">CADASTRA-SE</a>
+            <a href="/front/login.html">LOGIN</a>
         </nav>
     </header>
     <main>
         <section id="section_total_cadastro">
             <section id="img_logoflu_cadastro">
                 <figure>
-                    <img src="logoflu.svg" alt="LOGOTIPO STARDEV" class="logoflu">
+                    <img src="/front/img/logoflu.svg" alt="LOGOTIPO STARDEV" class="logoflu">
                 </figure>
             </section>
             <section>
@@ -49,13 +49,13 @@
                     <br>
                     <button type="submit" class="button" id="btn_salvar_cadastro">Cadastrar</button>
                     <br>
-                    <p>Já tem uma conta? <a href="login.html" target="_self" class="hrefs">Clique aqui</a></p>
+                    <p>Já tem uma conta? <a href="/front/login.html" target="_self" class="hrefs">Clique aqui</a></p>
                 </section>
             </section>
         </section>
     </main>
     <footer id="footer_index_cadastro">
-        <p><a href="index.html" target="_self" class="hrefs"><strong>StarDev</strong></a></p>
+        <p><a href="/front/index.html" target="_self" class="hrefs"><strong>StarDev</strong></a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
     <script>
@@ -65,7 +65,7 @@
             const senha = document.getElementById("input_senha").value;
             const telefone = document.getElementById("input_telefone").value;
             try {
-                const resposta = await fetch("http://192.168.2.66:3000/cadastro", {
+                const resposta = await fetch("http://10.111.9.174:3000/cadastro", {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",

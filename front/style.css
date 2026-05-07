@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
 }
-
 #body_login {
   font-family: "Josefin Sans", sans-serif;
   background: #d19283;
@@ -25,7 +24,6 @@
   margin: 0px;
   padding: 0px;
 }
-
 .alerta {
   position: fixed;
   bottom: 30px;
@@ -40,12 +38,10 @@
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   z-index: 999;
 }
-
 .alerta.mostrar {
   opacity: 1;
   transform: translateY(0);
 }
-
 #header_index_cadastro {
   width: 100%;
   height: 100%;
@@ -60,20 +56,17 @@
   top: 0;
   z-index: 50;
 }
-
 .logo img {
   width: 60px;
   display: block;
   float: left;
   margin: 0px;
 }
-
 nav {
   display: flex;
   gap: 36px;
   align-items: center;
 }
-
 nav a {
   text-decoration: none;
   color: #f2e9e1;
@@ -82,12 +75,10 @@ nav a {
   letter-spacing: 0.6px;
   transition: color .2s, transform .15s;
 }
-
 nav a:hover {
   color: #db9a8f;
   transform: translateY(-1px);
 }
-
 .banner {
   width: 100%;
   height: 100%;
@@ -96,7 +87,6 @@ nav a:hover {
   margin: 0px;
   padding: 0px;
 }
-
 .banner img {
   width: 100%;
   height: 100%;
@@ -104,11 +94,9 @@ nav a:hover {
   /* mantém proporção e corta excesso */
   display: block;
 }
-
 figure {
   margin: 0px;
 }
-
 #home {
   text-align: center;
   font-size: 1.5rem;
@@ -117,7 +105,6 @@ figure {
   margin: 50px;
   line-height: 1.6;
 }
-
 #ftcriadoras {
   display: flex;
   justify-content: center;
@@ -129,7 +116,6 @@ figure {
   margin-left: 300px;
   margin-right: 300px;
 }
-
 .lauane,
 .melissa {
   width: 400px;
@@ -138,7 +124,6 @@ figure {
   margin: 10px;
   padding: 0px;
 }
-
 .lauane img,
 .melissa img {
   width: 100%;
@@ -148,14 +133,12 @@ figure {
   border-radius: 360px;
   border: 4px solid #a56940;
 }
-
 #descricao_ftcriadoras {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 150px;
 }
-
 #details_index {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -163,38 +146,31 @@ figure {
   border-radius: 5px;
   padding: 1rem;
 }
-
 #summary_index {
   color: #a56940;
   margin: 0.5rem;
   cursor: pointer;
 }
-
 #ol {
   margin: 1rem;
   color: #804256;
 }
-
 #ol li {
   padding: 0.2rem;
 }
-
 main {
   flex: 1;
 }
-
 fieldset {
   border: 4px solid #716f35;
   border-radius: 5px;
   padding: 2rem;
   margin: 10px;
 }
-
 legend {
   color: #804256;
   padding: 0.5rem;
 }
-
 textarea {
   outline: none;
   border-radius: 5px;
@@ -202,8 +178,6 @@ textarea {
   background-color: transparent;
   color: #804256;
 }
-
-
 input[type="text"],
 input[type="email"] {
   width: 100%;
@@ -215,21 +189,18 @@ input[type="email"] {
   color: #804256;
 
 }
-
 input::placeholder {
   color: #804256;
   font-family: "Josefin Sans", sans-serif;
   font-style: oblique;
 
 }
-
 textarea::placeholder {
   color: #804256;
   font-style: oblique;
   font-family: "Josefin Sans", sans-serif;
   padding: 0.6rem;
 }
-
 button {
   background-color: #716f35;
   border: none;
@@ -238,22 +209,18 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-
 #footer_index_cadastro {
   background-color: #804256;
   padding: 10px;
   text-align: center;
 }
-
 .paragrafo-footer {
   color: #f2e9e1
 }
-
 #footer_index_cadastro a {
   text-decoration: none;
   color: #db9a8f;
 }
-
 #name,
 #email {
   width: 500px;
@@ -261,45 +228,37 @@ button {
   display: block;
   margin: 0 auto;
 }
-
 #feedback {
   width: 500px;
   margin: 0 auto 20px auto;
   /* centraliza o bloco */
 }
-
 #feedback label {
   display: block;
   text-align: left;
   /* força alinhamento à esquerda */
   margin-bottom: 5px;
 }
-
 #feedback input,
 #feedback textarea {
   width: 100%;
   padding: 0.6rem;
 }
-
 #feedback button {
   display: block;
   margin: 20px auto 0 auto;
 }
-
 #feedback fieldset {
   width: 100%;
   max-width: 500px;
   background-color: #716f357a;
 }
-
 /*login*/
-
 #main_divisao_ld {
   display: flex;
   width: 100%;
   height: 100vh;
 }
-
 /*esquerdapt*/
 #esquerda {
   width: 50%;
@@ -309,7 +268,6 @@ button {
   justify-content: center;
   align-items: center;
 }
-
 /*direitapl*/
 #direita {
   width: 50%;
@@ -320,33 +278,27 @@ button {
   justify-content: center;
   align-items: center;
 }
-
 #img_logo_login img {
   width: 80%;
   max-width: 1000px;
 }
-
 #img_logoflu_login {
   margin-bottom: 15px;
 }
-
 #img_logoflu_login img {
   width: 300px;
 }
-
 #direita h1 {
   color: #f2e9e1;
   margin-bottom: 20px;
   font-size: 32px;
 }
-
 #direita label {
   width: 300px;
   text-align: left;
   font-size: 24px;
   margin-bottom: 5px;
 }
-
 #input_email_login,
 #input_senha_login {
   width: 300px;
@@ -357,28 +309,22 @@ button {
   margin-bottom: 20px;
   color: #804256;
 }
-
 #input_email_login::placeholder,
 #input_senha_login::placeholder {
   color: #804256;
 }
-
 #input_email_login:focus,
 #input_senha_login:focus {
   outline: none;
   background-color: #f0c3b8;
 }
-
 .hrefs {
   color: #716f35;
 }
-
 /* cadastro */
-
 #section_total_cadastro {
   margin-top: 2rem;
 }
-
 #img_logoflu_cadastro {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -386,18 +332,15 @@ button {
   align-items: center;
   justify-content: center;
 }
-
 #img_logoflu_cadastro img {
   width: 200px;
 }
-
 #h1_cadastro {
   font-weight: 300;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
 #label_nome,
 #label_email,
 #label_telefone,
@@ -409,7 +352,6 @@ button {
   margin-bottom: 0px;
   width: 250px;
 }
-
 #input_nome,
 #input_email,
 #input_telefone,
@@ -422,14 +364,12 @@ button {
   margin-bottom: 0px;
   color: #804256;
 }
-
 #input_nome::placeholder,
 #input_email::placeholder,
 #input_telefone::placeholder,
 #input_senha::placeholder {
   color: #804256;
 }
-
 #input_nome:focus,
 #input_email:focus,
 #input_telefone:focus,
@@ -437,27 +377,18 @@ button {
   outline: none;
   background-color: #f0c3b8;
 }
-
 #section_cadastro {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: #716f356b;
-  padding: 40px;
-  margin: 10px;
-  height: 40rem; */
 }
-
-/* aulas1 */
-
 .ftichome img {
   width: 30px;
   display: block;
   float: left;
   margin: 0px;
 }
-
 #aulas {
   display: flex;
   align-items: center;
@@ -467,7 +398,6 @@ button {
   margin-bottom: 30px;
   font-size: 30px;
 }
-
 .card-aula {
   min-width: 200px;
   height: 100px;
@@ -481,26 +411,20 @@ button {
   flex-shrink: 0;
   user-select: none;
 }
-
 .roxo { background-color: #804256; }
 .verde { background-color: #716f35; }
 .marrom { background-color: #a56940; }
 .amarelo { background-color: #eccc6e; }
-
 #section_aulas {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
-
 .hrefs_au {
   color: #f2e9e1;
   text-decoration: none;
 }
-
-/* aulaback */
-
 .carrossel {
   display: flex;
   gap: 20px;
@@ -509,86 +433,11 @@ button {
   padding: 20px;
   margin: 0px;
 }
-
 .carrossel:active {
   cursor: grabbing;
   margin: 0px;
 }
-
-#afd,
-#aback,
-#acl {
-  min-width: 200px;
-  height: 100px;
-  background-color: #804256;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  border-radius: 5px;
-  font-size: 12px;
-  flex-shrink: 0;
-  padding: 10px;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#alg,
-#adb,
-#adm {
-  min-width: 200px;
-  height: 100px;
-  background-color: #716f35;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  font-size: 12px;
-  padding: 10px;
-  border-radius: 5px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#adw,
-#aps,
-#ariot {
-  min-width: 200px;
-  height: 100px;
-  background-color: #a56940;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  color: #f2e9e1;
-  border-radius: 5px;
-  font-size: 12px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-#afront,
-#asi,
-#alp {
-  min-width: 200px;
-  height: 100px;
-  padding: 10px;
-  font-size: 12px;
-  background-color: #eccc6e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f2e9e1;
-  border-radius: 5px;
-  flex-shrink: 0;
-  user-select: none;
-  /* evita selecionar texto ao arrastar */
-}
-
-/*esqueci*/
-
+/*esqueciMINHASENHA*/
 #input_email_esqueci,
 #input_senha_esqueci,
 #input_senha_esqueci1 {
@@ -600,26 +449,106 @@ button {
   margin-bottom: 15px;
   color: #804256;
 }
-
 #input_email_esqueci::placeholder,
 #input_senha_esqueci::placeholder,
 #input_senha_esqueci1::placeholder {
   color: #804256;
 }
-
 #input_email_esqueci:focus,
 #input_senha_esqueci:focus,
 #input_senha_esqueci1:focus {
   outline: none;
   background-color: #f0c3b8;
 }
-
 .hrefs {
   color: #716f35;
 }
+/* chatbot */
+#chatbot-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #804256, #a56940, #716f35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+  transition: 0.3s;
+}
+#chatbot-icon:hover{
+  transform: scale(1.1);
+}
+#chatbot-icon img{
+  width: 35px;
+  filter: brightness(0) invert(1);
+}
+/* CAIXA PRINCIPAL */
+#chatbot{
+  position: fixed;
+  bottom: 110px;
+  right: 25px;
+
+  width: 260px;              /* menor */
+  padding: 18px;             /* menos espaço interno */
+
+  background: rgba(113,111,53,0.95);
+  border-radius: 18px;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* sombra mais leve */
+}
+/* TÍTULO */
+.chat-header{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* TEXTO */
+#chat-box{
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+/* BOTÕES */
+#chat-options{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#chat-options button{
+  background: #804256;
+  color: #f2e9e1;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#chat-options button:hover{
+  background: #a56940;
+  transform: scale(1.05);
+}
+
+
 
 /* animações */
-
+/* chatbot */
+@keyframes abrirChat{
+  from{opacity: 0; transform: translateY(20px);}
+  to{opacity: 1; transform: translateY(0);}
+}
 /* CARDS */
 .card-criadora {
   background: #eccc6e;
@@ -740,4 +669,14 @@ button:hover {
 /* estado virado */
 .card-inner.virado {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  #section_aulas {
+    flex-direction: column;
+  }
+
+  .card-aula {
+    width: 100%;
+  }
 }

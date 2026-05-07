@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/front/style.css">
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
     <title>Login-StarDev</title>
 </head>
 <body id="body_login">
     <main id="main_divisao_ld">
         <section id="esquerda">
             <figure id="img_logo_login">
-                <a href="index.html" target="_self"><img src="logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
+                <a href="/front/index.html" target="_self"><img src="/front/img/logo.svg" alt="LOGO_LOGIN_ESQUERDA"></a>
             </figure>
         </section>
         <section id="direita">
             <figure id="img_logoflu_login">
-                <img src="logoflu.svg" alt="LOGO_LOGIN_DIREITA">
+                <img src="/front/img/logoflu.svg" alt="LOGO_LOGIN_DIREITA">
             </figure>
             <h1>Acesse a Plataforma</h1>
             <br>
@@ -25,46 +25,45 @@
             <br>
             <label for="senha_login" id="label_senha_login">Senha</label>
             <input type="password" id="input_senha_login" placeholder="Digite uma senha">
-            <p>Não tem cadastro ainda? <a href="cadastro.html" target="_self" class="hrefs">Clique aqui</a></p>
-            <p>Esqueci minha senha <a href="esqueci.html" target="_self" class="hrefs">Clique aqui</a></p>
+            <p>Não tem cadastro ainda? <a href="/front/cadastro.html" target="_self" class="hrefs">Clique aqui</a></p>
+            <p>Esqueci minha senha <a href="/front/esqueci.html" target="_self" class="hrefs">Clique aqui</a></p>
             <br><br>
             <button id="btn_login"><strong>Entrar</strong></button>
         </section>
     </main>
-</body>
-<script>
-    document.getElementById("btn_login").addEventListener("click", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("input_email_login").value;
-        const senha = document.getElementById("input_senha_login").value;
-        try {
-            const resposta = await fetch("http://192.168.2.66:3000/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email: email,
-                    senha: senha
-                })
-            });
-            const dados = await resposta.json();
-            if (dados.token) {
-                localStorage.setItem("token", dados.token);
-                localStorage.setItem("nivel", dados.nivel);
-                if (dados.nivel === "A") {
-                    window.location.href = "admin/admin.html";
+    <script>
+        document.getElementById("btn_login").addEventListener("click", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("input_email_login").value;
+            const senha = document.getElementById("input_senha_login").value;
+            try {
+                const resposta = await fetch("http://10.111.9.174:3000/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+                });
+                const dados = await resposta.json();
+                if (dados.token) {
+                    localStorage.setItem("token", dados.token);
+                    localStorage.setItem("nivel", dados.nivel);
+                    if (dados.nivel === "A") {
+                        window.location.href = "/front/admin/dashboard.html";
+                    } else {
+                        window.location.href = "/front/aulas.html";
+                    }
                 } else {
-                    window.location.href = "aulas.html";
+                    alert(dados.resposta);
                 }
-            } else {
-                alert(dados.resposta);
+            } catch (erro) {
+                console.log(erro);
+                alert("Erro ao conectar com o servidor.");
             }
-        } catch (erro) {
-            console.log(erro);
-            alert("Erro ao conectar com o servidor.");
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

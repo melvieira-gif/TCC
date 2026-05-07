@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise')
 //pool de conexao
 const pool = mysql.createPool({
     //criar as configurações do Banco De Dados
-    host:"192.168.2.66",
+    host:"10.111.9.174",
     user:"root",
     password:"",
     port:3306,

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="/front/style.css">
+    <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
+</head>
+<body id="body_index_cadastro">
+    <header id="header_index_cadastro">
+        <h2>Dashboard Administrativo</h2>
+        <nav>
+            <a href="/front/admin/feedback.html">Feedbacks</a>
+            <a href="/front/admin/admin.html">Aulas</a>
+            <a href="/front/index.html" onclick="logout()">Sair</a>
+        </nav>
+    </header>
+    <main style="text-align:center; padding:50px;">
+        <h1>Bem-vindo administrador</h1>
+        <p>Gerencie feedbacks e aulas da plataforma.</p>
+    </main>
+    <script>
+        const nivel = localStorage.getItem("nivel");
+        if (nivel !== "A") {
+            alert("Acesso negado");
+            window.location.href = "../login.html";
+        }
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("nivel");
+            window.location.href = "../login.html";
+        }
+    </script>
+</body>
+</html>
