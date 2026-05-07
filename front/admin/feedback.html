@@ -40,7 +40,7 @@
                 window.location.href = "/front/login.html";
                 return;
             }
-            const resposta = await fetch("http://192.168.2.66:3000/feedbacks", {
+            const resposta = await fetch("http://10.111.9.174:3000/feedbacks", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -72,7 +72,7 @@
         }
         async function excluirFeedback(id) {
             const token = localStorage.getItem("token");
-            await fetch(`http://192.168.2.66:3000/feedbacks/${id}`, {
+            await fetch(`http://10.111.9.174:3000/feedbacks/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`
