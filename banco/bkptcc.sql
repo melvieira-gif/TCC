@@ -2,7 +2,7 @@
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           10.4.32-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              12.12.0.7122
+-- HeidiSQL Versão:              12.10.0.7000
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,18 +33,18 @@ CREATE TABLE IF NOT EXISTS `aulas` (
 -- Copiando dados para a tabela stardev.aulas: ~12 rows (aproximadamente)
 DELETE FROM `aulas`;
 INSERT INTO `aulas` (`id_aula`, `materia`, `duracao`, `qtd_aulas`) VALUES
-	(1, 'Back-End', '1hora', 10),
+	(1, 'Back-End', '1hora', 12),
 	(2, 'FundamentosProgramacao', '1hora', 10),
 	(3, 'LogicaProgramacao', '1hora', 10),
-	(4, 'DesenvolvimentoWeb', '1hora', 10),
-	(5, 'Front-End', '1hora', 10),
+	(4, 'DesenvolvimentoWeb', '1hora', 11),
+	(5, 'Front-End', '1hora', 11),
 	(6, 'BancoDados', '1hora', 10),
-	(7, 'ProjetoSoftware', '1hora', 10),
-	(8, 'SegurancaInformacao', '1hora', 10),
-	(9, 'CodigoLimpo', '1hora', 10),
-	(10, 'DesenvolvimentoMobile', '1hora', 10),
+	(7, 'ProjetoSoftware', '1hora', 12),
+	(8, 'SegurancaInformacao', '1hora', 12),
+	(9, 'CodigoLimpo', '1hora', 12),
+	(10, 'DesenvolvimentoMobile', '1hora', 13),
 	(11, 'RedesIOT', '1hora', 10),
-	(12, 'LinguagemProgramacao', '1hora', 10);
+	(12, 'LinguagemProgramacao', '1hora', 12);
 
 -- Copiando estrutura para tabela stardev.cadastro
 DROP TABLE IF EXISTS `cadastro`;
@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `telefone` varchar(15) NOT NULL DEFAULT '',
   `nivel` varchar(50) DEFAULT 'U',
   PRIMARY KEY (`id_cadastro`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.cadastro: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.cadastro: ~12 rows (aproximadamente)
 DELETE FROM `cadastro`;
 INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
 	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'd97e69b8cb7e8e8f159d0a4b57d469e06bfe2f241322f7e663aa94555534a6e7', '2147483647', 'U'),
@@ -71,7 +71,8 @@ INSERT INTO `cadastro` (`id_cadastro`, `nome`, `email`, `senha`, `telefone`, `ni
 	(8, 'Lauane Ribeiro', 'lauaneribeiro@email.com', '$2b$10$va86GtwgkrB0V1r6xIghh.ZkK1T38uaGw6dv61sQIlf1sCgSCcr8S', '(18) 99653-4326', 'U'),
 	(9, 'Michele Pasquini', 'michelepasquini@email.com', '$2b$10$cBLo5QLyUQK9VXzxS/tIXuaVP40A80FhA0VwLZVGmCN/8KTvRj1nO', '(18) 99653-4326', 'U'),
 	(10, 'Kemilly Reginão', 'kemillyreginao@email.com', '$2b$10$ZsarrM/OMLudTmzucF2zKufROi0EJsMqf0.wvWPfhCVjlFCPtJPZK', '(18) 999999999', 'U'),
-	(12, 'stardev', 'stardevaulas@gmail.com', '$2b$10$ylekuE03GsaanFlZSukwmupamvlkBaVUIePEexU7uHvqLmAnznvNu', '(18) 99689-0559', 'A');
+	(12, 'stardev', 'stardevaulas@gmail.com', '$2b$10$ylekuE03GsaanFlZSukwmupamvlkBaVUIePEexU7uHvqLmAnznvNu', '(18) 99689-0559', 'A'),
+	(13, 'Lauane Pasquini Ribeiro', 'lauane@email.com', '$2b$10$5p9grcnBMmzwO51lyQ1JcO7HtpXPnHowC9KUAjn6kWZ03VuQH62QO', '(18) 99653-4326', 'U');
 
 -- Copiando estrutura para tabela stardev.contato
 DROP TABLE IF EXISTS `contato`;
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `contato` (
 -- Copiando dados para a tabela stardev.contato: ~16 rows (aproximadamente)
 DELETE FROM `contato`;
 INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`, `data_envio`, `status_feedback`) VALUES
-	(1, 'Melissa Vieira', 'melissateste@gmail.com', 'Estou testando se deu tudo certo!eSPERO QUE SIM', '2026-05-05 13:24:30', 'Pendente'),
+	(1, 'back', 'stardevaulas@gmail.com', 'shfghfg', '2026-05-05 13:24:30', 'Pendente'),
 	(2, 'melissa cristina', 'melissasteste@hotmail.cm', 'qqqqqqqqqqqqqqqqqqq', '2026-05-05 13:24:30', 'Pendente'),
 	(3, 'melissa cristina', 'melissasteste@hotmail.cm', 'rrrrrrrrrrrrrrrrr', '2026-05-05 13:24:30', 'Pendente'),
 	(4, 'Teste Nome', 'teste@email.com', 'Isso é um comentário válido', '2026-05-05 13:24:30', 'Pendente'),
@@ -111,13 +112,17 @@ CREATE TABLE IF NOT EXISTS `materias` (
   `id_materias` int(11) NOT NULL AUTO_INCREMENT,
   `nome_aulas` varchar(50) NOT NULL DEFAULT '0',
   `id_aulas` int(11) NOT NULL DEFAULT 0,
+  `link` text DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
   PRIMARY KEY (`id_materias`),
   KEY `id_aulas` (`id_aulas`),
   CONSTRAINT `id_aulas` FOREIGN KEY (`id_aulas`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Copiando dados para a tabela stardev.materias: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela stardev.materias: ~1 rows (aproximadamente)
 DELETE FROM `materias`;
+INSERT INTO `materias` (`id_materias`, `nome_aulas`, `id_aulas`, `link`, `descricao`) VALUES
+	(1, 'CORES', 1, 'https://www.youtube.com/watch?v=YIvGf2IjaXI', 'FGSDFG');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
