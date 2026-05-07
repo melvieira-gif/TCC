@@ -22,20 +22,20 @@
         <section>
             <h1 id="aulas"><strong>AULAS</strong></h1>
             <section id="section_aulas">
-                <p class="roxo"><a href="/front/aulas/afundamentos.html" target="_blank" class="hrefs">Fundamentos da Programação</a></p>
-                <p class="verde"><a href="/front/aulas/alogica.html" target="_blank" class="hrefs">Lógica de Programação</a></p>
-                <p class="marrom"><a href="/front/aulas/aweb.html" target="_blank" class="hrefs">Desenvolvimento Web</a></p>
-                <p class="amarelo"><a href="/front/aulas/afront.html" target="_blank" class="hrefs">Front-end</a></p>
-                <p class="roxo"><a href="/front/aulas/aback.html" target="_blank" class="hrefs">Back-end</a></p>
-                <p class="verde"><a href="/front/aulas/adb.html" target="_blank" class="hrefs">Banco de Dados</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/afundamentos.html" target="_blank" class="hrefs_aulas">Fundamentos da Programação</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/alogica.html" target="_blank" class="hrefs_aulas">Lógica de Programação</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/aweb.html" target="_blank" class="hrefs_aulas">Desenvolvimento Web</a></p>
+                <p class="card-aula amarelo"><a href="/front/aulas/afront.html" target="_blank" class="hrefs_aulas">Front-end</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/aback.html" target="_blank" class="hrefs_aulas">Back-end</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/adb.html" target="_blank" class="hrefs_aulas">Banco de Dados</a></p>
             </section>
             <section id="section_aulas">
-                <p class="roxo"><a href="/front/aulas/aprojetos.html" target="_blank" class="hrefs">Banco de Dados</a></p>
-                <p class="verde"><a href="/front/aulas/aseguranca.html" target="_blank"class="hrefs">Segurança da Informação</a></p>
-                <p class="marrom"><a href="/front/aulas/alimpo.html" target="_blank"class="hrefs">Código Limpo</a></p>
-                <p class="amarelo"><a href="/front/aulas/amobile.html" target="_blank" class="hrefs">Desenvolvimento Mobile</a></p>
-                <p class="roxo"><a href="/front/aulas/arede.html" target="_blank" class="hrefs">Redes e IOT</a></p>
-                <p class="verde"><a href="/front/aulas/alinguagens.html" target="_blank" class="hrefs">Linguagem de Programação</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/aprojetos.html" target="_blank" class="hrefs_aulas">Banco de Dados</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/aseguranca.html" target="_blank"class="hrefs_aulas">Segurança da Informação</a></p>
+                <p class="card-aula marrom"><a href="/front/aulas/alimpo.html" target="_blank"class="hrefs_aulas">Código Limpo</a></p>
+                <p class="card-aula amarelo"><a href="/front/aulas/amobile.html" target="_blank" class="hrefs_aulas">Desenvolvimento Mobile</a></p>
+                <p class="card-aula roxo"><a href="/front/aulas/arede.html" target="_blank" class="hrefs_aulas">Redes e IOT</a></p>
+                <p class="card-aula verde"><a href="/front/aulas/alinguagens.html" target="_blank" class="hrefs_aulas">Linguagem de Programação</a></p>
             </section>
         </section>
     </main>
@@ -44,7 +44,7 @@
         <p><a href="/front/cadastro.html" target="_self" class="hrefs">Cadastra-se</a></p>
         <p class="paragrafo-footer">&copy 2026 StarDev. Todos os direitos reservados.</p>
     </footer>
-    <!-- <script>
+    <script>
         const token = localStorage.getItem("token")
         if (!token) {
             alert("Você precisa estar logado!")
@@ -53,19 +53,19 @@
         // CARREGAR VÍDEOS
         async function carregarVideos() {
             try {
-                const res = await fetch("http://localhost:3000/videoaulas")
+                const res = await fetch("http://10.111.9.174:3000/videoaulas")
                 const videos = await res.json()
                 const div = document.getElementById("videos")
                 div.innerHTML = ""
                 videos.forEach(video => {
                     div.innerHTML += `
                         <div class="cardVideo">
-                            <h2>${video.nomeVAulas}</h2>
+                            <h2>${video.nome_aulas}</h2>
                             <p>${video.descricao}</p>
                             <iframe
                                 width="560"
                                 height="315"
-                                src="${video.link_video}"
+                                src="${video.link}"
                                 title="YouTube video player"
                                 frameborder="0"
                                 allowfullscreen>
@@ -79,71 +79,8 @@
                 document.getElementById("videos").innerHTML =
                     "<p>Erro ao carregar vídeos</p>"
             }
-        }
-        carregarVideos()
-    </script> -->
-    <script>
-
-        const token = localStorage.getItem("token")
-    
-        if (!token) {
-    
-            alert("Você precisa estar logado!")
-    
-            window.location.href = "login.html"
-        }
-    
-    
-    
-        // =========================
-        // CARREGAR VÍDEOS
-        // =========================
-    
-        async function carregarVideos() {
-    
-            try {
-    
-                const res = await fetch("http://localhost:3000/videoaulas")
-    
-                const videos = await res.json()
-        const div = document.getElementById("videos")
-
-        div.innerHTML = ""
-
-        videos.forEach(video => {
-
-            div.innerHTML += `
-
-                <div class="cardVideo">
-
-                    <h2>${video.nomeVAulas}</h2>
-
-                    <p>${video.descricao}</p>
-
-                    <iframe
-                        width="560"
-                        height="315"
-                        src="${video.link_video}"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allowfullscreen>
-                    </iframe>
-
-                </div>
-
-                <hr>
-            `
-        })
-
-    } catch (erro) {
-
-        console.log(erro)
-
-        document.getElementById("videos").innerHTML =
-            "<p>Erro ao carregar vídeos</p>"
-    }
-    }
-    carregarVideos()
+            }
+            carregarVideos()
     </script>
 </body>
 </html>

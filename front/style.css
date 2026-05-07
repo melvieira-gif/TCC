@@ -399,43 +399,51 @@ button {
   font-size: 30px;
 }
 .card-aula {
-  min-width: 200px;
-  height: 100px;
+  width: 180px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f2e9e1;
+  text-align: center;
   border-radius: 10px;
-  font-size: 12px;
-  padding: 10px;
-  flex-shrink: 0;
-  user-select: none;
 }
 .roxo { background-color: #804256; }
 .verde { background-color: #716f35; }
 .marrom { background-color: #a56940; }
 .amarelo { background-color: #eccc6e; }
-#section_aulas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-.hrefs_au {
+/* .hrefs_aulas {
   color: #f2e9e1;
   text-decoration: none;
-}
-.carrossel {
+} */
+#section_aulas {
   display: flex;
-  gap: 20px;
-  overflow: hidden;
-  cursor: grab;
-  padding: 20px;
-  margin: 0px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
 }
-.carrossel:active {
-  cursor: grabbing;
-  margin: 0px;
+#section_aulas p {
+  margin: 0;
+}
+.card-aula {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 18px;
+}
+.hrefs_aulas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #f2e9e1;
 }
 /*esqueciMINHASENHA*/
 #input_email_esqueci,
