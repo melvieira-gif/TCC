@@ -1,96 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrativa</title>
+
     <link rel="stylesheet" href="/front/style.css">
     <link rel="icon" type="image/x-icon" href="/front/img/favicon.ico">
 </head>
+
 <body>
-    <h1>Área Administrativa</h2>
-        
+
+    <h1>Área Administrativa</h1>
+
+    <!-- ========================= -->
+    <!-- FORMULÁRIO -->
+    <!-- ========================= -->
+
+    <form id="formVideo">
+
+        <label>Nome da Aula</label>
+        <input type="text" id="nome" required>
+
+        <label>Descrição</label>
+        <textarea id="descricao" required></textarea>
+
+        <label>Link do vídeo</label>
+        <input type="text" id="link" required>
+
+        <label>ID da matéria</label>
+        <input type="number" id="materia" required>
+
+        <button type="submit">Salvar</button>
+
+    </form>
+
+    <hr>
+
+    <!-- ========================= -->
+    <!-- TABELA -->
+    <!-- ========================= -->
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Matéria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabela">
+            <!-- as aulas aparecem aqui -->
+        </tbody>
+
+    </table>
+
 </body>
+
 <script>
+
     const API = "http://localhost:3000/videoaulas";
+
     let editandoId = null;
 
     const form = document.getElementById("formVideo");
     const tabela = document.getElementById("tabela");
 
+
+    // =========================
     // SALVAR
+    // =========================
+
     form.addEventListener("submit", async (e) => {
+
         e.preventDefault();
 
         const payload = {
+
             nomeVAulas: document.getElementById("nome").value,
+
             descricao: document.getElementById("descricao").value,
+
             link_video: document.getElementById("link").value,
+
             id_materia: document.getElementById("materia").value
         };
 
-        const url = editandoId ? `${API}/${editandoId}` : API;
-        const metodo = editandoId ? "PUT" : "POST";
+        const url = editandoId
+            ? `${API}/${editandoId}`
+            : API;
+
+        const metodo = editandoId
+            ? "PUT"
+            : "POST";
+
 
         await fetch(url, {
+
             method: metodo,
-            headers: { "Content-Type": "application/json" },
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
             body: JSON.stringify(payload)
         });
 
         alert("Salvo!");
+
         form.reset();
+
         editandoId = null;
+
         carregar();
     });
 
 
+
+    // =========================
     // LISTAR
+    // =========================
+
     async function carregar() {
+
         const res = await fetch(API);
+
         const data = await res.json();
 
         tabela.innerHTML = "";
 
         data.forEach(v => {
+
             tabela.innerHTML += `
                 <tr>
+
                     <td>${v.nomeVAulas}</td>
+
                     <td>${v.descricao}</td>
+
                     <td>${v.materia || "Sem matéria"}</td>
+
                     <td>
-                        <button onclick="editar(${v.id_videoAulas})">Editar</button>
-                        <button onclick="excluir(${v.id_videoAulas})">Excluir</button>
+
+                        <button onclick="editar(${v.id_videoAulas})">
+                            Editar
+                        </button>
+
+                        <button onclick="excluir(${v.id_videoAulas})">
+                            Excluir
+                        </button>
+
                     </td>
+
                 </tr>
             `;
         });
     }
 
 
+
+    // =========================
     // EDITAR
+    // =========================
+
     async function editar(id) {
+
         const res = await fetch(API);
+
         const data = await res.json();
 
         const v = data.find(x => x.id_videoAulas === id);
+
         if (!v) return;
 
         editandoId = id;
 
         document.getElementById("nome").value = v.nomeVAulas;
+
         document.getElementById("descricao").value = v.descricao;
+
         document.getElementById("link").value = v.link_video;
+
         document.getElementById("materia").value = v.id_materia;
     }
 
 
-    // EXCLUIR
-    async function excluir(id) {
-        if (!confirm("Excluir?")) return;
 
-        await fetch(`${API}/${id}`, { method: "DELETE" });
+    // =========================
+    // EXCLUIR
+    // =========================
+
+    async function excluir(id) {
+
+        const confirmar = confirm("Deseja excluir?");
+
+        if (!confirmar) return;
+
+        await fetch(`${API}/${id}`, {
+
+            method: "DELETE"
+        });
+
         carregar();
     }
+
+
+
+    // =========================
+    // INICIAR
+    // =========================
+
+    carregar();
+
 </script>
+
 </html>
