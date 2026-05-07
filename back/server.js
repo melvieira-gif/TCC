@@ -376,35 +376,48 @@ app.delete("/feedbacks/:id", verificarToken, async (req, res) => {
 // VIDEOAULAS
 // LISTAR (com nome da matéria)
 app.get('/videoaulas', async (req, res) => {
+
     try {
+
         const [rows] = await conexao.query(`
+
             SELECT 
-                v.id_videoAulas,
-                v.nomeVAulas,
-                v.descricao,
-                v.link_video,
-                v.id_materia,
-                a.materia
-            FROM videoaulas v
-            LEFT JOIN aulas a ON v.id_materia = a.id_aula
-            ORDER BY v.id_videoAulas DESC
+                materias.id_materias,
+                materias.nome_aulas,
+                materias.descricao,
+                materias.link,
+                materias.id_aulas,
+                aulas.materia
+
+            FROM materias
+
+            LEFT JOIN aulas 
+            ON materias.id_aulas = aulas.id_aula
+
+            ORDER BY materias.id_materias DESC
         `);
 
         res.json(rows);
+
     } catch (error) {
-        res.status(500).json({ error: error.message });
+
+        console.log(error);
+
+        res.status(500).json({
+            error: error.message
+        });
     }
 });
 
 // CADASTRAR
 app.post('/videoaulas', async (req, res) => {
     try {
-        const { nomeVAulas, descricao, link_video, id_materia } = req.body;
+        const { nome_aulas, descricao, link, id_materia } = req.body;
 
         const [result] = await conexao.query(`
-            INSERT INTO videoaulas (nomeVAulas, descricao, link_video, id_materia)
+            INSERT INTO materias (nome_aulas, descricao, link, id_materia)
             VALUES (?, ?, ?, ?)
-        `, [nomeVAulas, descricao, link_video, id_materia]);
+        `, [nome_aulas, descricao, link, id_materia]);
 
         res.status(201).json({
             message: "Videoaula criada",
@@ -420,13 +433,13 @@ app.post('/videoaulas', async (req, res) => {
 app.put('/videoaulas/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { nomeVAulas, descricao, link_video, id_materia } = req.body;
+        const { nome_aulas, descricao, link, id_materia } = req.body;
 
         await conexao.query(`
-            UPDATE videoaulas
-            SET nomeVAulas=?, descricao=?, link_video=?, id_materia=?
-            WHERE id_videoAulas=?
-        `, [nomeVAulas, descricao, link_video, id_materia, id]);
+            UPDATE materias
+            SET nome_aulas=?, descricao=?, link=?, id_materia=?
+            WHERE id_materias=?
+        `, [nome_aulas, descricao, link, id_materia, id]);
 
         res.json({ message: "Atualizado com sucesso" });
 
@@ -442,7 +455,7 @@ app.delete('/videoaulas/:id', async (req, res) => {
         const { id } = req.params;
 
         await conexao.query(
-            'DELETE FROM materias WHERE id_videoAulas=?',
+            'DELETE FROM materias WHERE id_materias=?',
             [id]
         );
 

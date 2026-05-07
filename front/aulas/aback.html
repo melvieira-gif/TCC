@@ -94,7 +94,6 @@
                 Back-end é responsável pela lógica do sistema,
                 banco de dados, APIs e autenticação.
                 `,
-
                 duvida: `
                 O back-end funciona como o cérebro do sistema.
                 Ele processa tudo no servidor.
@@ -164,12 +163,12 @@
                 filtradas.forEach(aula => {
                     lista.innerHTML += `
                         <div class="card-video">
-                            <h3>${aula.nomeVAulas}</h3>
+                            <h3>${aula.nome_aulas}</h3>
                             <p>${aula.descricao}</p>
                             <iframe
                                 width="300"
                                 height="200"
-                                src="${aula.link_video.replace("watch?v=", "embed/")}"
+                                src="${aula.link.replace("watch?v=", "embed/")}"
                                 frameborder="0"
                                 allowfullscreen>
                             </iframe>

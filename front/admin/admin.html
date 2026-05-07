@@ -80,11 +80,11 @@
 
         const payload = {
 
-            nomeVAulas: document.getElementById("nome").value,
+            nome_aulas: document.getElementById("nome").value,
 
             descricao: document.getElementById("descricao").value,
 
-            link_video: document.getElementById("link").value,
+            link: document.getElementById("link").value,
 
             id_materia: document.getElementById("materia").value
         };
@@ -137,7 +137,7 @@
             tabela.innerHTML += `
                 <tr>
 
-                    <td>${v.nomeVAulas}</td>
+                    <td>${v.nome_aulas}</td>
 
                     <td>${v.descricao}</td>
 
@@ -145,11 +145,11 @@
 
                     <td>
 
-                        <button onclick="editar(${v.id_videoAulas})">
+                        <button onclick="editar(${v.id_materias})">
                             Editar
                         </button>
 
-                        <button onclick="excluir(${v.id_videoAulas})">
+                        <button onclick="excluir(${v.id_materias})">
                             Excluir
                         </button>
 
@@ -172,17 +172,17 @@
 
         const data = await res.json();
 
-        const v = data.find(x => x.id_videoAulas === id);
+        const v = data.find(x => x.id_materias === id);
 
         if (!v) return;
 
         editandoId = id;
 
-        document.getElementById("nome").value = v.nomeVAulas;
+        document.getElementById("nome").value = v.nome_aulas;
 
         document.getElementById("descricao").value = v.descricao;
 
-        document.getElementById("link").value = v.link_video;
+        document.getElementById("link").value = v.link;
 
         document.getElementById("materia").value = v.id_materia;
     }

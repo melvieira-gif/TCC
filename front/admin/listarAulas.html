@@ -93,25 +93,25 @@
 
                     card.innerHTML = `
 
-                        <h3>${aula.nomeVAulas}</h3>
+                        <h3>${aula.nome_aulas}</h3>
 
                         <p>${aula.descricao}</p>
 
                         <iframe
                             width="400"
                             height="220"
-                            src="${aula.link_video}"
+                            src="${aula.link}"
                             frameborder="0"
                             allowfullscreen>
                         </iframe>
 
                             <br><br>
 
-                            <button onclick="editar(${aula.id_videoAulas})">
+                            <button onclick="editar(${aula.id_materias})">
                                 Editar
                             </button>
 
-                            <button onclick="deletar(${aula.id_videoAulas})">
+                            <button onclick="deletar(${aula.id_materias})">
                                 Excluir
                             </button>
                         `;
