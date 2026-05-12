@@ -423,6 +423,7 @@ app.post('/videoaulas', async (req, res) => {
             message: "Videoaula criada",
             id: result.insertId
         });
+        console.log(req.body)
 
     } catch (error) {
         res.status(500).json({ error: error.message });
