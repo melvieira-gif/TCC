@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const porta = 3000;
 
 const cors = require("cors");
 const conexao = require("./db.js");
@@ -139,16 +138,11 @@ app.post("/login", async (req, res) => {
         if (resultado.length === 0) {
             return res.json({ resposta: "Email não cadastrado" });
         }
-
         const usuario = resultado[0];
         const senhaValida = await bcrypt.compare(senhaTrim, usuario.senha);
-
         if (!senhaValida) {
             return res.json({ resposta: "Email ou senha incorretos" });
         }
-
-        
-
         const token = jwt.sign(
             {
                 id: usuario.id_cadastro,
@@ -158,7 +152,6 @@ app.post("/login", async (req, res) => {
             SECRET,
             { expiresIn: "1h" }
         );
-
         return res.json({
             mensagem: "Acesso liberado",
             token: token,
@@ -170,33 +163,25 @@ app.post("/login", async (req, res) => {
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    CADASTRO DE AULAS (PROTEGIDO)
 ========================= */
 app.post("/CadastroAulas", verificarToken, async (req, res) => {
     try {
-
         // 🔥 AQUI SIM!
         if (req.usuario.nivel !== "A") {
             return res.status(403).json({ resposta: "Acesso negado" });
         }
-
         const { materia, duracao, qtd_aulas } = req.body;
-
         const sql = `
             INSERT INTO aulas (materia, duracao, qtd_aulas)
             VALUES (?,?,?)
         `;
-
         const [result] = await conexao.query(sql, [materia, duracao, qtd_aulas]);
-
         if (result.affectedRows === 1) {
             return res.json({ resposta: "Aulas cadastradas com sucesso" });
         }
-
         return res.json({ resposta: "Erro ao cadastrar aulas" });
-
     } catch (error) {
         console.log(error);
         res.status(500).json({ erro: "Erro no servidor" });
@@ -209,81 +194,62 @@ app.put("/trocarSenha", verificarToken, async (req, res) => {
     try {
         const { novaSenha } = req.body;
         const userId = req.usuario.id;
-
         if (!novaSenha || novaSenha.trim().length < 6) {
             return res.json({ resposta: "Nova senha muito curta" });
         }
-
         const novaSenhaHash = await bcrypt.hash(novaSenha.trim(), 10);
-
         const sql = `UPDATE cadastro SET senha=? WHERE id_cadastro=?`;
         const [update] = await conexao.query(sql, [novaSenhaHash, userId]);
-
         if (update.affectedRows === 1) {
             return res.json({ resposta: "Senha alterada com sucesso" });
         }
-
         return res.json({ resposta: "Erro ao atualizar senha" });
-
     } catch (error) {
         console.log(error);
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    VERIFICAR EMAIL
 ========================= */
 app.post("/verificarEmail", async (req, res) => {
     try {
         const { email } = req.body;
-
         const sql = `SELECT * FROM cadastro WHERE email=?`;
         const [resultado] = await conexao.query(sql, [email]);
-
         return res.json({ existe: resultado.length > 0 });
-
     } catch (error) {
         console.log(error);
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    RECUPERAR SENHA (SEM TOKEN)
 ========================= */
 app.put("/recuperarSenha", async (req, res) => {
     try {
         const { email, novaSenha } = req.body;
-
         if (!novaSenha || novaSenha.trim().length < 6) {
             return res.json({ resposta: "Senha inválida" });
         }
-
         const sql = `SELECT * FROM cadastro WHERE email=?`;
         const [user] = await conexao.query(sql, [email]);
-
         if (user.length === 0) {
             return res.json({ resposta: "Email não encontrado" });
         }
-
         const hash = await bcrypt.hash(novaSenha.trim(), 10);
-
         const update = `
             UPDATE cadastro
             SET senha=?
             WHERE email=?
         `;
         await conexao.query(update, [hash, email]);
-
         return res.json({ resposta: "Senha redefinida com sucesso" });
-
     } catch (error) {
         console.log(error);
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    ATUALIZAR USUÁRIO
 ========================= */
@@ -291,27 +257,21 @@ app.put("/usuario", verificarToken, async (req, res) => {
     try {
         const { nome, email, telefone } = req.body;
         const userId = req.usuario.id;
-
         const sql = `
             UPDATE cadastro
             SET nome=?, email=?, telefone=?
             WHERE id_cadastro=?
         `;
-
         const [result] = await conexao.query(sql, [nome, email, telefone, userId]);
-
         if (result.affectedRows === 1) {
             return res.json({ resposta: "Usuário atualizado com sucesso" });
         }
-
         return res.json({ resposta: "Erro ao atualizar usuário" });
-
     } catch (error) {
         console.log(error);
         res.status(500).json({ erro: "Erro no servidor" });
     }
 });
-
 /* =========================
    listar aulas
 ========================= */
@@ -319,57 +279,40 @@ app.get("/aulas", async (req, res) => {
     const [dados] = await conexao.query("SELECT * FROM aulas");
     res.json(dados);
 });
-
-/* =========================
-   START
-========================= */
-app.listen(porta, () => {
-    console.log(`Servidor rodando na porta ${porta}`);
-});
-
 /* =========================
    LISTAR FEEDBACKS (ADMIN)
 ========================= */
 app.get("/feedbacks", verificarToken, async (req, res) => {
     try {
-
         if (req.usuario.nivel !== "A") {
             return res.status(403).json({
                 resposta: "Acesso negado"
             });
         }
-
         const sql = `
             SELECT id_contato, nome, email, comentario
             FROM contato
             ORDER BY id_contato DESC
         `;
-
         const [dados] = await conexao.query(sql);
-
         res.json(dados);
-
     } catch (error) {
         console.log(error);
-
         res.status(500).json({
             erro: "Erro ao buscar feedbacks"
         });
     }
 });
-
 /* =========================
    EDITAR FEEDBACK
 ========================= */
 app.put("/feedbacks/:id", verificarToken, async (req, res) => {
     try {
-
         if (req.usuario.nivel !== "A") {
             return res.status(403).json({
                 resposta: "Acesso negado"
             });
         }
-
         const id = req.params.id;
         const { nome, email, comentario } = req.body;
 
@@ -378,70 +321,152 @@ app.put("/feedbacks/:id", verificarToken, async (req, res) => {
             SET nome=?, email=?, comentario=?
             WHERE id_contato=?
         `;
-
         const [resultado] = await conexao.query(sql, [
             nome,
             email,
             comentario,
             id
         ]);
-
         if (resultado.affectedRows === 1) {
             return res.json({
                 resposta: "Feedback atualizado com sucesso"
             });
         }
-
         res.json({
             resposta: "Feedback não encontrado"
         });
-
     } catch (error) {
         console.log(error);
-
         res.status(500).json({
             erro: "Erro ao atualizar feedback"
         });
     }
 });
-
 /* =========================
    EXCLUIR FEEDBACK
 ========================= */
 app.delete("/feedbacks/:id", verificarToken, async (req, res) => {
     try {
-
         if (req.usuario.nivel !== "A") {
             return res.status(403).json({
                 resposta: "Acesso negado"
             });
         }
-
         const id = req.params.id;
-
         const sql = `
             DELETE FROM contato
             WHERE id_contato=?
         `;
-
         const [resultado] = await conexao.query(sql, [id]);
-
         if (resultado.affectedRows === 1) {
             return res.json({
                 resposta: "Feedback removido com sucesso"
             });
         }
-
         res.json({
             resposta: "Feedback não encontrado"
         });
-
     } catch (error) {
         console.log(error);
-
         res.status(500).json({
             erro: "Erro ao excluir feedback"
         });
     }
 });
+// VIDEOAULAS
+// LISTAR (com nome da matéria)
+app.get('/videoaulas', async (req, res) => {
 
+    try {
+
+        const [rows] = await conexao.query(`
+
+            SELECT 
+                materias.id_materias,
+                materias.nome_aulas,
+                materias.descricao,
+                materias.link,
+                materias.id_aulas,
+                aulas.materia
+
+            FROM materias
+
+            LEFT JOIN aulas 
+            ON materias.id_aulas = aulas.id_aula
+
+            ORDER BY materias.id_materias DESC
+        `);
+
+        res.json(rows);
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
+// CADASTRAR
+app.post('/videoaulas', async (req, res) => {
+    try {
+        const { nome_aulas, descricao, link, id_materia } = req.body;
+
+        const [result] = await conexao.query(`
+            INSERT INTO materias (nome_aulas, descricao, link, id_materia)
+            VALUES (?, ?, ?, ?)
+        `, [nome_aulas, descricao, link, id_materia]);
+
+        res.status(201).json({
+            message: "Videoaula criada",
+            id: result.insertId
+        });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// EDITAR
+app.put('/videoaulas/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nome_aulas, descricao, link, id_materia } = req.body;
+
+        await conexao.query(`
+            UPDATE materias
+            SET nome_aulas=?, descricao=?, link=?, id_materia=?
+            WHERE id_materias=?
+        `, [nome_aulas, descricao, link, id_materia, id]);
+
+        res.json({ message: "Atualizado com sucesso" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+// EXCLUIR
+app.delete('/videoaulas/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await conexao.query(
+            'DELETE FROM materias WHERE id_materias=?',
+            [id]
+        );
+
+        res.json({ message: "Deletado com sucesso" });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando em http://10.111.9.174:${PORT}`);
+});
