@@ -31,7 +31,10 @@
         <label>ID da matéria</label>
         <input type="number" id="materia" required>
 
+        <div id="listaMaterias"></div>
+
         <button type="submit">Salvar</button>
+        
 
     </form>
 
@@ -62,7 +65,7 @@
 
 <script>
 
-    const API = "http://localhost:3000/videoaulas";
+    const API = "http://10.111.9.133:3000/videoaulas";
 
     let editandoId = null;
 
@@ -71,10 +74,33 @@
 
 
     // =========================
+    // listar id_aula
+    // =========================
+    async function carregarMaterias() {
+
+        const res = await fetch("http://10.111.9.133:3000/videoaulas");
+
+        const aulas = await res.json();
+
+        const div = document.getElementById("listaMaterias");
+
+        div.innerHTML = "";
+
+        aulas.forEach(aula => {
+
+            div.innerHTML += `
+                <p>
+                    ID: ${aula.id_aula} - ${aula.materia}
+                </p>
+            `;
+        });
+    }
+
+    // =========================
     // SALVAR
     // =========================
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", async () => {
 
         e.preventDefault();
 
@@ -86,7 +112,7 @@
 
             link: document.getElementById("link").value,
 
-            id_materia: document.getElementById("materia").value
+            id_aula: document.getElementById("materia").value
         };
 
         const url = editandoId
@@ -167,12 +193,12 @@
     // =========================
 
     async function editar(id) {
-
+        
         const res = await fetch(API);
 
         const data = await res.json();
 
-        const v = data.find(x => x.id_materias === id);
+        const v = data.find(x => x.id_aula === id);
 
         if (!v) return;
 
@@ -184,7 +210,7 @@
 
         document.getElementById("link").value = v.link;
 
-        document.getElementById("materia").value = v.id_materia;
+        document.getElementById("materia").value = v.id_aula;
     }
 
 
@@ -213,6 +239,7 @@
     // INICIAR
     // =========================
 
+    carregarMaterias();
     carregar();
 
 </script>

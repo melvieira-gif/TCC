@@ -106,17 +106,17 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`, `data_envio`
 CREATE TABLE IF NOT EXISTS `materias` (
   `id_materias` int(11) NOT NULL AUTO_INCREMENT,
   `nome_aulas` varchar(50) NOT NULL DEFAULT '0',
-  `id_aulas` int(11) NOT NULL DEFAULT 0,
+  `id_aula` int(11) NOT NULL DEFAULT 0,
   `link` text DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   PRIMARY KEY (`id_materias`),
-  KEY `id_aulas` (`id_aulas`),
-  CONSTRAINT `id_aulas` FOREIGN KEY (`id_aulas`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `id_aulas` (`id_aula`) USING BTREE,
+  CONSTRAINT `id_aula` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Copiando dados para a tabela stardev.materias: ~1 rows (aproximadamente)
 DELETE FROM `materias`;
-INSERT INTO `materias` (`id_materias`, `nome_aulas`, `id_aulas`, `link`, `descricao`) VALUES
+INSERT INTO `materias` (`id_materias`, `nome_aulas`, `id_aula`, `link`, `descricao`) VALUES
 	(1, 'CORES', 1, 'https://www.youtube.com/watch?v=YIvGf2IjaXI', 'FGSDFG');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

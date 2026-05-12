@@ -386,13 +386,13 @@ app.get('/videoaulas', async (req, res) => {
                 materias.nome_aulas,
                 materias.descricao,
                 materias.link,
-                materias.id_aulas,
+                materias.id_aula,
                 aulas.materia
 
             FROM materias
 
             LEFT JOIN aulas 
-            ON materias.id_aulas = aulas.id_aula
+            ON materias.id_aula = aulas.id_aula
 
             ORDER BY materias.id_materias DESC
         `);
@@ -412,12 +412,12 @@ app.get('/videoaulas', async (req, res) => {
 // CADASTRAR
 app.post('/videoaulas', async (req, res) => {
     try {
-        const { nome_aulas, descricao, link, id_materia } = req.body;
+        const { nome_aulas, descricao, link, id_aula } = req.body;
 
         const [result] = await conexao.query(`
-            INSERT INTO materias (nome_aulas, descricao, link, id_materia)
+            INSERT INTO materias (nome_aulas, descricao, link, id_aula)
             VALUES (?, ?, ?, ?)
-        `, [nome_aulas, descricao, link, id_materia]);
+        `, [nome_aulas, descricao, link, id_aula]);
 
         res.status(201).json({
             message: "Videoaula criada",
@@ -433,13 +433,13 @@ app.post('/videoaulas', async (req, res) => {
 app.put('/videoaulas/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { nome_aulas, descricao, link, id_materia } = req.body;
+        const { nome_aulas, descricao, link, id_aula } = req.body;
 
         await conexao.query(`
             UPDATE materias
-            SET nome_aulas=?, descricao=?, link=?, id_materia=?
+            SET nome_aulas=?, descricao=?, link=?, id_aula=?
             WHERE id_materias=?
-        `, [nome_aulas, descricao, link, id_materia, id]);
+        `, [nome_aulas, descricao, link, id_aula, id]);
 
         res.json({ message: "Atualizado com sucesso" });
 
@@ -468,5 +468,5 @@ app.delete('/videoaulas/:id', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando em http://10.111.9.174:${PORT}`);
+    console.log(`🚀 Servidor rodando em http://10.111.9.133:${PORT}`);
 });

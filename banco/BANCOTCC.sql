@@ -102,10 +102,10 @@ INSERT INTO `contato` (`id_contato`, `nome`, `email`, `comentario`) VALUES
 CREATE TABLE IF NOT EXISTS `materias` (
   `id_materias` int(11) NOT NULL AUTO_INCREMENT,
   `nome_aulas` varchar(50) NOT NULL DEFAULT '0',
-  `id_aulas` int(11) NOT NULL DEFAULT 0,
+  `id_aula` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_materias`),
-  KEY `id_aulas` (`id_aulas`),
-  CONSTRAINT `id_aulas` FOREIGN KEY (`id_aulas`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `id_aula` (`id_aula`),
+  CONSTRAINT `id_aula` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Copiando dados para a tabela stardev.materias: ~0 rows (aproximadamente)

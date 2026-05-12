@@ -53,7 +53,7 @@
         // CARREGAR VÍDEOS
         async function carregarVideos() {
             try {
-                const res = await fetch("http://10.111.9.174:3000/videoaulas")
+                const res = await fetch("http://10.111.9.133:3000/videoaulas")
                 const videos = await res.json()
                 const div = document.getElementById("videos")
                 div.innerHTML = ""
