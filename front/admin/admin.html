@@ -73,173 +73,266 @@
     const tabela = document.getElementById("tabela");
 
 
-    // =========================
-    // listar id_aula
-    // =========================
+    // ========================================
+    // LISTAR IDs DAS AULAS
+    // ========================================
+
     async function carregarMaterias() {
 
-        const res = await fetch("http://10.111.9.133:3000/videoaulas");
+        try {
 
-        const aulas = await res.json();
+            const res = await fetch("http://10.111.9.133:3000/aulas");
 
-        const div = document.getElementById("listaMaterias");
+            const aulas = await res.json();
 
-        div.innerHTML = "";
+            const div = document.getElementById("listaMaterias");
 
-        aulas.forEach(aula => {
+            div.innerHTML = "";
 
-            div.innerHTML += `
-                <p>
-                    ID: ${aula.id_aula} - ${aula.materia}
-                </p>
-            `;
-        });
+            aulas.forEach(aula => {
+
+                div.innerHTML += `
+                    <p>
+                        ID: ${aula.id_aula} - ${aula.materia}
+                    </p>
+                `;
+            });
+
+        } catch (erro) {
+
+            console.log(erro);
+
+            alert("Erro ao carregar matérias");
+        }
     }
 
-    // =========================
-    // SALVAR
-    // =========================
 
-    form.addEventListener("submit", async () => {
+
+    // ========================================
+    // SALVAR / EDITAR
+    // ========================================
+
+    form.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
         const payload = {
 
-            nome_aulas: document.getElementById("nome").value,
+            nome_aulas: document.getElementById("nome").value.trim(),
 
-            descricao: document.getElementById("descricao").value,
+            descricao: document.getElementById("descricao").value.trim(),
 
-            link: document.getElementById("link").value,
+            link: document.getElementById("link").value.trim(),
 
             id_aula: document.getElementById("materia").value
         };
 
-        const url = editandoId
-            ? `${API}/${editandoId}`
-            : API;
 
-        const metodo = editandoId
-            ? "PUT"
-            : "POST";
+        // VALIDAÇÃO
+
+        if (
+            !payload.nome_aulas ||
+            !payload.descricao ||
+            !payload.link ||
+            !payload.id_aula
+        ) {
+
+            alert("Preencha todos os campos");
+
+            return;
+        }
 
 
-        await fetch(url, {
+        try {
 
-            method: metodo,
+            const url = editandoId
+                ? `${API}/${editandoId}`
+                : API;
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+            const metodo = editandoId
+                ? "PUT"
+                : "POST";
 
-            body: JSON.stringify(payload)
-        });
 
-        alert("Salvo!");
+            const resposta = await fetch(url, {
 
-        form.reset();
+                method: metodo,
 
-        editandoId = null;
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-        carregar();
+                body: JSON.stringify(payload)
+            });
+
+
+            const dados = await resposta.json();
+
+            alert(dados.message || "Salvo com sucesso");
+
+
+            form.reset();
+
+            editandoId = null;
+
+            carregar();
+
+        } catch (erro) {
+
+            console.log(erro);
+
+            alert("Erro ao salvar");
+        }
     });
 
 
 
-    // =========================
-    // LISTAR
-    // =========================
+    // ========================================
+    // LISTAR VIDEOAULAS
+    // ========================================
 
     async function carregar() {
 
-        const res = await fetch(API);
+        try {
 
-        const data = await res.json();
+            const res = await fetch(API);
 
-        tabela.innerHTML = "";
+            const data = await res.json();
 
-        data.forEach(v => {
+            tabela.innerHTML = "";
 
-            tabela.innerHTML += `
-                <tr>
 
-                    <td>${v.nome_aulas}</td>
+            data.forEach(v => {
 
-                    <td>${v.descricao}</td>
+                tabela.innerHTML += `
 
-                    <td>${v.materia || "Sem matéria"}</td>
+                    <tr>
 
-                    <td>
+                        <td>${v.nome_aulas}</td>
 
-                        <button onclick="editar(${v.id_materias})">
-                            Editar
-                        </button>
+                        <td>${v.descricao}</td>
 
-                        <button onclick="excluir(${v.id_materias})">
-                            Excluir
-                        </button>
+                        <td>${v.materia || "Sem matéria"}</td>
 
-                    </td>
+                        <td>
 
-                </tr>
-            `;
-        });
+                            <button onclick="editar(${v.id_materias})">
+                                Editar
+                            </button>
+
+                            <button onclick="excluir(${v.id_materias})">
+                                Excluir
+                            </button>
+
+                        </td>
+
+                    </tr>
+                `;
+            });
+
+        } catch (erro) {
+
+            console.log(erro);
+
+            alert("Erro ao carregar dados");
+        }
     }
 
 
 
-    // =========================
+    // ========================================
     // EDITAR
-    // =========================
+    // ========================================
 
     async function editar(id) {
-        
-        const res = await fetch(API);
 
-        const data = await res.json();
+        try {
 
-        const v = data.find(x => x.id_aula === id);
+            const res = await fetch(API);
 
-        if (!v) return;
+            const data = await res.json();
 
-        editandoId = id;
 
-        document.getElementById("nome").value = v.nome_aulas;
+            // CORREÇÃO AQUI
+            const v = data.find(x => x.id_materias == id);
 
-        document.getElementById("descricao").value = v.descricao;
+            if (!v) {
 
-        document.getElementById("link").value = v.link;
+                alert("Registro não encontrado");
 
-        document.getElementById("materia").value = v.id_aula;
+                return;
+            }
+
+
+            editandoId = id;
+
+            document.getElementById("nome").value = v.nome_aulas;
+
+            document.getElementById("descricao").value = v.descricao;
+
+            document.getElementById("link").value = v.link;
+
+            document.getElementById("materia").value = v.id_aula;
+
+
+            // sobe a tela
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+            });
+
+        } catch (erro) {
+
+            console.log(erro);
+
+            alert("Erro ao editar");
+        }
     }
 
 
 
-    // =========================
+    // ========================================
     // EXCLUIR
-    // =========================
+    // ========================================
 
     async function excluir(id) {
 
-        const confirmar = confirm("Deseja excluir?");
+        const confirmar = confirm(
+            "Deseja realmente excluir?"
+        );
 
         if (!confirmar) return;
 
-        await fetch(`${API}/${id}`, {
 
-            method: "DELETE"
-        });
+        try {
 
-        carregar();
+            await fetch(`${API}/${id}`, {
+
+                method: "DELETE"
+            });
+
+            alert("Excluído com sucesso");
+
+            carregar();
+
+        } catch (erro) {
+
+            console.log(erro);
+
+            alert("Erro ao excluir");
+        }
     }
 
 
 
-    // =========================
+    // ========================================
     // INICIAR
-    // =========================
+    // ========================================
 
     carregarMaterias();
+
     carregar();
 
 </script>

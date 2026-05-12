@@ -411,59 +411,179 @@ app.get('/videoaulas', async (req, res) => {
 
 // CADASTRAR
 app.post('/videoaulas', async (req, res) => {
+
     try {
-        const { nome_aulas, descricao, link, id_aula } = req.body;
+
+        const {
+            nome_aulas,
+            descricao,
+            link,
+            id_aula
+        } = req.body;
+
+
+        if (
+            !nome_aulas ||
+            !descricao ||
+            !link ||
+            !id_aula
+        ) {
+
+            return res.status(400).json({
+                message: "Preencha todos os campos"
+            });
+        }
+
+
+        // VERIFICA FK
+
+        const [aulaExiste] = await conexao.query(
+            'SELECT * FROM aulas WHERE id_aula=?',
+            [id_aula]
+        );
+
+
+        if (aulaExiste.length === 0) {
+
+            return res.status(400).json({
+                message: "ID da aula não existe"
+            });
+        }
+
 
         const [result] = await conexao.query(`
-            INSERT INTO materias (nome_aulas, descricao, link, id_aula)
+
+            INSERT INTO materias
+            (
+                nome_aulas,
+                descricao,
+                link,
+                id_aula
+            )
+
             VALUES (?, ?, ?, ?)
-        `, [nome_aulas, descricao, link, id_aula]);
+
+        `, [
+
+            nome_aulas,
+            descricao,
+            link,
+            id_aula
+        ]);
+
 
         res.status(201).json({
-            message: "Videoaula criada",
+
+            message: "Matéria cadastrada com sucesso",
+
             id: result.insertId
         });
-        console.log(req.body)
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+
+        console.log(error);
+
+        res.status(500).json({
+            error: error.message
+        });
     }
 });
+
 
 // EDITAR
 app.put('/videoaulas/:id', async (req, res) => {
+
     try {
+
         const { id } = req.params;
-        const { nome_aulas, descricao, link, id_aula } = req.body;
 
-        await conexao.query(`
+        const {
+            nome_aulas,
+            descricao,
+            link,
+            id_aula
+        } = req.body;
+
+
+        const [result] = await conexao.query(`
+
             UPDATE materias
-            SET nome_aulas=?, descricao=?, link=?, id_aula=?
-            WHERE id_materias=?
-        `, [nome_aulas, descricao, link, id_aula, id]);
 
-        res.json({ message: "Atualizado com sucesso" });
+            SET
+                nome_aulas=?,
+                descricao=?,
+                link=?,
+                id_aula=?
+
+            WHERE id_materias=?
+
+        `, [
+
+            nome_aulas,
+            descricao,
+            link,
+            id_aula,
+            id
+        ]);
+
+
+        if (result.affectedRows === 0) {
+
+            return res.status(404).json({
+                message: "Matéria não encontrada"
+            });
+        }
+
+
+        res.json({
+            message: "Atualizado com sucesso"
+        });
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+
+        console.log(error);
+
+        res.status(500).json({
+            error: error.message
+        });
     }
 });
 
-
 // EXCLUIR
 app.delete('/videoaulas/:id', async (req, res) => {
+
     try {
+
         const { id } = req.params;
 
-        await conexao.query(
+
+        const [result] = await conexao.query(
+
             'DELETE FROM materias WHERE id_materias=?',
+
             [id]
         );
 
-        res.json({ message: "Deletado com sucesso" });
+
+        if (result.affectedRows === 0) {
+
+            return res.status(404).json({
+                message: "Matéria não encontrada"
+            });
+        }
+
+
+        res.json({
+            message: "Excluído com sucesso"
+        });
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+
+        console.log(error);
+
+        res.status(500).json({
+            error: error.message
+        });
     }
 });
 

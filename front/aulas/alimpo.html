@@ -62,7 +62,7 @@
         });
 
         // pegando aulas do admin
-        const API = "http://localhost:3000/videoaulas";
+        const API = "http://10.111.9.133:3000/videoaulas";
         const lista = document.getElementById("listaAulas");
 
         // 🔥 MUDE AQUI PARA CADA PÁGINA
@@ -84,7 +84,7 @@
                         <p>${aula.descricao}</p>
 
                         <iframe width="300" height="200"
-                            src="${aula.link.replace("watch?v=", "embed/")}"
+                            src="${const videoId = aula.link.split("v=")[1];}"
                             frameborder="0"
                             allowfullscreen>
                         </iframe>

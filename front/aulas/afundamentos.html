@@ -36,64 +36,94 @@
             </section>
         </section>
     </main>
-    <script>
-        const carrossel = document.querySelector('.drag');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        carrossel.addEventListener('mousedown', (e) => {
-          isDown = true;
-          carrossel.classList.add('active');
-          startX = e.pageX - carrossel.offsetLeft;
-          scrollLeft = carrossel.scrollLeft;
-        });
-        carrossel.addEventListener('mouseleave', () => {
-          isDown = false;
-        });
-        carrossel.addEventListener('mouseup', () => {
-          isDown = false;
-        });
-        carrossel.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - carrossel.offsetLeft;
-          const walk = (x - startX) * 2; // velocidade
-          carrossel.scrollLeft = scrollLeft - walk;
-        });
+</body>
+<script>
+    const carrossel = document.querySelector('.drag');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    carrossel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carrossel.classList.add('active');
+        startX = e.pageX - carrossel.offsetLeft;
+        scrollLeft = carrossel.scrollLeft;
+    });
+    carrossel.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carrossel.offsetLeft;
+        const walk = (x - startX) * 2; // velocidade
+        carrossel.scrollLeft = scrollLeft - walk;
+    });
+    // PEGANDO AS AULAS CADASTRADAS NA AREA Administrativa
+    const API = "http://10.111.9.133:3000/videoaulas";
 
-        // pegando aulas do admin
-        const API = "http://localhost:3000/videoaulas";
-        const lista = document.getElementById("listaAulas");
+    const lista = document.getElementById("listaAulas");
 
-        // 🔥 MUDE AQUI PARA CADA PÁGINA
-        const MATERIA = "FundamentosProgramacao";
+    const MATERIA = "Back-End";
 
-        async function carregarAulas() {
+    async function carregarAulas() {
+
+        try {
+
             const res = await fetch(API);
+
             const data = await res.json();
+
+            console.log(data);
 
             lista.innerHTML = "";
 
-            // 🔥 FILTRO
-            const filtradas = data.filter(a => a.materia === MATERIA);
+            const filtradas = data.filter(
+                a => a.materia === MATERIA
+            );
+
+            if (filtradas.length === 0) {
+
+                lista.innerHTML = `
+                    <p>Nenhuma aula encontrada.</p>
+                `;
+
+                return;
+            }
 
             filtradas.forEach(aula => {
+
                 lista.innerHTML += `
-                    <div>
+                    <div class="card-video">
+
                         <h3>${aula.nome_aulas}</h3>
+
                         <p>${aula.descricao}</p>
 
-                        <iframe width="300" height="200"
+                        <iframe
+                            width="300"
+                            height="200"
                             src="${aula.link.replace("watch?v=", "embed/")}"
                             frameborder="0"
                             allowfullscreen>
                         </iframe>
+
                     </div>
                 `;
             });
-        }
 
-        carregarAulas();
-    </script>
-</body>
+        } catch (erro) {
+
+            console.log("ERRO:", erro);
+
+            lista.innerHTML = `
+                <p>Erro ao carregar videoaulas.</p>
+            `;
+        }
+    }
+
+    carregarAulas();
+</script>
 </html>

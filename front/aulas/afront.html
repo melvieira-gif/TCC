@@ -50,140 +50,174 @@
             </section>
         </section>
     </main>
-    <script>
-        // CARROSSEL
-        const carrossel = document.querySelector('.drag');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        carrossel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - carrossel.offsetLeft;
-            scrollLeft = carrossel.scrollLeft;
-        });
-        carrossel.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
-        carrossel.addEventListener('mouseup', () => {
-            isDown = false;
-        });
-        carrossel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carrossel.offsetLeft;
-            const walk = (x - startX) * 2;
-            carrossel.scrollLeft = scrollLeft - walk;
-        });
-        // CHATBOT
-        const icon = document.getElementById("chatbot-icon");
-        const bot = document.getElementById("chatbot");
-        bot.style.display = "none";
-        icon.addEventListener("click", () => {
-            if (bot.style.display === "none") {
-                bot.style.display = "flex";
-            } else {
-                bot.style.display = "none";
-            }
-        });
-        const chatBox = document.getElementById("chat-box");
-        const chatOptions = document.getElementById("chat-options");
-        const MATERIA = "Banco de Dados";
-        const conteudos = {
-            "Banco de Dados": {
-                resumo: `
-                Banco de Dados é responsável pela lógica do sistema,
-                banco de dados, APIs e autenticação.
-                `,
+</body>
 
-                duvida: `
-                O Banco de Dados funciona como o cérebro do sistema.
-                Ele processa tudo no servidor.
-                `,
-                proxima: "Banco de Dados"
-            }
-        };
+<script>
+    // CARROSSEL
+    const carrossel = document.querySelector('.drag');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    carrossel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - carrossel.offsetLeft;
+        scrollLeft = carrossel.scrollLeft;
+    });
+    carrossel.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+    carrossel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carrossel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carrossel.scrollLeft = scrollLeft - walk;
+    });
+    // CHATBOT
+    const icon = document.getElementById("chatbot-icon");
+    const bot = document.getElementById("chatbot");
+    bot.style.display = "none";
+    icon.addEventListener("click", () => {
+        if (bot.style.display === "none") {
+            bot.style.display = "flex";
+        } else {
+            bot.style.display = "none";
+        }
+    });
+    const chatBox = document.getElementById("chat-box");
+    const chatOptions = document.getElementById("chat-options");
+    const MATERIA = "Front-End";
+    const conteudos = {
+        "Banco de Dados": {
+            resumo: `
+            Banco de Dados é responsável pela lógica do sistema,
+            banco de dados, APIs e autenticação.
+            `,
+
+            duvida: `
+            O Banco de Dados funciona como o cérebro do sistema.
+            Ele processa tudo no servidor.
+            `,
+            proxima: "Banco de Dados"
+        }
+    };
+    chatBox.innerHTML = `
+        <p>
+            Olá! Eu sou o DevMentor.
+            <br>
+            Fui programado para te ajudar.
+        </p>
+    `;
+    chatOptions.innerHTML = `
+        <button onclick="mostrarResumo(this)">
+            Resumo
+        </button>
+        <button onclick="mostrarDuvida(this)">
+            Reexplicar
+        </button>
+        <button onclick="proximaAula(this)">
+            Próxima Aula
+        </button>
+    `;
+    function animarBotao(botao) {
+        botao.style.transform = "scale(0.90)";
+        botao.style.boxShadow = "0px 0px 20px #eccc6e";
+        setTimeout(() => {
+            botao.style.transform = "scale(1)";
+            botao.style.boxShadow = "none";
+        }, 300);
+    }
+    function mostrarResumo(botao) {
+        animarBotao(botao);
+        chatBox.innerHTML = `
+            <p>${conteudos[MATERIA].resumo}</p>
+        `;
+    }
+    function mostrarDuvida(botao) {
+        animarBotao(botao);
+        chatBox.innerHTML = `
+            <p>${conteudos[MATERIA].duvida}</p>
+        `;
+    }
+    function proximaAula(botao) {
+        animarBotao(botao);
         chatBox.innerHTML = `
             <p>
-                Olá! Eu sou o DevMentor.
-                <br>
-                Fui programado para te ajudar.
+                Próxima aula:
+                <br><br>
+                <strong>${conteudos[MATERIA].proxima}</strong>
             </p>
         `;
-        chatOptions.innerHTML = `
-            <button onclick="mostrarResumo(this)">
-                Resumo
-            </button>
-            <button onclick="mostrarDuvida(this)">
-                Reexplicar
-            </button>
-            <button onclick="proximaAula(this)">
-                Próxima Aula
-            </button>
-        `;
-        function animarBotao(botao) {
-            botao.style.transform = "scale(0.90)";
-            botao.style.boxShadow = "0px 0px 20px #eccc6e";
-            setTimeout(() => {
-                botao.style.transform = "scale(1)";
-                botao.style.boxShadow = "none";
-            }, 300);
-        }
-        function mostrarResumo(botao) {
-            animarBotao(botao);
-            chatBox.innerHTML = `
-                <p>${conteudos[MATERIA].resumo}</p>
-            `;
-        }
-        function mostrarDuvida(botao) {
-            animarBotao(botao);
-            chatBox.innerHTML = `
-                <p>${conteudos[MATERIA].duvida}</p>
-            `;
-        }
-        function proximaAula(botao) {
-            animarBotao(botao);
-            chatBox.innerHTML = `
-                <p>
-                    Próxima aula:
-                    <br><br>
-                    <strong>${conteudos[MATERIA].proxima}</strong>
-                </p>
-            `;
-        }
-        // VIDEOAULAS
-        const API = "http://10.111.9.133:3000/videoaulas";
-        const lista = document.getElementById("listaAulas");
-        async function carregarAulas() {
-            try {
-                const res = await fetch(API);
-                const data = await res.json();
-                lista.innerHTML = "";
-                const filtradas = data.filter(
-                    a => a.materia === MATERIA
-                );
-                filtradas.forEach(aula => {
-                    lista.innerHTML += `
-                        <div class="card-video">
-                            <h3>${aula.nome_aulas}</h3>
-                            <p>${aula.descricao}</p>
-                            <iframe
-                                width="300"
-                                height="200"
-                                src="${aula.link.replace("watch?v=", "embed/")}"
-                                frameborder="0"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    `;
-                });
-            } catch (erro) {
-                console.log(erro);
+    }
+
+    //PEGANDO AS AULAS CADASTRADAS NA AREA Administrativa
+
+    const API = "http://10.111.9.133:3000/videoaulas";
+
+    const lista = document.getElementById("listaAulas");
+
+    const MATERIA1 = "Front-End";
+
+    async function carregarAulas() {
+
+        try {
+
+            const res = await fetch(API);
+
+            const data = await res.json();
+
+            console.log(data);
+
+            lista.innerHTML = "";
+
+            const filtradas = data.filter(
+                a => a.materia === MATERIA1
+            );
+
+            if (filtradas.length === 0) {
+
                 lista.innerHTML = `
-                    <p>Erro ao carregar videoaulas.</p>
+                    <p>Nenhuma aula encontrada.</p>
                 `;
+
+                return;
             }
+
+            filtradas.forEach(aula => {
+
+                lista.innerHTML += `
+                    <div class="card-video">
+
+                        <h3>${aula.nome_aulas}</h3>
+
+                        <p>${aula.descricao}</p>
+
+                        <iframe
+                            width="300"
+                            height="200"
+                            src="${aula.link.replace("watch?v=", "embed/")}"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+                `;
+            });
+
+        } catch (erro) {
+
+            console.log("ERRO:", erro);
+
+            lista.innerHTML = `
+                <p>Erro ao carregar videoaulas.</p>
+            `;
         }
-        carregarAulas();
-    </script>
-</body>
+    }
+
+    carregarAulas();
+
+</script>
 </html>
